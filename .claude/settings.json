@@ -1,0 +1,66 @@
+{
+  "permissions": {
+    "allow": [
+      "mcp__ide__getDiagnostics",
+
+      "Bash(claude mcp get:*)",
+      "Bash(claude mcp list)",
+
+      "mcp__playwright__browser_close",
+      "mcp__playwright__browser_console_messages",
+      "mcp__playwright__browser_navigate",
+      "mcp__playwright__browser_navigate_back",
+      "mcp__playwright__browser_network_requests",
+      "mcp__playwright__browser_resize",
+      "mcp__playwright__browser_run_code",
+      "mcp__playwright__browser_snapshot",
+      "mcp__playwright__browser_tabs",
+      "mcp__playwright__browser_take_screenshot",
+      "mcp__playwright__browser_wait_for",
+
+      "Bash(cat:*)",
+      "Bash(echo:*)",
+      "Bash(find:*)",
+      "Bash(glob:*)",
+      "Bash(lsof:*)",
+      "Bash(sed:*)",
+      "Bash(wc:*)",
+      "Bash(xargs:*)",
+
+      "Bash(git log:*)",
+      "Bash(gh pr checks:*)",
+      "Bash(gh pr list:*)",
+      "Bash(gh run list:*)",
+      "Bash(gh run view:*)",
+
+      "Bash(npm run build)",
+      "Bash(npm run dev)",
+      "Bash(npm run start)",
+      "Bash(npm run check)",
+      "Bash(npm run lint)",
+      "Bash(npm run lint:md:*)",
+      "Bash(npm run test)",
+      "Bash(npm run test:e2e:*)",
+      "Bash(npm run test:unit:*)",
+      "Bash(npm run typecheck)",
+      "Bash(npx @biomejs/biome:*)",
+      "Bash(npx lefthook:*)",
+      "Bash(npx playwright:*)",
+
+      "WebFetch(domain:biomejs.dev)",
+      "WebFetch(domain:docs.github.com)",
+      "WebFetch(domain:github.com)",
+      "WebFetch(domain:lefthook.dev)",
+      "WebFetch(domain:nextjs.org)",
+      "WebFetch(domain:playwright.dev)",
+      "WebFetch(domain:tailwindcss.com)",
+      "WebFetch(domain:ui.shadcn.com)",
+      "WebFetch(domain:vercel.com)",
+      "WebFetch(domain:vitest.dev)"
+    ],
+
+    "deny": ["Read(**/.env)", "Read(**/.envrc)"],
+
+    "ask": []
+  }
+}
