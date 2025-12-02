@@ -3,6 +3,7 @@
 import { Sun } from "lucide-react";
 import { useTheme } from "next-themes";
 import { useEffect, useState } from "react";
+import { Button } from "@/components/ui/button";
 
 export function ThemeToggle() {
   const { theme, setTheme } = useTheme();
@@ -15,16 +16,17 @@ export function ThemeToggle() {
   }
 
   return (
-    <button
-      type="button"
+    <Button
+      variant="ghost"
+      size="icon-lg"
       onClick={() => setTheme(theme === "dark" ? "light" : "dark")}
-      className="inline-flex size-10 items-center justify-center rounded-md text-foreground/70 transition-colors hover:bg-muted hover:text-foreground"
+      className="text-sidebar-foreground"
       aria-label={`Switch to ${theme === "dark" ? "light" : "dark"} theme`}
     >
       <Sun
         className="size-6"
         fill={theme === "light" ? "currentColor" : "none"}
       />
-    </button>
+    </Button>
   );
 }

@@ -1,9 +1,10 @@
 import { Analytics } from "@vercel/analytics/next";
 import { SpeedInsights } from "@vercel/speed-insights/next";
 import type { Metadata } from "next";
-import "@/app/globals.css";
 import { inter, jetbrainsMono, spaceGrotesk } from "@/app/fonts";
+import { Navbar } from "@/components/navigation/navbar";
 import { ThemeProvider } from "@/components/theme-provider";
+import "@/app/globals.css";
 
 export const metadata: Metadata = {
   title: "Devflow",
@@ -29,6 +30,7 @@ export default function RootLayout({
           enableSystem
           disableTransitionOnChange
         >
+          <Navbar />
           {children}
         </ThemeProvider>
         <SpeedInsights />
