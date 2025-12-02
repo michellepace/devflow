@@ -45,7 +45,7 @@ description: Create git commit for staged changes using template
 - `style:` code formatting, visual consistency, linting fixes; no functional change
 - `chore:` dev workflow, workspace config, dependency updates, dev tools e.g. `.vscode/**/*`, `pyproject.toml`, `.gitignore`
 - `docs:` documentation changes only e.g. `README.md`, `docs/**/*.md`, `x_docs/**/*.md`
-- `feature:` new feature for users (adds functionality)
+- `feat:` new feature for users (adds functionality)
 </main_prefix>
 
 <rules>
