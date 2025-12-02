@@ -22,14 +22,14 @@ export default function RootLayout({
       suppressHydrationWarning
       className={`${inter.variable} ${spaceGrotesk.variable} ${jetbrainsMono.variable}`}
     >
-      <body className="min-h-screen bg-background antialiased">
+      <body className="antialiased">
         <ThemeProvider
           attribute="class"
           defaultTheme="system"
           enableSystem
           disableTransitionOnChange
         >
-          <div className="mx-auto max-w-3xl px-8 py-8">{children}</div>
+          {children}
         </ThemeProvider>
         <SpeedInsights />
         <Analytics />
