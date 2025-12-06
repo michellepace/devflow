@@ -24,7 +24,9 @@
       "Bash(find:*)",
       "Bash(glob:*)",
       "Bash(lsof:*)",
+      "Bash(ls:*)",
       "Bash(sed:*)",
+      "Bash(tree:*)",
       "Bash(wc:*)",
       "Bash(xargs:*)",
 
