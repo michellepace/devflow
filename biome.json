@@ -14,8 +14,7 @@
       "!.next",
       "!dist",
       "!build",
-      "!x_docs/reference",
-      "!app/globals-old.css"
+      "!x_docs/reference"
     ]
   },
   "css": {
