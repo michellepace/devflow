@@ -14,7 +14,8 @@ The auth smoke test uses `@clerk/testing` which:
 
 | Variable | Description |
 |----------|-------------|
-| `CLERK_PUBLISHABLE_KEY` | Clerk publishable key (starts with `pk_test_`) |
+| `NEXT_PUBLIC_CLERK_PUBLISHABLE_KEY` | Clerk publishable key for Next.js (starts with `pk_test_`) |
+| `CLERK_PUBLISHABLE_KEY` | Same key, used by `@clerk/testing` for E2E tests |
 | `CLERK_SECRET_KEY` | Clerk secret key (starts with `sk_test_`) |
 | `E2E_TEST_EMAIL` | Test user email address |
 | `E2E_TEST_PASSWORD` | Test user password |
@@ -25,8 +26,9 @@ The auth smoke test uses `@clerk/testing` which:
 Ensure `.env.local` contains:
 
 ```bash
-# Clerk (already configured)
-CLERK_PUBLISHABLE_KEY=pk_test_...
+# Clerk - Next.js requires NEXT_PUBLIC_ prefix for client-side
+NEXT_PUBLIC_CLERK_PUBLISHABLE_KEY=pk_test_...
+CLERK_PUBLISHABLE_KEY=pk_test_...  # Same value, needed by @clerk/testing
 CLERK_SECRET_KEY=sk_test_...
 
 # E2E Test User
@@ -80,10 +82,10 @@ When Vercel finishes deploying a preview, it triggers a GitHub Action that runs 
 
 | Variable | Environment |
 |----------|-------------|
-| `CLERK_PUBLISHABLE_KEY` | Preview (and Production) |
+| `NEXT_PUBLIC_CLERK_PUBLISHABLE_KEY` | Preview (and Production) |
 | `CLERK_SECRET_KEY` | Preview (and Production) |
 
-You likely already have these configured. The `E2E_TEST_*` variables are NOT needed on Vercel - Playwright uses GitHub Secrets when it connects to your preview URL.
+You likely already have these configured. The `E2E_TEST_*` variables are NOT needed on Vercel — Playwright uses GitHub Secrets when it connects to your preview URL.
 
 ## Creating a Clerk Test User
 
