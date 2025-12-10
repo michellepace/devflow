@@ -56,14 +56,19 @@ export default defineConfig({
 
   /* Configure projects for major browsers */
   projects: [
+    // Global setup for Clerk Testing Token (runs once before all tests)
+    { name: "setup", testMatch: /global\.setup\.ts/ },
+
     {
       name: "chromium",
       use: { ...devices["Desktop Chrome"] },
+      dependencies: ["setup"],
     },
 
     // {
     //   name: "firefox",
     //   use: { ...devices["Desktop Firefox"] },
+    //   dependencies: ["setup"],
     // },
 
     // Desktop Webkit removed - redundant with Mobile Safari for Safari engine coverage.
@@ -72,26 +77,31 @@ export default defineConfig({
     // {
     //   name: "webkit",
     //   use: { ...devices["Desktop Safari"] },
+    //   dependencies: ["setup"],
     // },
 
     /* Test against mobile viewports. */
     // {
     //   name: "Mobile Chrome",
     //   use: { ...devices["Pixel 5"] },
+    //   dependencies: ["setup"],
     // },
     {
       name: "Mobile Safari",
       use: { ...devices["iPhone 12"] },
+      dependencies: ["setup"],
     },
 
     /* Test against branded browsers. */
     // {
     //   name: 'Microsoft Edge',
     //   use: { ...devices['Desktop Edge'], channel: 'msedge' },
+    //   dependencies: ["setup"],
     // },
     // {
     //   name: 'Google Chrome',
     //   use: { ...devices['Desktop Chrome'], channel: 'chrome' },
+    //   dependencies: ["setup"],
     // },
   ],
 

@@ -325,7 +325,7 @@ body {
 
 .active-theme {
   filter: invert(53%) sepia(98%) saturate(3332%) hue-rotate(0deg)
-    brightness(104%) contrast(106%) !important;
+    brightness(104%) contrast(106%);
 }
 
 .hash-span {
@@ -335,23 +335,23 @@ body {
 }
 
 .mdxeditor-toolbar {
-  background: #ffffff !important;
+  background: #ffffff;
 }
 
 .dark .mdxeditor-toolbar {
-  background: #151821 !important;
+  background: #151821;
 }
 
 .dark .mdxeditor-toolbar button svg {
-  color: #858ead !important;
+  color: #858ead;
 }
 
 .dark .mdxeditor-toolbar button:hover svg {
-  color: #000 !important;
+  color: #000;
 }
 
 .dark .mdxeditor-toolbar [role="separator"] {
-  border-color: #555 !important;
+  border-color: #555;
 }
 
 .markdown a {
@@ -365,9 +365,7 @@ code {
   word-wrap: break-word;
 
   -ms-word-break: break-all;
-  /* This is the dangerous one in WebKit, as it breaks things wherever */
-  word-break: break-all;
-  /* Instead use this non-standard one: */
+  /* Use break-word for better compatibility (non-standard but safer than break-all) */
   word-break: break-word;
 
   /* Adds a hyphen where the word breaks, if supported (No Blink) */
@@ -377,7 +375,7 @@ code {
   hyphens: auto;
 
   padding: 2px;
-  color: #ff7000 !important;
+  color: #ff7000;
 }
 
 .markdown pre {
@@ -390,10 +388,10 @@ code {
   display: block;
   overflow-x: auto;
 
-  color: inherit !important;
+  color: inherit;
 }
 
 [data-lexical-editor="true"] {
-  height: 350px !important;
-  overflow-y: auto !important;
+  height: 350px;
+  overflow-y: auto;
 }

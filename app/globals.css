@@ -1,5 +1,6 @@
 @import "tailwindcss";
 @import "tw-animate-css";
+@import "@clerk/themes/shadcn.css";
 
 /* Applies dark: styles when element is .dark or inside .dark */
 @custom-variant dark (&:where(.dark, .dark *));

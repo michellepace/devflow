@@ -126,3 +126,7 @@ export default function Page() {
   return <ul>{data?.map(p => <li key={p.id}>{p.title}</li>)}</ul>
 }
 ```
+
+## Misc
+
+- Add theme-aware background images to the auth route group pages using Tailwind CSS dark mode variant.
