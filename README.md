@@ -60,6 +60,6 @@ For exact list see [package.json](package.json)
 
 (1) Use Ngrok to Test App From Phone: (Terminal 1: `npm run dev`) + (Terminal 2: `ngrok http 3000`)
 
-(2) GitHub Action - A branch protection ruleset exists to protect main. Incldues checks for GitHub workflow jobs to pass before merging PR to main. See [x_docs/project-setup.md](x_docs/project-setup.md) for config details.
+(2) GitHub Action - A branch protection ruleset exists to protect main. Includes checks for GitHub workflow jobs to pass before merging PR to main. See [x_docs/project-setup.md](x_docs/project-setup.md) for config details.
 
 (3) Vercel For Deploys - When you raise a PR it automatically deploys to Vercel Preview and Playwright e2e tests run on that too in addition to GitHub servers. When you merge the PR into main, you are deploying to Vercel prod. See [x_docs/project-setup.md](x_docs/project-setup.md) for config details.
