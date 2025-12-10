@@ -1,7 +1,9 @@
 import { SignUp } from "@clerk/nextjs";
 import { ChartLine, Clock, ShieldCheck, Sparkles } from "lucide-react";
+import { connection } from "next/server";
 
-export default function SignUpPage() {
+export default async function SignUpPage() {
+  await connection();
   return (
     <div className="grid min-h-screen lg:grid-cols-2">
       <div className="hidden flex-1 items-center justify-end p-6 md:p-10 lg:flex">
