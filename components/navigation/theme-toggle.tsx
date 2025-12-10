@@ -12,19 +12,19 @@ export function ThemeToggle() {
   useEffect(() => setMounted(true), []);
 
   if (!mounted) {
-    return <div className="size-10" aria-hidden="true" />;
+    return <div className="size-9" aria-hidden="true" />;
   }
 
   return (
     <Button
       variant="ghost"
-      size="icon-lg"
+      size="icon"
       onClick={() => setTheme(theme === "dark" ? "light" : "dark")}
       className="text-sidebar-foreground"
       aria-label={`Switch to ${theme === "dark" ? "light" : "dark"} theme`}
     >
       <Sun
-        className="size-6"
+        className="size-5"
         fill={theme === "light" ? "currentColor" : "none"}
       />
     </Button>

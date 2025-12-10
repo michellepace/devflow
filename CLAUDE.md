@@ -23,7 +23,9 @@ npm run test:unit   # Vitest
 npm run test:e2e    # Playwright
 npm run test        # All tests (Vitest + Playwright)
 
-vercel list         # List project deployments
+vercel list         # Recent deployments and status
+vercel env ls       # Check env vars are configured
+vercel whoami       # Verify CLI is authenticated
 ```
 
 ## Coding Practices
