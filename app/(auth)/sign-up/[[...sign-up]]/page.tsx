@@ -10,7 +10,7 @@ export default async function SignUpPage() {
         <ul className="max-w-sm space-y-8">
           <li>
             <div className="flex items-center gap-2">
-              <Clock className="size-4" />
+              <Clock className="size-4" aria-hidden="true" />
               <p className="font-semibold">Save on development time</p>
             </div>
             <p className="text-muted-foreground mt-2 text-sm">
@@ -20,7 +20,7 @@ export default async function SignUpPage() {
           </li>
           <li>
             <div className="flex items-center gap-2">
-              <ChartLine className="size-4" />
+              <ChartLine className="size-4" aria-hidden="true" />
               <p className="font-semibold">Increase engagement</p>
             </div>
             <p className="text-muted-foreground mt-2 text-sm">
@@ -29,7 +29,7 @@ export default async function SignUpPage() {
           </li>
           <li>
             <div className="flex items-center gap-2">
-              <ShieldCheck className="size-4" />
+              <ShieldCheck className="size-4" aria-hidden="true" />
               <p className="font-semibold">Protect your users</p>
             </div>
             <p className="text-muted-foreground mt-2 text-sm">
@@ -39,7 +39,7 @@ export default async function SignUpPage() {
           </li>
           <li>
             <div className="flex items-center gap-2">
-              <Sparkles className="size-4" />
+              <Sparkles className="size-4" aria-hidden="true" />
               <p className="font-semibold">Match your brand</p>
             </div>
             <p className="text-muted-foreground mt-2 text-sm">
