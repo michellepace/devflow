@@ -12,8 +12,13 @@ export function ClerkProvider({
     <ClerkNextJSProvider
       appearance={{
         theme: shadcn,
+        cssLayerName: "clerk",
         variables: {
           fontFamily: "var(--font-sans-serif)",
+        },
+        elements: {
+          formButtonPrimary:
+            "bg-[image:var(--gradient-primary)] text-white hover:opacity-90",
         },
         ...appearance,
       }}
