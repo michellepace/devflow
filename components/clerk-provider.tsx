@@ -12,6 +12,9 @@ export function ClerkProvider({
     <ClerkNextJSProvider
       appearance={{
         theme: shadcn,
+        variables: {
+          fontFamily: "var(--font-sans-serif)",
+        },
         ...appearance,
       }}
       {...props}
