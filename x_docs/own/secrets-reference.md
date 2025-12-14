@@ -29,15 +29,17 @@ Quick reference for all environment variables and secrets across Local, Vercel, 
 
 ### Vercel
 
-| Variable | Production | Preview | Development |
-|----------|:----------:|:-------:|:-----------:|
-| `NEXT_PUBLIC_CLERK_PUBLISHABLE_KEY` | Yes | Yes | Yes |
-| `CLERK_PUBLISHABLE_KEY` | Yes | Yes | Yes |
-| `CLERK_SECRET_KEY` | Yes | Yes | - |
-| `NEXT_PUBLIC_CLERK_SIGN_IN_URL` | Yes | Yes | - |
-| `NEXT_PUBLIC_CLERK_SIGN_UP_URL` | Yes | Yes | - |
-| `NEXT_PUBLIC_CLERK_SIGN_IN_FALLBACK_REDIRECT_URL` | Yes | Yes | - |
-| `NEXT_PUBLIC_CLERK_SIGN_UP_FALLBACK_REDIRECT_URL` | Yes | Yes | - |
+| Variable | Value | Production | Preview | Development | Sensitive? |
+|----------|-------|:----------:|:-------:|:-----------:|:----------:|
+| `CLERK_SECRET_KEY` | `sk_test_...` | Yes | Yes | - | **Yes** |
+| `NEXT_PUBLIC_CLERK_PUBLISHABLE_KEY` | `pk_test_YXdha2Utb3dsLTYzLmNsZXJrLmFjY291bnRzLmRldiQ` | Yes | Yes | Yes | No |
+| `CLERK_PUBLISHABLE_KEY` | `pk_test_YXdha2Utb3dsLTYzLmNsZXJrLmFjY291bnRzLmRldiQ` | Yes | Yes | Yes | No |
+| `NEXT_PUBLIC_CLERK_SIGN_IN_URL` | `/sign-in` | Yes | Yes | Yes | No |
+| `NEXT_PUBLIC_CLERK_SIGN_UP_URL` | `/sign-up` | Yes | Yes | Yes | No |
+| `NEXT_PUBLIC_CLERK_SIGN_IN_FALLBACK_REDIRECT_URL` | `/` | Yes | Yes | Yes | No |
+| `NEXT_PUBLIC_CLERK_SIGN_UP_FALLBACK_REDIRECT_URL` | `/` | Yes | Yes | Yes | No |
+
+> **Note:** Only `CLERK_SECRET_KEY` needs to be Sensitive. All `NEXT_PUBLIC_*` variables are exposed to the browser anyway, and publishable keys are designed to be public. Using "Plain text" for non-secrets makes configuration easier to audit in the Vercel dashboard.
 
 ### GitHub Secrets
 
