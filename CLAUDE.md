@@ -9,7 +9,7 @@ The project uses British English - strictly.
 - **React Compiler** enabled for automatic optimisations
 - **TypeScript 5** with strict mode
 - **Tailwind CSS v4** with PostCSS
-- **CI/CD** Vitest, PlayWright, GitHub Actions, Vercel
+- **CI/CD** Vitest, Playwright, GitHub Actions, Vercel
 - **Biome** for linting/formatting (replaces ESLint + Prettier)
 - **Lefthook** for Git hooks (pre-commit: lint, typecheck, unit tests; pre-push: E2E tests)
 - **Clerk** for authentication (installed via shadcn/ui CLI with `@clerk/themes`)
