@@ -1,7 +1,7 @@
+@layer theme, base, clerk, components, utilities; /* Must be at top */
 @import "tailwindcss";
 @import "tw-animate-css";
 @import "@clerk/themes/shadcn.css";
-@layer theme, base, clerk, components, utilities;
 
 /* Applies dark: styles when element is .dark or inside .dark */
 @custom-variant dark (&:where(.dark, .dark *));
@@ -93,6 +93,9 @@
     var(--primary) -13.95%,
     var(--primary-gradient-to) 99.54%
   );
+
+  /* Centralised logo theming */
+  --logo-full-themed: url("/images/logo-light.svg");
 }
 
 .dark {
@@ -128,6 +131,9 @@
   --sidebar-accent-foreground: oklch(0.984 0.003 247.858);
   --sidebar-border: oklch(1 0 0 / 10%);
   --sidebar-ring: oklch(0.551 0.027 264.364);
+
+  /* Centralised logo theming (dark) */
+  --logo-full-themed: url("/images/logo-dark.svg");
 }
 
 @layer base {

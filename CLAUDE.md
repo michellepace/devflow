@@ -45,7 +45,8 @@ vercel whoami       # Verify CLI is authenticated
 
 - ClerkProvider: `components/clerk-provider.tsx` (applies shadcn theme + Inter font)
 - Auth routes: `app/(auth)/sign-in/[[...sign-in]]`, `app/(auth)/sign-up/[[...sign-up]]`
-- Auth pages: use `await connection()` for dynamic rendering
+- Sign In: `components/auth/clerk-signin.tsx` — client component with theme-aware logo
+- Sign Up: `components/auth/clerk-signup.tsx` — static logo
 - Proxy: `proxy.ts` with `clerkMiddleware()` (not middleware.ts)
 
 ## Common Additions for New Projects

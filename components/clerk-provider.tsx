@@ -6,6 +6,7 @@ type ClerkProviderProps = React.ComponentProps<typeof ClerkNextJSProvider>;
 export function ClerkProvider({
   children,
   appearance,
+  localization,
   ...props
 }: ClerkProviderProps) {
   return (
@@ -19,8 +20,25 @@ export function ClerkProvider({
         elements: {
           formButtonPrimary:
             "bg-[image:var(--gradient-primary)] text-white hover:opacity-90",
+          footer: "bg-card",
         },
         ...appearance,
+      }}
+      localization={{
+        socialButtonsBlockButton: "{{provider|titleize}}",
+        signIn: {
+          start: {
+            title: "Sign in",
+            subtitle: "to continue to DevFlow",
+          },
+        },
+        signUp: {
+          start: {
+            title: "Sign up",
+            subtitle: "to continue to DevFlow",
+          },
+        },
+        ...localization,
       }}
       {...props}
     >

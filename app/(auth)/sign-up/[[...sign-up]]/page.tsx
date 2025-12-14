@@ -1,12 +1,9 @@
-import { SignUp } from "@clerk/nextjs";
-import { connection } from "next/server";
+import { ClerkSignUp } from "@/components/auth/clerk-signup";
 
-export default async function SignUpPage() {
-  await connection();
-
+export default function SignUpPage() {
   return (
     <div className="flex min-h-screen items-center justify-center p-6">
-      <SignUp />
+      <ClerkSignUp />
     </div>
   );
 }
