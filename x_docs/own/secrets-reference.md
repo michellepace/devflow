@@ -16,11 +16,11 @@ Quick reference for all environment variables and secrets across Local, Vercel, 
 
 | Variable | Value | Purpose |
 |----------|-------|---------|
-| `NEXT_PUBLIC_CLERK_PUBLISHABLE_KEY` | `pk_test_...` | Clerk client-side key |
-| `CLERK_PUBLISHABLE_KEY` | `pk_test_...` | Same key for @clerk/testing |
+| `NEXT_PUBLIC_CLERK_PUBLISHABLE_KEY` | `pk_test_YXdha2Utb3dsLTYzLmNsZXJrLmFjY291bnRzLmRldiQ` | Clerk client-side key |
+| `CLERK_PUBLISHABLE_KEY` | `pk_test_YXdha2Utb3dsLTYzLmNsZXJrLmFjY291bnRzLmRldiQ` | Same key for @clerk/testing |
 | `CLERK_SECRET_KEY` | `sk_test_...` | Clerk server-side key |
 | `E2E_TEST_EMAIL` | `test+clerk_test@example.com` | Test user email |
-| `E2E_TEST_PASSWORD` | `Horse1234!` | Test user password |
+| `E2E_TEST_PASSWORD` | `********` | Test user password |
 | `E2E_TEST_OTP` | `424242` | Test OTP code |
 | `NEXT_PUBLIC_CLERK_SIGN_IN_URL` | `/sign-in` | Custom sign-in page route |
 | `NEXT_PUBLIC_CLERK_SIGN_UP_URL` | `/sign-up` | Custom sign-up page route |
@@ -66,8 +66,8 @@ Quick reference for all environment variables and secrets across Local, Vercel, 
 
 | Variable | Description |
 |----------|-------------|
-| `NEXT_PUBLIC_CLERK_SIGN_IN_URL` | Path to your custom sign-in page. Without this, Clerk redirects to Account Portal. |
-| `NEXT_PUBLIC_CLERK_SIGN_UP_URL` | Path to your custom sign-up page. Without this, Clerk redirects to Account Portal. |
+| `NEXT_PUBLIC_CLERK_SIGN_IN_URL` | Path to your custom sign-in page. Without this, Clerk redirects to the Account Portal. |
+| `NEXT_PUBLIC_CLERK_SIGN_UP_URL` | Path to your custom sign-up page. Without this, Clerk redirects to the Account Portal. |
 | `NEXT_PUBLIC_CLERK_SIGN_IN_FALLBACK_REDIRECT_URL` | Where to redirect after sign-in when no `redirect_url` query param exists |
 | `NEXT_PUBLIC_CLERK_SIGN_UP_FALLBACK_REDIRECT_URL` | Where to redirect after sign-up when no `redirect_url` query param exists |
 
