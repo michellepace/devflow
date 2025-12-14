@@ -1,3 +1,4 @@
+@layer theme, base, clerk, components, utilities; /* Must be at top */
 @import "tailwindcss";
 @import "tw-animate-css";
 @import "@clerk/themes/shadcn.css";
@@ -57,7 +58,7 @@
 
   --background: oklch(0.994 0 0); /* #FDFDFD */
   --foreground: oklch(0.129 0.042 264.695);
-  --card: oklch(1 0 0);
+  --card: oklch(0.9722 0.0034 247.86); /* #F4F6F8 */
   --card-foreground: oklch(0.129 0.042 264.695);
   --popover: oklch(1 0 0);
   --popover-foreground: oklch(0.129 0.042 264.695);
@@ -86,13 +87,22 @@
   --sidebar-accent-foreground: oklch(0.208 0.042 265.755);
   --sidebar-border: oklch(0.929 0.013 255.508);
   --sidebar-ring: oklch(0.704 0.04 256.788);
+  --primary-gradient-to: oklch(0.7434 0.115 58.23); /* #E2995F */
+  --gradient-primary: linear-gradient(
+    93.22deg,
+    var(--primary) -13.95%,
+    var(--primary-gradient-to) 99.54%
+  );
+
+  /* Centralised logo theming */
+  --logo-full-themed: url("/images/logo-light.svg");
 }
 
 .dark {
   /* Overrides CSS variables when .dark class is present */
   --background: oklch(0 0 0); /* #000000 */
   --foreground: oklch(0.984 0.003 247.858);
-  --card: oklch(0.208 0.042 265.755);
+  --card: oklch(0.1783 0.0128 270.6); /* #0F1117 */
   --card-foreground: oklch(0.984 0.003 247.858);
   --popover: oklch(0.208 0.042 265.755);
   --popover-foreground: oklch(0.984 0.003 247.858);
@@ -121,6 +131,9 @@
   --sidebar-accent-foreground: oklch(0.984 0.003 247.858);
   --sidebar-border: oklch(1 0 0 / 10%);
   --sidebar-ring: oklch(0.551 0.027 264.364);
+
+  /* Centralised logo theming (dark) */
+  --logo-full-themed: url("/images/logo-dark.svg");
 }
 
 @layer base {

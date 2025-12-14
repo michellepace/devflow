@@ -15,17 +15,22 @@ export const Navbar = () => (
     aria-label="Primary navigation"
     className="sticky top-0 z-50 flex w-full items-center justify-between bg-sidebar px-6 py-4 shadow-sm"
   >
-    {/* Left: Logo + DevFlow text */}
-    <Link href="/" className="flex items-center gap-2">
+    {/* Left: Logo (responsive) */}
+    <Link href="/" className="flex items-center">
+      {/* Mobile: icon only */}
       <Image
         src="/images/site-logo.svg"
         alt="DevFlow logo"
         width={25}
         height={25}
+        className="sm:hidden"
       />
-      <h2 className="hidden font-display text-2xl font-semibold text-sidebar-foreground sm:block">
-        Dev<span className="text-primary">Flow</span>
-      </h2>
+      {/* Desktop: full themed logo via --logo-full-themed in globals.css */}
+      <span
+        className="hidden h-6 aspect-137/23 bg-(image:--logo-full-themed) bg-contain bg-no-repeat sm:block"
+        role="img"
+        aria-label="DevFlow logo"
+      />
     </Link>
 
     {/* Centre: Global Search placeholder (md+ only) */}

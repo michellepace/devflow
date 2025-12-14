@@ -9,9 +9,10 @@ The project uses British English - strictly.
 - **React Compiler** enabled for automatic optimisations
 - **TypeScript 5** with strict mode
 - **Tailwind CSS v4** with PostCSS
-- **CI/CD** Vitest, PlayWright, GitHub Actions, Vercel
+- **CI/CD** Vitest, Playwright, GitHub Actions, Vercel
 - **Biome** for linting/formatting (replaces ESLint + Prettier)
 - **Lefthook** for Git hooks (pre-commit: lint, typecheck, unit tests; pre-push: E2E tests)
+- **Clerk** for authentication (installed via shadcn/ui CLI with `@clerk/themes`)
 
 ## Key Commands
 
@@ -38,7 +39,15 @@ vercel whoami       # Verify CLI is authenticated
 
 - Tailwind v4 uses `@import "tailwindcss"` syntax (not `@tailwind` directives)
 - Next.js 16 Dynamic route `params` is a Promise - must await: `{ params }: { params: Promise<{ id: string }> }`
-- Next.js 16 Middleware renamed to Proxy - `middleware.ts` → `proxy.ts`, export `proxy()` not `middleware()`
+- Next.js 16 Middleware renamed to Proxy - `middleware.ts` → `proxy.ts` (but still uses `clerkMiddleware()` function)
+
+## Authentication (Clerk)
+
+- ClerkProvider: `components/clerk-provider.tsx` (applies shadcn theme + Inter font)
+- Auth routes: `app/(auth)/sign-in/[[...sign-in]]`, `app/(auth)/sign-up/[[...sign-up]]`
+- Sign In: `components/auth/clerk-signin.tsx` — client component with theme-aware logo
+- Sign Up: `components/auth/clerk-signup.tsx` — static logo
+- Proxy: `proxy.ts` with `clerkMiddleware()` (not middleware.ts)
 
 ## Common Additions for New Projects
 
