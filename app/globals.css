@@ -54,7 +54,14 @@
 
 :root {
   /* Creates CSS variables available to all elements (no utility generation) */
+  /* Only defined in root, not .dark */
   --radius: 0.625rem;
+  --primary-gradient-to: oklch(0.7434 0.115 58.23); /* #E2995F */
+  --gradient-primary: linear-gradient(
+    93.22deg,
+    var(--primary) -13.95%,
+    var(--primary-gradient-to) 99.54%
+  );
 
   --background: oklch(0.994 0 0); /* #FDFDFD */
   --foreground: oklch(0.129 0.042 264.695);
@@ -87,12 +94,6 @@
   --sidebar-accent-foreground: oklch(0.208 0.042 265.755);
   --sidebar-border: oklch(0.929 0.013 255.508);
   --sidebar-ring: oklch(0.704 0.04 256.788);
-  --primary-gradient-to: oklch(0.7434 0.115 58.23); /* #E2995F */
-  --gradient-primary: linear-gradient(
-    93.22deg,
-    var(--primary) -13.95%,
-    var(--primary-gradient-to) 99.54%
-  );
 
   /* Centralised logo theming */
   --logo-full-themed: url("/images/logo-light.svg");

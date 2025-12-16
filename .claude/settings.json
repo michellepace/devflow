@@ -1,23 +1,9 @@
 {
-  "extraKnownMarketplaces": {
-    "playwright-skill": {
-      "source": {
-        "source": "github",
-        "repo": "lackeyjb/playwright-skill"
-      }
-    }
-  },
-
   "permissions": {
-    "deny": ["Read(**/.env)", "Read(**/.envrc)"],
-    "ask": [],
-
     "allow": [
       "mcp__ide__getDiagnostics",
-
       "Bash(claude mcp get:*)",
       "Bash(claude mcp list)",
-
       "mcp__playwright__browser_click",
       "mcp__playwright__browser_close",
       "mcp__playwright__browser_console_messages",
@@ -31,7 +17,6 @@
       "mcp__playwright__browser_tabs",
       "mcp__playwright__browser_take_screenshot",
       "mcp__playwright__browser_wait_for",
-
       "Bash(cat:*)",
       "Bash(echo:*)",
       "Bash(find:*)",
@@ -41,13 +26,11 @@
       "Bash(tree:*)",
       "Bash(wc:*)",
       "Bash(xargs:*)",
-
       "Bash(git log:*)",
       "Bash(gh pr checks:*)",
       "Bash(gh pr list:*)",
       "Bash(gh run list:*)",
       "Bash(gh run view:*)",
-
       "Bash(npm run build)",
       "Bash(npm run dev)",
       "Bash(npm run start)",
@@ -61,7 +44,6 @@
       "Bash(npx @biomejs/biome:*)",
       "Bash(npx lefthook:*)",
       "Bash(npx playwright:*)",
-
       "Bash(vercel --help)",
       "Bash(vercel env --help)",
       "Bash(vercel env ls:*)",
@@ -71,7 +53,6 @@
       "Bash(vercel open)",
       "Bash(vercel project ls:*)",
       "Bash(vercel whoami)",
-
       "WebFetch(domain:biomejs.dev)",
       "WebFetch(domain:docs.github.com)",
       "WebFetch(domain:github.com)",
@@ -82,6 +63,36 @@
       "WebFetch(domain:ui.shadcn.com)",
       "WebFetch(domain:vercel.com)",
       "WebFetch(domain:vitest.dev)"
-    ]
+    ],
+    "deny": ["Read(**/.env)", "Read(**/.envrc)"],
+    "ask": []
+  },
+  "enabledPlugins": {
+    "playwright-skill@playwright-skill": false,
+    "skill-creator@my-claude-plugins": false,
+    "frontend-design@my-claude-plugins": false,
+    "tailwindcss@my-claude-plugins": false,
+    "shadcn-ui@my-claude-plugins": true,
+    "feature-dev@claude-plugins-official": true
+  },
+  "extraKnownMarketplaces": {
+    "playwright-skill": {
+      "source": {
+        "source": "github",
+        "repo": "lackeyjb/playwright-skill"
+      }
+    },
+    "my-claude-plugins": {
+      "source": {
+        "source": "github",
+        "repo": "michellepace/my-claude-plugins"
+      }
+    },
+    "claude-plugins-official": {
+      "source": {
+        "source": "github",
+        "repo": "anthropics/claude-plugins-official"
+      }
+    }
   }
 }
