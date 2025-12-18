@@ -1,5 +1,7 @@
 # CLAUDE.md
 
+**DevFlow** — A community-driven platform for asking and answering programming questions. Get help, share knowledge, and collaborate with developers from around the world. (Similar to Stack Overflow)
+
 The project uses British English - strictly.
 
 ## Tech Stack
