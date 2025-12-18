@@ -40,7 +40,7 @@ export function MobileNav() {
       </SheetTrigger>
       <SheetContent
         side="left"
-        className="flex flex-col gap-6 border-none bg-sidebar p-6"
+        className="flex flex-col gap-6 border-none bg-mobile-nav p-6"
       >
         {/* Visually hidden title and description for accessibility */}
         <SheetTitle className="sr-only">Navigation menu</SheetTitle>

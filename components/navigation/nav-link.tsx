@@ -8,6 +8,7 @@ import type { NavLink as NavLinkType } from "@/components/navigation/constants";
 import { cn } from "@/lib/utils";
 
 type NavLinkProps = NavLinkType & {
+  // Passed by SheetClose asChild to close the sheet on click
   onClick?: () => void;
 };
 
