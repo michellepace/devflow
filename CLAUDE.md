@@ -31,6 +31,17 @@ vercel env ls       # Check env vars are configured
 vercel whoami       # Verify CLI is authenticated
 ```
 
+## shadcn/ui CLI
+
+```bash
+npx shadcn@latest list @shadcn            # List all available components
+npx shadcn@latest search @shadcn -q "nav" # Search components by query
+npx shadcn@latest view button card        # Preview code before installing
+npx shadcn@latest add <component>         # Add component to project
+npx shadcn@latest add button --overwrite  # Overwrite existing component
+npx shadcn@latest add @v0/<block>         # Add from v0.dev registry
+```
+
 ## Coding Practices
 
 - Only add `"use client"` when interactivity is needed
