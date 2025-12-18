@@ -7,13 +7,15 @@ import {
 } from "@clerk/nextjs";
 import Image from "next/image";
 import Link from "next/link";
+import { ThemeLogo } from "@/components/navigation/full-logo";
+import { MobileNav } from "@/components/navigation/mobile-nav";
 import { ThemeToggle } from "@/components/navigation/theme-toggle";
 import { Button } from "@/components/ui/button";
 
 export const Navbar = () => (
   <nav
     aria-label="Primary navigation"
-    className="sticky top-0 z-50 flex w-full items-center justify-between bg-sidebar px-6 py-4 shadow-sm"
+    className="sticky top-0 z-50 flex w-full items-center justify-between bg-sidebar px-6 py-4 md:px-8 lg:px-12 shadow-sm"
   >
     {/* Left: Logo (responsive) */}
     <Link href="/" className="flex items-center">
@@ -25,12 +27,8 @@ export const Navbar = () => (
         height={25}
         className="sm:hidden"
       />
-      {/* Desktop: full themed logo via --logo-full-themed in globals.css */}
-      <span
-        className="hidden h-6 aspect-137/23 bg-(image:--logo-full-themed) bg-contain bg-no-repeat sm:block"
-        role="img"
-        aria-label="DevFlow logo"
-      />
+      {/* Desktop: full themed logo */}
+      <ThemeLogo className="hidden sm:block" />
     </Link>
 
     {/* Centre: Global Search placeholder (md+ only) */}
@@ -38,20 +36,25 @@ export const Navbar = () => (
       Global Search
     </p>
 
-    {/* Right: Theme toggle + Auth */}
-    <div className="flex items-center gap-4">
+    {/* Right: Theme toggle + Auth + Mobile nav */}
+    <div className="flex items-center gap-2">
       <ThemeToggle />
-      <SignedOut>
-        <SignInButton>
-          <Button variant="ghost">Sign in</Button>
-        </SignInButton>
-        <SignUpButton>
-          <Button>Sign up</Button>
-        </SignUpButton>
-      </SignedOut>
-      <SignedIn>
-        <UserButton />
-      </SignedIn>
+      {/* Desktop auth - removed from flex flow on mobile */}
+      <div className="hidden items-center gap-4 sm:flex">
+        <SignedOut>
+          <SignInButton>
+            <Button variant="ghost">Sign in</Button>
+          </SignInButton>
+          <SignUpButton>
+            <Button>Sign up</Button>
+          </SignUpButton>
+        </SignedOut>
+        <SignedIn>
+          <UserButton />
+        </SignedIn>
+      </div>
+      {/* Mobile hamburger - visible only on mobile */}
+      <MobileNav />
     </div>
   </nav>
 );
