@@ -33,8 +33,12 @@ test.describe("Mobile navigation user flow", () => {
     await page.getByRole("button", { name: /open navigation/i }).click();
     await expect(page.getByRole("link", { name: "Home" })).toBeVisible();
 
-    // Close by pressing Escape
-    await page.keyboard.press("Escape");
+    // Close by clicking the overlay (far right, outside the sheet)
+    const viewport = page.viewportSize();
+    if (!viewport) throw new Error("Viewport size not available");
+    await page
+      .locator('[data-slot="sheet-overlay"]')
+      .click({ position: { x: viewport.width - 10, y: 300 } });
     await expect(page.getByRole("link", { name: "Home" })).not.toBeVisible();
   });
 });
