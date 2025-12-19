@@ -21,6 +21,9 @@ const buttonVariants = cva(
         link: "text-primary underline-offset-4 hover:underline",
         gradient:
           "bg-[image:var(--gradient-primary)] text-white hover:opacity-90",
+        soft: "bg-card dark:bg-secondary hover:opacity-90",
+        muted:
+          "bg-secondary dark:bg-card text-secondary-foreground dark:text-card-foreground border border-secondary hover:opacity-90",
       },
       size: {
         default: "h-9 px-4 py-2 has-[>svg]:px-3",

@@ -1,5 +1,7 @@
 # CLAUDE.md
 
+**DevFlow** — A community-driven platform for asking and answering programming questions. Get help, share knowledge, and collaborate with developers from around the world. (Similar to Stack Overflow)
+
 The project uses British English - strictly.
 
 ## Tech Stack
@@ -27,6 +29,17 @@ npm run test        # All tests (Vitest + Playwright)
 vercel list         # Recent deployments and status
 vercel env ls       # Check env vars are configured
 vercel whoami       # Verify CLI is authenticated
+```
+
+## shadcn/ui CLI
+
+```bash
+npx shadcn@latest list @shadcn            # List all available components
+npx shadcn@latest search @shadcn -q "nav" # Search components by query
+npx shadcn@latest view button card        # Preview code before installing
+npx shadcn@latest add <component>         # Add component to project
+npx shadcn@latest add button --overwrite  # Overwrite existing component
+npx shadcn@latest add @v0/<block>         # Add from v0.dev registry
 ```
 
 ## Coding Practices

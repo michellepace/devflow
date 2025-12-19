@@ -1,0 +1,60 @@
+import {
+  SignedIn,
+  SignedOut,
+  SignInButton,
+  SignUpButton,
+  UserButton,
+} from "@clerk/nextjs";
+import Image from "next/image";
+import Link from "next/link";
+import { ThemeLogo } from "@/components/navigation/full-logo";
+import { MobileNav } from "@/components/navigation/mobile-nav";
+import { ThemeToggle } from "@/components/navigation/theme-toggle";
+import { Button } from "@/components/ui/button";
+
+export const Navbar = () => (
+  <nav
+    aria-label="Primary navigation"
+    className="sticky top-0 z-50 flex w-full items-center justify-between bg-sidebar px-6 py-4 md:px-8 lg:px-12 shadow-sm"
+  >
+    {/* Left: Logo (responsive) */}
+    <Link href="/" className="flex items-center">
+      {/* Mobile: icon only */}
+      <Image
+        src="/images/site-logo.svg"
+        alt="DevFlow logo"
+        width={25}
+        height={25}
+        className="sm:hidden"
+      />
+      {/* Desktop: full themed logo */}
+      <ThemeLogo className="hidden sm:block" />
+    </Link>
+
+    {/* Centre: Global Search placeholder (md+ only) */}
+    <p className="absolute left-1/2 hidden -translate-x-1/2 text-sidebar-foreground md:block">
+      Global Search
+    </p>
+
+    {/* Right: Theme toggle + Auth + Mobile nav */}
+    <div className="flex items-center gap-2">
+      <ThemeToggle />
+      {/* Desktop auth - removed from flex flow on mobile */}
+      <div className="hidden items-center gap-4 sm:flex">
+        <SignedOut>
+          <SignInButton>
+            <Button variant="ghost">Sign in</Button>
+          </SignInButton>
+          <SignUpButton>
+            <Button>Sign up</Button>
+          </SignUpButton>
+        </SignedOut>
+        <SignedIn>
+          <UserButton />
+        </SignedIn>
+      </div>
+      {/* Mobile hamburger - visible only on mobile */}
+      <MobileNav />
+    </div>
+  </nav>
+);
