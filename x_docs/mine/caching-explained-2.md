@@ -9,10 +9,10 @@
 In Next.js 16, think of every page as having three layers:
 
 1. **The Shell** - Layout, navigation, headings. Built once, served instantly.
-2. **Shared Content** - Data everyone sees the same (questions list, tags). Can be cached.
+2. **Shared Content** - Data everyone sees the same (questions list, tags). This data can be cached.
 3. **Personal Content** - Data specific to the viewer (their profile, saved items). Must be fresh.
 
-The key insight: **you decide what goes in each layer**. Next.js 16 doesn't guess anymore - you explicitly mark what should be cached.
+The key insight: **you decide what goes in each layer**. Next.js 16 doesn't guess any more - you explicitly mark what should be cached.
 
 ---
 
@@ -27,7 +27,7 @@ When building any page or component, ask yourself:
 
 ### 2. "How fresh does it need to be?"
 
-- **Can be minutes/hours old** → Cache with a time limit.
+- **This data can be minutes or hours old** → Cache with a time limit.
 - **Must be real-time** → Don't cache, fetch every request.
 - **Fresh until something changes** → Cache with tags, invalidate on events.
 
@@ -214,7 +214,7 @@ A page that's partly static (loads instantly) and partly dynamic (streams in). T
 Next.js 16's new opt-in system. Enable it to use `'use cache'` directive and related APIs.
 
 **Revalidation**
-Refreshing cached content. Can be time-based ("every hour") or on-demand ("when this tag is invalidated").
+Refreshing cached content. This can be time-based ("every hour") or on-demand ("when this tag is invalidated").
 
 **Cache Tag**
 A label you attach to cached data. Later, you can invalidate all data with that tag at once.

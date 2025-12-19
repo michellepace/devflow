@@ -384,7 +384,7 @@ export default async function Page() {
 
 1. **Enable Cache Components** in `next.config.ts`
 2. **Static content** is automatic - no work needed
-3. **Cached content** uses `'use cache'` + `cacheLife()`
+3. **Use** `'use cache'` + `cacheLife()` for cached content
 4. **Dynamic content** wraps in `<Suspense>`
 5. **Invalidate** with `updateTag()` (immediate) or `revalidateTag()` (background)
 
