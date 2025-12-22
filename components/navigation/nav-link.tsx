@@ -4,13 +4,14 @@ import Image from "next/image";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import type { NavLink as NavLinkType } from "@/components/navigation/nav-links.constants";
+import { useSidebar } from "@/components/sidebar-provider";
 import { cn } from "@/lib/utils";
 
 type NavLinkProps = NavLinkType & {
   /** Passed by SheetClose asChild to close the sheet on click */
   onClick?: () => void;
   /**
-   * - "rail": Responsive sidebar — icon-only (sm-lg), full with tight padding (lg+)
+   * - "rail": Sidebar nav — icon-only when collapsed, icon + label when expanded
    * - "mobile": Touch-optimised — always full with generous padding (px-4 py-3)
    */
   variant?: "rail" | "mobile";
@@ -24,9 +25,12 @@ export function NavLink({
   variant = "mobile",
 }: NavLinkProps) {
   const pathname = usePathname();
+  const { isCollapsed } = useSidebar();
   const isActive = pathname === route || pathname.startsWith(`${route}/`);
 
   const isRail = variant === "rail";
+  // For rail variant, show icon-only if collapsed, icon+label if expanded
+  const showIconOnly = isRail && isCollapsed;
 
   return (
     <Link
@@ -37,12 +41,14 @@ export function NavLink({
         isActive
           ? "bg-(image:--gradient-primary) font-bold text-primary-foreground"
           : "font-medium text-sidebar-foreground hover:bg-muted",
-        // Rail: icon-only (sm-lg), expands to icon + label with tight padding (lg+)
+        // Rail: icon-only when collapsed, full when expanded
         isRail
-          ? "size-10 justify-center p-0 lg:size-auto lg:w-full lg:justify-start lg:gap-3 lg:p-2"
+          ? showIconOnly
+            ? "size-10 justify-center p-0"
+            : "w-full justify-start gap-3 p-2"
           : "px-4 py-3",
       )}
-      aria-label={isRail ? label : undefined}
+      aria-label={showIconOnly ? label : undefined}
     >
       <Image
         src={imgURL}
@@ -51,7 +57,7 @@ export function NavLink({
         height={20}
         className={cn(!isActive && "invert-colors", "shrink-0")}
       />
-      <span className={cn(isRail && "sr-only lg:not-sr-only")}>{label}</span>
+      <span className={cn(showIconOnly && "sr-only")}>{label}</span>
     </Link>
   );
 }
