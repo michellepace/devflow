@@ -21,6 +21,7 @@ export function ClerkProvider({
           formButtonPrimary:
             "bg-[image:var(--gradient-primary)] text-white hover:opacity-90",
           footer: "bg-card",
+          avatarBox: "size-8",
         },
         ...appearance,
       }}

@@ -4,9 +4,9 @@ import { cn } from "@/lib/utils";
 const LOGO_WIDTH = 137;
 const LOGO_HEIGHT = 23;
 
-interface ThemeLogoProps {
+type ThemeLogoProps = {
   className?: string;
-}
+};
 
 /**
  * Theme-aware logo that switches between light/dark variants via CSS variable.

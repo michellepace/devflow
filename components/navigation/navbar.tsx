@@ -1,11 +1,4 @@
-import {
-  SignedIn,
-  SignedOut,
-  SignInButton,
-  SignUpButton,
-  UserButton,
-} from "@clerk/nextjs";
-import Image from "next/image";
+import { SignedOut, SignInButton, SignUpButton } from "@clerk/nextjs";
 import Link from "next/link";
 import { ThemeLogo } from "@/components/navigation/full-logo";
 import { MobileNav } from "@/components/navigation/mobile-nav";
@@ -15,17 +8,16 @@ import { Button } from "@/components/ui/button";
 export const Navbar = () => (
   <nav
     aria-label="Primary navigation"
-    className="sticky top-0 z-50 flex w-full items-center justify-between bg-sidebar px-6 py-4 md:px-8 lg:px-12 shadow-sm"
+    className="sticky top-0 z-50 flex w-full items-center justify-between bg-sidebar py-4 pl-4 pr-6 shadow-sm md:pr-8 lg:pr-12"
   >
     {/* Left: Logo (responsive) */}
     <Link href="/" className="flex items-center">
       {/* Mobile: icon only */}
-      <Image
+      {/* biome-ignore lint/performance/noImgElement: SVG logo doesn't benefit from next/image optimisation */}
+      <img
         src="/images/site-logo.svg"
         alt="DevFlow logo"
-        width={25}
-        height={25}
-        className="sm:hidden"
+        className="size-7 sm:hidden"
       />
       {/* Desktop: full themed logo */}
       <ThemeLogo className="hidden sm:block" />
@@ -39,20 +31,17 @@ export const Navbar = () => (
     {/* Right: Theme toggle + Auth + Mobile nav */}
     <div className="flex items-center gap-2">
       <ThemeToggle />
-      {/* Desktop auth - removed from flex flow on mobile */}
-      <div className="hidden items-center gap-4 sm:flex">
-        <SignedOut>
+      {/* Desktop auth - only shown when signed out (avatar in sidebar when signed in) */}
+      <SignedOut>
+        <div className="hidden items-center gap-4 sm:flex">
           <SignInButton>
             <Button variant="ghost">Sign in</Button>
           </SignInButton>
           <SignUpButton>
             <Button>Sign up</Button>
           </SignUpButton>
-        </SignedOut>
-        <SignedIn>
-          <UserButton />
-        </SignedIn>
-      </div>
+        </div>
+      </SignedOut>
       {/* Mobile hamburger - visible only on mobile */}
       <MobileNav />
     </div>

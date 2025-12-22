@@ -22,7 +22,7 @@
     "test": "npm run test:unit && npm run test:e2e"
   },
   "dependencies": {
-    "@clerk/nextjs": "^6.36.1",
+    "@clerk/nextjs": "^6.36.5",
     "@clerk/themes": "^2.4.43",
     "@radix-ui/react-dialog": "^1.1.15",
     "@radix-ui/react-slot": "^1.2.4",
@@ -31,7 +31,7 @@
     "class-variance-authority": "^0.7.1",
     "clsx": "^2.1.1",
     "lucide-react": "^0.561.0",
-    "next": "^16.0.10",
+    "next": "^16.1.0",
     "next-themes": "^0.4.6",
     "react": "^19.2.3",
     "react-dom": "^19.2.3",
