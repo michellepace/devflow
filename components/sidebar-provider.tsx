@@ -10,25 +10,29 @@ type SidebarContextType = {
 const SidebarContext = createContext<SidebarContextType | undefined>(undefined);
 
 const STORAGE_KEY = "devflow-sidebar-collapsed";
+const LG_BREAKPOINT = 1024; // Tailwind's lg breakpoint
 
 export function SidebarProvider({ children }: { children: React.ReactNode }) {
   // Default to expanded (false) - same as server render
   const [isCollapsed, setIsCollapsed] = useState(false);
 
-  // Sync with localStorage after mount (client-only)
+  // Set initial state after mount: user preference > responsive default
   useEffect(() => {
     const stored = localStorage.getItem(STORAGE_KEY);
-    if (stored === "true") {
-      setIsCollapsed(true);
+
+    if (stored !== null) {
+      // User preference takes priority
+      setIsCollapsed(stored === "true");
+    } else {
+      // No preference: collapse on smaller screens, expand on lg+
+      setIsCollapsed(window.innerWidth < LG_BREAKPOINT);
     }
   }, []);
 
   const toggle = () => {
     setIsCollapsed((prev) => {
       const next = !prev;
-      if (typeof window !== "undefined") {
-        localStorage.setItem(STORAGE_KEY, String(next));
-      }
+      localStorage.setItem(STORAGE_KEY, String(next));
       return next;
     });
   };

@@ -10,10 +10,6 @@ import { cn } from "@/lib/utils";
 // Navbar height minus overlap to hide shadow-sm
 const SIDEBAR_TOP_OFFSET = 72; // 73px navbar - 1px overlap
 
-// Width constants for clarity and maintainability
-const SIDEBAR_WIDTH_COLLAPSED = "w-16"; // 64px - rail mode
-const SIDEBAR_WIDTH_EXPANDED = "w-56"; // 224px - full mode
-
 export function LeftSidebar() {
   const { isCollapsed } = useSidebar();
 
@@ -25,11 +21,14 @@ export function LeftSidebar() {
       }}
       className={cn(
         "sticky z-50 hidden flex-col justify-between overflow-y-auto border-r border-sidebar-border bg-sidebar p-4 transition-[width] duration-500 ease-in-out sm:flex",
-        isCollapsed ? SIDEBAR_WIDTH_COLLAPSED : SIDEBAR_WIDTH_EXPANDED,
+        isCollapsed ? "w-16" : "w-56",
       )}
     >
       {/* Top: Navigation Links */}
-      <nav className="flex flex-col gap-3" aria-label="Main navigation">
+      <nav
+        className={cn("flex flex-col gap-3", isCollapsed && "items-center")}
+        aria-label="Main navigation"
+      >
         {NAV_LINKS.map((link) => (
           <NavLink
             key={link.route}

@@ -4,6 +4,7 @@ import { ChevronsLeft, ChevronsRight } from "lucide-react";
 import { useEffect, useState } from "react";
 import { useSidebar } from "@/components/sidebar-provider";
 import { Button } from "@/components/ui/button";
+import { cn } from "@/lib/utils";
 
 export function SidebarToggle() {
   const { isCollapsed, toggle } = useSidebar();
@@ -21,11 +22,10 @@ export function SidebarToggle() {
       variant="ghost"
       size="icon-lg"
       onClick={toggle}
-      className={
-        isCollapsed
-          ? "shrink-0 rounded-full text-sidebar-foreground"
-          : "shrink-0 rounded-full bg-muted text-sidebar-foreground"
-      }
+      className={cn(
+        "shrink-0 rounded-full text-sidebar-foreground",
+        !isCollapsed && "bg-muted",
+      )}
       aria-label={isCollapsed ? "Expand sidebar" : "Collapse sidebar"}
       aria-expanded={!isCollapsed}
     >

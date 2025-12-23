@@ -37,16 +37,16 @@ export function NavLink({
       href={route}
       onClick={onClick}
       className={cn(
-        "flex items-center gap-3 rounded-lg",
+        "flex items-center rounded-lg",
         isActive
           ? "bg-(image:--gradient-primary) font-bold text-primary-foreground"
           : "font-medium text-sidebar-foreground hover:bg-muted",
-        // Rail: icon-only when collapsed, full when expanded
+        // Rail: icon-only when collapsed, icon+label when expanded
         isRail
           ? showIconOnly
-            ? "size-10 justify-center p-0"
-            : "w-full justify-start gap-3 p-2"
-          : "px-4 py-3",
+            ? "size-10 justify-center" // No gap needed - icon only
+            : "w-full justify-start gap-3 p-2" // Gap for icon-label spacing
+          : "gap-3 px-4 py-3", // Mobile: gap for consistency
       )}
       aria-label={showIconOnly ? label : undefined}
     >
