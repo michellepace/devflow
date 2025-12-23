@@ -1,9 +1,15 @@
 import { setupClerkTestingToken } from "@clerk/testing/playwright";
 import { devices, expect, test } from "@playwright/test";
 
-const TEST_EMAIL = process.env.E2E_TEST_EMAIL || "";
-const TEST_PASSWORD = process.env.E2E_TEST_PASSWORD || "";
-const TEST_OTP = process.env.E2E_TEST_OTP || "424242";
+const TEST_EMAIL = process.env.E2E_TEST_EMAIL;
+const TEST_PASSWORD = process.env.E2E_TEST_PASSWORD;
+const TEST_OTP = process.env.E2E_TEST_OTP;
+
+if (!TEST_EMAIL || !TEST_PASSWORD || !TEST_OTP) {
+  throw new Error(
+    "E2E_TEST_EMAIL, E2E_TEST_PASSWORD, and E2E_TEST_OTP environment variables must be set",
+  );
+}
 
 test.describe("Authenticated User Flow - Mobile", () => {
   test.use({ viewport: devices["iPhone 12"].viewport });

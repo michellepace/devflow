@@ -22,6 +22,7 @@ import {
   SheetTitle,
   SheetTrigger,
 } from "@/components/ui/sheet";
+import { cn } from "@/lib/utils";
 
 const MOBILE_NAV_MAX_WIDTH = "max-w-[320px]";
 
@@ -55,7 +56,10 @@ export function MobileNav() {
         </SheetTrigger>
         <SheetContent
           side="left"
-          className={`flex ${MOBILE_NAV_MAX_WIDTH} flex-col gap-6 bg-mobile-nav p-6 shadow-2xl`}
+          className={cn(
+            "flex flex-col gap-6 bg-mobile-nav p-6 shadow-2xl",
+            MOBILE_NAV_MAX_WIDTH,
+          )}
         >
           {/* Visually hidden title and description for accessibility */}
           <SheetTitle className="sr-only">Navigation menu</SheetTitle>

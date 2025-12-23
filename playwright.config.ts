@@ -1,12 +1,13 @@
+import path from "node:path";
 import { defineConfig, devices } from "@playwright/test";
-
 /**
- * Read environment variables from file.
+ * Read environment variables from file (local development only).
+ * In CI/Vercel, env vars are set directly — dotenv is a no-op when files don't exist.
  * https://github.com/motdotla/dotenv
  */
-// import dotenv from 'dotenv';
-// import path from 'path';
-// dotenv.config({ path: path.resolve(__dirname, '.env') });
+import dotenv from "dotenv";
+
+dotenv.config({ path: path.resolve(__dirname, ".env.local") });
 
 // Use process.env.PORT by default and fallback to port 3000
 const PORT = process.env.PORT || 3000;
