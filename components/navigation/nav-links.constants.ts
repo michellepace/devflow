@@ -1,6 +1,8 @@
+import type { Route } from "next";
+
 export type NavLink = {
   imgURL: string;
-  route: string;
+  route: Route;
   label: string;
 };
 
@@ -15,5 +17,4 @@ export const NAV_LINKS = [
     route: "/ask-question",
     label: "Ask a question",
   },
-  { imgURL: "/icons/user.svg", route: "/profile", label: "Profile" },
 ] as const satisfies readonly NavLink[];

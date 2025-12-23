@@ -3,7 +3,7 @@ const Home = () => (
     <h1>Hello Root page with heading H1</h1>
 
     {/* Header boundary marker */}
-    <div className="mt-8 bg-primary/30 p-4">HEADER: {"words ".repeat(50)}</div>
+    <div className="mt-8 bg-primary/30 p-4">{"words ".repeat(50)}</div>
 
     {/* Flexbox demo: grow vs flex-none */}
     <div className="my-8 flex gap-4 border-2 border-dashed border-primary p-4">
@@ -24,7 +24,71 @@ const Home = () => (
     </div>
 
     {/* Footer boundary marker */}
-    <div className="bg-primary/30 p-4">FOOTER: {"words ".repeat(50)}</div>
+    <div className="bg-primary/30 p-4">{"words ".repeat(50)}</div>
+
+    {/* Question boxes for testing sticky sidebar scroll */}
+    <div className="mt-8 space-y-6">
+      {[1, 2, 3, 4].map((num) => (
+        <article
+          key={`question-${num}`}
+          className="rounded-lg border border-border bg-card p-6 shadow-sm"
+        >
+          <div className="mb-3 flex items-center gap-2">
+            <span className="rounded-full bg-primary/10 px-3 py-1 text-xs font-medium text-primary">
+              Question #{num}
+            </span>
+            <span className="text-xs text-muted-foreground">
+              Asked {num} hours ago
+            </span>
+          </div>
+
+          <h2 className="mb-2 text-xl font-semibold">
+            How to implement a sticky sidebar in Next.js with Tailwind CSS?
+          </h2>
+
+          <p className="mb-4 text-muted-foreground">
+            I&apos;m building a dashboard layout and need the sidebar to remain
+            visible while scrolling the main content. The sidebar should stick
+            below the navbar and scroll independently if its content overflows.
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do
+            eiusmod tempor incididunt ut labore et dolore magna aliqua.
+          </p>
+
+          {/* Tags */}
+          <div className="mb-4 flex flex-wrap gap-2">
+            {["next.js", "tailwindcss", "react", "css"].map((tag) => (
+              <span
+                key={tag}
+                className="rounded-md bg-secondary px-2.5 py-1 text-xs font-medium text-secondary-foreground"
+              >
+                {tag}
+              </span>
+            ))}
+          </div>
+
+          {/* Stats */}
+          <div className="flex items-center gap-6 text-sm text-muted-foreground">
+            <span className="flex items-center gap-1">
+              <span className="font-semibold text-foreground">{num * 7}</span>{" "}
+              votes
+            </span>
+            <span className="flex items-center gap-1">
+              <span className="font-semibold text-foreground">{num * 3}</span>{" "}
+              answers
+            </span>
+            <span className="flex items-center gap-1">
+              <span className="font-semibold text-foreground">{num * 47}</span>{" "}
+              views
+            </span>
+          </div>
+        </article>
+      ))}
+
+      {/* End marker */}
+      <div className="rounded-lg bg-muted p-6 text-center text-muted-foreground">
+        You&apos;ve reached the end — sidebar should still be sticky!
+      </div>
+    </div>
   </>
 );
 

@@ -1,41 +1,63 @@
 "use client";
 
-import type { Route } from "next";
 import Image from "next/image";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import type { NavLink as NavLinkType } from "@/components/navigation/constants";
+import type { NavLink as NavLinkType } from "@/components/navigation/nav-links.constants";
+import { useSidebar } from "@/components/sidebar-provider";
 import { cn } from "@/lib/utils";
 
 type NavLinkProps = NavLinkType & {
-  // Passed by SheetClose asChild to close the sheet on click
+  /** Passed by SheetClose asChild to close the sheet on click */
   onClick?: () => void;
+  /**
+   * - "rail": Sidebar nav — icon-only when collapsed, icon + label when expanded
+   * - "mobile": Touch-optimised — always full with generous padding (px-4 py-3)
+   */
+  variant?: "rail" | "mobile";
 };
 
-export function NavLink({ imgURL, route, label, onClick }: NavLinkProps) {
+export function NavLink({
+  imgURL,
+  route,
+  label,
+  onClick,
+  variant = "mobile",
+}: NavLinkProps) {
   const pathname = usePathname();
-  const isActive =
-    (pathname.startsWith(route) && route.length > 1) || pathname === route;
+  const { isCollapsed } = useSidebar();
+  const isActive = pathname === route || pathname.startsWith(`${route}/`);
+
+  const isRail = variant === "rail";
+  // For rail variant, show icon-only if collapsed, icon+label if expanded
+  const showIconOnly = isRail && isCollapsed;
 
   return (
     <Link
-      href={route as Route}
+      href={route}
       onClick={onClick}
       className={cn(
-        "flex items-center gap-4 rounded-lg px-4 py-3 text-lg transition-colors",
+        "flex items-center rounded-lg",
         isActive
           ? "bg-(image:--gradient-primary) font-bold text-primary-foreground"
-          : "font-medium text-sidebar-foreground hover:bg-sidebar-accent",
+          : "font-medium text-sidebar-foreground hover:bg-muted",
+        // Rail: icon-only when collapsed, icon+label when expanded
+        isRail
+          ? showIconOnly
+            ? "size-10 justify-center" // No gap needed - icon only
+            : "w-full justify-start gap-3 p-2" // Gap for icon-label spacing
+          : "gap-3 px-4 py-3", // Mobile: gap for consistency
       )}
+      aria-label={showIconOnly ? label : undefined}
     >
       <Image
         src={imgURL}
-        alt={label}
+        alt=""
         width={20}
         height={20}
-        className={cn(!isActive && "invert-colors")}
+        className={cn(!isActive && "invert-colors", "shrink-0")}
       />
-      <span>{label}</span>
+      <span className={cn(showIconOnly && "sr-only")}>{label}</span>
     </Link>
   );
 }
