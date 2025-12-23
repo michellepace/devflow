@@ -9,7 +9,7 @@ This document explains how the navigation system works across breakpoints, and h
 The app has **three navigation contexts** that share the same nav items but render differently:
 
 | Context | Breakpoint | Container | NavLink Variant |
-|---------|------------|-----------|-----------------|
+| --------- | ------------ | ----------- | ----------------- |
 | Mobile Nav | `<sm` (<640px) | Sheet overlay | `mobile` (default) |
 | Left Rail | `sm` to `lg` (640-1023px) | Persistent `<aside>` | `rail` (icon-only) |
 | Left Sidebar | `≥lg` (1024px+) | Persistent `<aside>` | `rail` (icon + label) |
@@ -100,7 +100,7 @@ The app has **three navigation contexts** that share the same nav items but rend
 Auth controls appear in different locations based on screen size and auth state:
 
 | Context | Unauthenticated | Authenticated |
-|---------|-----------------|---------------|
+| --------- | ----------------- | --------------- |
 | **Navbar** | Sign in + Sign up buttons (sm+ only) | Nothing (avatar in sidebar) |
 | **LeftSidebar** | Nothing | UserButton avatar at bottom |
 | **MobileNav** | Sign in + Sign up buttons | UserButton avatar |
@@ -153,7 +153,7 @@ The **parent component** determines the context (Sheet vs persistent sidebar).
 ### Containers & Components
 
 | Component | Container Type | When Visible | NavLink Variant | Auth Section |
-|:----------|:---------------|:-------------|:----------------|:-------------|
+| :--------- | :-------------- | :------------ | :--------------- | :------------- |
 | MobileNav | Sheet (overlay) | <sm only | `mobile` (default) | SignedIn/Out conditional |
 | LeftSidebar | Persistent `<aside>` | ≥sm | `rail` (responsive) | SignedIn only (UserButton) |
 
@@ -246,10 +246,10 @@ The `NAV_LINKS` array is in its own file because:
 ## Summary
 
 | Concept | Explanation |
-|---------|-------------|
+| --------- | ------------- |
 | **NavLink** | Reusable component with `mobile` and `rail` variants |
 | **nav-links.constants.ts** | Single source of truth for nav items |
 | **MobileNav** | Sheet overlay, uses NavLink (`mobile` variant, default) |
 | **LeftSidebar** | Persistent aside, uses NavLink (`rail` variant — responsive) |
-| **Container agnostic** | NavLink doesn't know if it's in a Sheet or sidebar |
+| **Container agnostic** | NavLink doesn't know whether it's in a Sheet or sidebar |
 | **Auth flow** | Navbar (SignedOut), Sidebar (SignedIn), Mobile (both) |
