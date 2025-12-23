@@ -1,5 +1,5 @@
 import path from "node:path";
-import { defineConfig, devices } from "@playwright/test";
+import { defineConfig } from "@playwright/test";
 /**
  * Read environment variables from file (local development only).
  * In CI/Vercel, env vars are set directly — dotenv is a no-op when files don't exist.
@@ -33,9 +33,10 @@ export default defineConfig({
   workers: process.env.CI ? 1 : undefined, // Playwright recommends 1
 
   /* Reporter to use. See https://playwright.dev/docs/test-reporters */
+  // open: "never" prevents blocking terminal; run `npx playwright show-report` to view
   reporter: process.env.CI
     ? [["html", { outputFolder: HTML_REPORT, open: "never" }], ["github"]]
-    : [["html", { outputFolder: HTML_REPORT }]], // Default: serves report only on failure
+    : [["html", { outputFolder: HTML_REPORT, open: "never" }]],
 
   /* Shared settings for all the projects below. See https://playwright.dev/docs/api/class-testoptions. */
   use: {
@@ -55,53 +56,30 @@ export default defineConfig({
     }),
   },
 
-  /* Configure projects for major browsers */
+  /*
+   * Browser projects — each test runs on all active browsers.
+   * Viewport is set per-test via test.use(), not here.
+   * This separates browser testing (cross-browser bugs) from viewport testing (responsive design).
+   */
   projects: [
     // Global setup for Clerk Testing Token (runs once before all tests)
     { name: "setup", testMatch: /global\.setup\.ts/ },
 
     {
       name: "chromium",
-      use: { ...devices["Desktop Chrome"] },
+      use: { browserName: "chromium" },
+      dependencies: ["setup"],
+    },
+
+    {
+      name: "webkit",
+      use: { browserName: "webkit" },
       dependencies: ["setup"],
     },
 
     // {
     //   name: "firefox",
-    //   use: { ...devices["Desktop Firefox"] },
-    //   dependencies: ["setup"],
-    // },
-
-    // Desktop Webkit removed - redundant with Mobile Safari for Safari engine coverage.
-    // Mobile Safari tests the same Webkit engine with mobile viewport (iPhone).
-    // Uncomment if you specifically need macOS Desktop Safari testing:
-    // {
-    //   name: "webkit",
-    //   use: { ...devices["Desktop Safari"] },
-    //   dependencies: ["setup"],
-    // },
-
-    /* Test against mobile viewports. */
-    // {
-    //   name: "Mobile Chrome",
-    //   use: { ...devices["Pixel 5"] },
-    //   dependencies: ["setup"],
-    // },
-    {
-      name: "Mobile Safari",
-      use: { ...devices["iPhone 12"] },
-      dependencies: ["setup"],
-    },
-
-    /* Test against branded browsers. */
-    // {
-    //   name: 'Microsoft Edge',
-    //   use: { ...devices['Desktop Edge'], channel: 'msedge' },
-    //   dependencies: ["setup"],
-    // },
-    // {
-    //   name: 'Google Chrome',
-    //   use: { ...devices['Desktop Chrome'], channel: 'chrome' },
+    //   use: { browserName: "firefox" },
     //   dependencies: ["setup"],
     // },
   ],

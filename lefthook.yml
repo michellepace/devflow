@@ -49,10 +49,12 @@ pre-push:
 
     playwright-tests:
     # Playwright: E2E tests (when matching files change).
+    # CI=true ensures tests run against production build (npm start),
+    # matching CI behaviour and avoiding dev overlay issues.
       glob:
         - "**/*.{ts,tsx,css}" # code in folders
         - "!**/*.{test,spec}.{ts,tsx}" # Exclude unit tests
         - "package-lock.json" # Dependency changes
         - "postcss.config.mjs" # CSS processing
         - "playwright.config.ts" # Config
-      run: npx playwright test
+      run: CI=true npx playwright test

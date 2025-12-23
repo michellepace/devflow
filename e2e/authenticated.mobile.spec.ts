@@ -1,5 +1,6 @@
 import { setupClerkTestingToken } from "@clerk/testing/playwright";
-import { devices, expect, test } from "@playwright/test";
+import { expect, test } from "@playwright/test";
+import { VIEWPORTS } from "@/e2e/viewports";
 
 const TEST_EMAIL = process.env.E2E_TEST_EMAIL;
 const TEST_PASSWORD = process.env.E2E_TEST_PASSWORD;
@@ -12,10 +13,7 @@ if (!TEST_EMAIL || !TEST_PASSWORD || !TEST_OTP) {
 }
 
 test.describe("Authenticated User Flow - Mobile", () => {
-  test.use({ viewport: devices["iPhone 12"].viewport });
-
-  // Skip on WebKit - timing issues with Clerk's OTP modal
-  test.skip(({ browserName }) => browserName === "webkit", "WebKit flaky");
+  test.use({ viewport: VIEWPORTS.MOBILE }); // Hamburger menu visible
 
   test("user can sign in, manage account, and sign out via mobile menu", async ({
     page,
@@ -49,7 +47,7 @@ test.describe("Authenticated User Flow - Mobile", () => {
     });
     await expect(
       emailOtpHeading.or(twoFactorHeading).or(hamburgerButton),
-    ).toBeVisible({ timeout: 10000 });
+    ).toBeVisible();
 
     // Handle email OTP or 2FA - both use the same OTP input pattern
     if (
@@ -61,7 +59,7 @@ test.describe("Authenticated User Flow - Mobile", () => {
     }
 
     // Wait for redirect to home after auth
-    await expect(page).toHaveURL("/", { timeout: 15000 });
+    await expect(page).toHaveURL("/");
 
     // === MANAGE ACCOUNT VIA MOBILE MENU ===
     // Open hamburger menu
@@ -83,7 +81,7 @@ test.describe("Authenticated User Flow - Mobile", () => {
     await expect(
       profileHeading,
       "Clerk 'Manage account' modal should open - if blocked, ensure Sheet uses modal={false} to allow Clerk popups",
-    ).toBeVisible({ timeout: 5000 });
+    ).toBeVisible();
 
     // Close modal with Clerk's close button
     await page.getByRole("button", { name: "Close modal" }).click();

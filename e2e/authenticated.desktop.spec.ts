@@ -1,5 +1,6 @@
 import { setupClerkTestingToken } from "@clerk/testing/playwright";
 import { expect, test } from "@playwright/test";
+import { VIEWPORTS } from "@/e2e/viewports";
 
 const TEST_EMAIL = process.env.E2E_TEST_EMAIL;
 const TEST_PASSWORD = process.env.E2E_TEST_PASSWORD;
@@ -12,8 +13,7 @@ if (!TEST_EMAIL || !TEST_PASSWORD || !TEST_OTP) {
 }
 
 test.describe("Authenticated User Flow - Desktop", () => {
-  // Skip on WebKit - timing issues with Clerk's OTP modal
-  test.skip(({ browserName }) => browserName === "webkit", "WebKit flaky");
+  test.use({ viewport: VIEWPORTS.XL }); // Sidebar expanded
 
   test("user can sign in, manage account, and sign out", async ({ page }) => {
     await setupClerkTestingToken({ page });
@@ -38,9 +38,9 @@ test.describe("Authenticated User Flow - Desktop", () => {
       name: /verification|two-step/i,
     });
     const userMenu = page.getByRole("button", { name: "Open user menu" });
-    await expect(emailOtpHeading.or(twoFactorHeading).or(userMenu)).toBeVisible(
-      { timeout: 10000 },
-    );
+    await expect(
+      emailOtpHeading.or(twoFactorHeading).or(userMenu),
+    ).toBeVisible();
 
     // Handle email OTP or 2FA - both use the same OTP input pattern
     if (
@@ -52,7 +52,7 @@ test.describe("Authenticated User Flow - Desktop", () => {
     }
 
     // Verify authenticated state - UserButton visible in left sidebar
-    await expect(userMenu).toBeVisible({ timeout: 15000 });
+    await expect(userMenu).toBeVisible();
 
     // === MANAGE ACCOUNT ===
     await userMenu.click();
@@ -60,7 +60,7 @@ test.describe("Authenticated User Flow - Desktop", () => {
 
     // Verify modal opens (Clerk renders user profile modal with "Account" heading)
     const accountHeading = page.getByRole("heading", { name: "Account" });
-    await expect(accountHeading).toBeVisible({ timeout: 5000 });
+    await expect(accountHeading).toBeVisible();
 
     // Close modal with Escape key
     await page.keyboard.press("Escape");

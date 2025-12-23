@@ -1,12 +1,9 @@
-import { devices, expect, test } from "@playwright/test";
+import { expect, test } from "@playwright/test";
 import { NAV_LINKS } from "@/components/navigation/nav-links.constants";
+import { VIEWPORTS } from "@/e2e/viewports";
 
 test.describe("Navigation - Desktop", () => {
-  // WebKit defaults to mobile viewport in Playwright — sidebar hidden on small screens
-  test.skip(
-    ({ browserName }) => browserName === "webkit",
-    "Mobile Safari uses mobile viewport",
-  );
+  test.use({ viewport: VIEWPORTS.XL }); // Sidebar expanded
 
   test("user can navigate to each page via left sidebar", async ({ page }) => {
     await page.goto("/");
@@ -21,7 +18,7 @@ test.describe("Navigation - Desktop", () => {
 });
 
 test.describe("Navigation - Mobile", () => {
-  test.use({ viewport: devices["iPhone 12"].viewport });
+  test.use({ viewport: VIEWPORTS.MOBILE }); // Hamburger menu visible
 
   test("user can open mobile menu and navigate to each page", async ({
     page,
