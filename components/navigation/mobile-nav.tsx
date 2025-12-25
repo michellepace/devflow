@@ -75,7 +75,7 @@ export function MobileNav() {
           </SheetClose>
 
           {/* Navigation Links */}
-          <nav className="flex flex-col gap-3 pt-9">
+          <nav className="flex flex-col gap-3 pt-4">
             {NAV_LINKS.map((link) => (
               <SheetClose key={link.route} asChild>
                 <NavLink

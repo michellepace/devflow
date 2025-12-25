@@ -27,34 +27,24 @@ import {
   NAV_LINK_INACTIVE_CLASSES,
 } from "@/lib/utils";
 
-// Navbar height minus 1px overlap to hide navbar shadow-sm
-const SIDEBAR_TOP_OFFSET = 72;
-
 export function AppSidebar() {
   const pathname = usePathname();
 
   return (
-    <Sidebar
-      id="app-sidebar"
-      collapsible="icon"
-      style={{
-        top: `${SIDEBAR_TOP_OFFSET}px`,
-        height: `calc(100svh - ${SIDEBAR_TOP_OFFSET}px)`,
-      }}
-    >
-      {/* Header: Logo */}
-      <SidebarHeader className="p-2">
+    <Sidebar id="app-sidebar" collapsible="icon">
+      {/* Header: Logo - h-14 matches ContentTopBar height */}
+      <SidebarHeader className="h-14 flex-row items-center px-3">
         <Link
           href="/"
-          aria-label="DevFlow home"
-          className="flex items-center group-data-[collapsible=icon]:size-8 group-data-[collapsible=icon]:justify-center"
+          aria-label="DevFlow sidebar logo"
+          className="flex items-center group-data-[collapsible=icon]:size-6 group-data-[collapsible=icon]:justify-center"
         >
           {/* Icon-only when collapsed */}
           {/* biome-ignore lint/a11y/useAltText: Decorative logo, aria-label on parent link */}
           {/* biome-ignore lint/performance/noImgElement: SVG logo doesn't benefit from next/image optimisation */}
           <img
             src="/images/site-logo.svg"
-            className="size-7 group-data-[collapsible=icon]:block hidden"
+            className="size-6 group-data-[collapsible=icon]:block hidden"
           />
           {/* Full logo when expanded */}
           <ThemeLogo className="group-data-[collapsible=icon]:hidden" />

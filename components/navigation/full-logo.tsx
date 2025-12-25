@@ -17,7 +17,7 @@ export function ThemeLogo({ className }: ThemeLogoProps) {
     <span
       style={{ aspectRatio: `${LOGO_WIDTH}/${LOGO_HEIGHT}` }}
       className={cn(
-        "h-7 bg-(image:--logo-full-themed) bg-contain bg-no-repeat",
+        "h-6 bg-(image:--logo-full-themed) bg-contain bg-no-repeat",
         className,
       )}
       role="img"
