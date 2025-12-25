@@ -18,7 +18,8 @@ import {
   Sheet,
   SheetClose,
   SheetContent,
-  SheetDescription,
+  SheetFooter,
+  SheetHeader,
   SheetTitle,
   SheetTrigger,
 } from "@/components/ui/sheet";
@@ -31,8 +32,8 @@ export function MobileNav() {
 
   return (
     <>
-      {/* Tap-to-dismiss overlay: modal={false} allows Clerk popups to work (they render
-          outside Sheet), but disables SheetOverlay dismiss. See authenticated.mobile.spec.ts */}
+      {/* modal={false} allows Clerk popups to work (they render outside Sheet), but
+          disables SheetOverlay dismiss. See authenticated.mobile.spec.ts */}
       {open && (
         <button
           type="button"
@@ -61,21 +62,16 @@ export function MobileNav() {
             MOBILE_NAV_MAX_WIDTH,
           )}
         >
-          {/* Visually hidden title and description for accessibility */}
-          <SheetTitle className="sr-only">Navigation menu</SheetTitle>
-          <SheetDescription className="sr-only">
-            Browse site pages and manage your account
-          </SheetDescription>
+          <SheetHeader className="flex-row items-center p-0">
+            <SheetTitle className="sr-only">Mobile navigation menu</SheetTitle>
+            <SheetClose asChild>
+              <Link href="/" className="flex items-center">
+                <ThemeLogo />
+              </Link>
+            </SheetClose>
+          </SheetHeader>
 
-          {/* Logo */}
-          <SheetClose asChild>
-            <Link href="/" className="flex items-center">
-              <ThemeLogo />
-            </Link>
-          </SheetClose>
-
-          {/* Navigation Links */}
-          <nav className="flex flex-col gap-3 pt-4">
+          <nav className="flex flex-1 flex-col gap-3 pt-5">
             {NAV_LINKS.map((link) => (
               <SheetClose key={link.route} asChild>
                 <NavLink
@@ -87,21 +83,20 @@ export function MobileNav() {
             ))}
           </nav>
 
-          {/* Avatar - Only when signed in */}
-          <SignedIn>
-            <div className="mt-auto">
-              <UserButton />
-            </div>
-          </SignedIn>
-
-          {/* Auth Buttons - Only when signed out */}
-          <SignedOut>
-            <div className="mt-auto flex flex-col gap-3">
+          <SheetFooter className="gap-3 p-0 pb-4">
+            <SignedIn>
+              <UserButton
+                appearance={{
+                  elements: { userButtonAvatarBox: "size-10" },
+                }}
+              />
+            </SignedIn>
+            <SignedOut>
               <SignInButton>
                 <Button
                   variant="soft"
                   size="lg"
-                  className="w-full"
+                  className="w-full text-base"
                   onClick={() => setOpen(false)}
                 >
                   <span className="bg-(image:--gradient-primary) bg-clip-text text-transparent">
@@ -113,14 +108,14 @@ export function MobileNav() {
                 <Button
                   variant="muted"
                   size="lg"
-                  className="w-full"
+                  className="w-full text-base"
                   onClick={() => setOpen(false)}
                 >
                   Sign up
                 </Button>
               </SignUpButton>
-            </div>
-          </SignedOut>
+            </SignedOut>
+          </SheetFooter>
         </SheetContent>
       </Sheet>
     </>
