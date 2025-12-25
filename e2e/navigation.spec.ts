@@ -9,8 +9,8 @@ test.describe("Navigation - Desktop", () => {
     await page.goto("/");
 
     for (const link of NAV_LINKS) {
-      // Desktop sidebar links are always visible
-      const navLink = page.getByRole("link", { name: link.label });
+      // Desktop sidebar links are always visible (exact: true avoids matching "DevFlow home" logo link)
+      const navLink = page.getByRole("link", { name: link.label, exact: true });
       await navLink.click();
       await expect(page).toHaveURL(link.route);
     }
