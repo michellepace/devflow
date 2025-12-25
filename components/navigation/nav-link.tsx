@@ -17,10 +17,7 @@ type NavLinkProps = NavLinkType & {
   onClick?: () => void;
 };
 
-/**
- * Mobile navigation link for Sheet menu.
- * Desktop sidebar uses SidebarMenuButton directly in AppSidebar.
- */
+/** Navigation link for mobile Sheet menu. */
 export function NavLink({ imgURL, route, label, onClick }: NavLinkProps) {
   const pathname = usePathname();
   const isActive = isRouteActive(pathname, route);
@@ -30,7 +27,7 @@ export function NavLink({ imgURL, route, label, onClick }: NavLinkProps) {
       href={route}
       onClick={onClick}
       className={cn(
-        "flex items-center gap-3 rounded-lg px-4 py-3",
+        "flex items-center gap-3 rounded-lg px-3 py-3",
         isActive
           ? NAV_LINK_ACTIVE_CLASSES
           : `${NAV_LINK_INACTIVE_CLASSES} text-sidebar-foreground hover:bg-muted`,
