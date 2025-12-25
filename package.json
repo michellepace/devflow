@@ -5,6 +5,7 @@
   "scripts": {
     "dev": "next dev",
     "build": "next build",
+    "analyse": "next experimental-analyze",
     "start": "next start",
     "lint": "biome check --write --error-on-warnings",
     "lint:md": "markdownlint-cli2 '**/*.md' '#node_modules' --fix",

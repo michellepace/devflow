@@ -26,6 +26,8 @@ npm run test:unit   # Vitest
 npm run test:e2e    # Playwright
 npm run test        # All tests (Vitest + Playwright)
 
+npm run analyse     # Bundle analyser UI (why is X bundled? bloat? splits?)
+
 fuser -k 3000/tcp 2>/dev/null; rm -f .next/dev/lock  # Kill dev server
 
 vercel list         # Recent deployments and status
