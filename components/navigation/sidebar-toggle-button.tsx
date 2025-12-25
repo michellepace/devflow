@@ -1,33 +1,26 @@
 "use client";
 
 import { ChevronsLeft, ChevronsRight } from "lucide-react";
-import { useEffect, useState } from "react";
-import { useSidebar } from "@/components/sidebar-provider";
 import { Button } from "@/components/ui/button";
+import { useSidebar } from "@/components/ui/sidebar";
 import { cn } from "@/lib/utils";
 
-export function SidebarToggle() {
-  const { isCollapsed, toggle } = useSidebar();
-  const [mounted, setMounted] = useState(false);
-
-  useEffect(() => setMounted(true), []);
-
-  // Render placeholder during SSR to prevent hydration mismatch
-  if (!mounted) {
-    return <div className="size-10" aria-hidden="true" />;
-  }
+export function SidebarToggleButton() {
+  const { state, toggleSidebar } = useSidebar();
+  const isCollapsed = state === "collapsed";
 
   return (
     <Button
       variant="ghost"
       size="icon-lg"
-      onClick={toggle}
+      onClick={toggleSidebar}
       className={cn(
         "shrink-0 rounded-full text-sidebar-foreground",
         !isCollapsed && "bg-muted",
       )}
       aria-label={isCollapsed ? "Expand sidebar" : "Collapse sidebar"}
       aria-expanded={!isCollapsed}
+      aria-controls="app-sidebar"
     >
       {isCollapsed ? (
         <ChevronsRight className="size-5" />

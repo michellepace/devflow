@@ -4,60 +4,46 @@ import Image from "next/image";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import type { NavLink as NavLinkType } from "@/components/navigation/nav-links.constants";
-import { useSidebar } from "@/components/sidebar-provider";
-import { cn } from "@/lib/utils";
+import {
+  cn,
+  getNavIconClasses,
+  isRouteActive,
+  NAV_LINK_ACTIVE_CLASSES,
+  NAV_LINK_INACTIVE_CLASSES,
+} from "@/lib/utils";
 
 type NavLinkProps = NavLinkType & {
   /** Passed by SheetClose asChild to close the sheet on click */
   onClick?: () => void;
-  /**
-   * - "rail": Sidebar nav — icon-only when collapsed, icon + label when expanded
-   * - "mobile": Touch-optimised — always full with generous padding (px-4 py-3)
-   */
-  variant?: "rail" | "mobile";
 };
 
-export function NavLink({
-  imgURL,
-  route,
-  label,
-  onClick,
-  variant = "mobile",
-}: NavLinkProps) {
+/**
+ * Mobile navigation link for Sheet menu.
+ * Desktop sidebar uses SidebarMenuButton directly in AppSidebar.
+ */
+export function NavLink({ imgURL, route, label, onClick }: NavLinkProps) {
   const pathname = usePathname();
-  const { isCollapsed } = useSidebar();
-  const isActive = pathname === route || pathname.startsWith(`${route}/`);
-
-  const isRail = variant === "rail";
-  // For rail variant, show icon-only if collapsed, icon+label if expanded
-  const showIconOnly = isRail && isCollapsed;
+  const isActive = isRouteActive(pathname, route);
 
   return (
     <Link
       href={route}
       onClick={onClick}
       className={cn(
-        "flex items-center rounded-lg",
+        "flex items-center gap-3 rounded-lg px-4 py-3",
         isActive
-          ? "bg-(image:--gradient-primary) font-bold text-primary-foreground"
-          : "font-medium text-sidebar-foreground hover:bg-muted",
-        // Rail: icon-only when collapsed, icon+label when expanded
-        isRail
-          ? showIconOnly
-            ? "size-10 justify-center" // No gap needed - icon only
-            : "w-full justify-start gap-3 p-2" // Gap for icon-label spacing
-          : "gap-3 px-4 py-3", // Mobile: gap for consistency
+          ? NAV_LINK_ACTIVE_CLASSES
+          : `${NAV_LINK_INACTIVE_CLASSES} text-sidebar-foreground hover:bg-muted`,
       )}
-      aria-label={showIconOnly ? label : undefined}
     >
       <Image
         src={imgURL}
         alt=""
         width={20}
         height={20}
-        className={cn(!isActive && "invert-colors", "shrink-0")}
+        className={getNavIconClasses(isActive)}
       />
-      <span className={cn(showIconOnly && "sr-only")}>{label}</span>
+      <span>{label}</span>
     </Link>
   );
 }

@@ -1,0 +1,117 @@
+"use client";
+
+import { SignedIn, UserButton } from "@clerk/nextjs";
+import Image from "next/image";
+import Link from "next/link";
+import { usePathname } from "next/navigation";
+import { ThemeLogo } from "@/components/navigation/full-logo";
+import { NAV_LINKS } from "@/components/navigation/nav-links.constants";
+import { SidebarToggleButton } from "@/components/navigation/sidebar-toggle-button";
+import {
+  Sidebar,
+  SidebarContent,
+  SidebarFooter,
+  SidebarGroup,
+  SidebarGroupContent,
+  SidebarHeader,
+  SidebarMenu,
+  SidebarMenuButton,
+  SidebarMenuItem,
+  SidebarRail,
+} from "@/components/ui/sidebar";
+import {
+  cn,
+  getNavIconClasses,
+  isRouteActive,
+  NAV_LINK_ACTIVE_CLASSES,
+  NAV_LINK_INACTIVE_CLASSES,
+} from "@/lib/utils";
+
+export function AppSidebar() {
+  const pathname = usePathname();
+
+  return (
+    <Sidebar id="app-sidebar" collapsible="icon">
+      {/* Header: Logo - h-14 matches ContentTopBar height */}
+      <SidebarHeader className="h-14 flex-row items-center px-3">
+        <Link
+          href="/"
+          aria-label="DevFlow sidebar logo"
+          className="flex items-center group-data-[collapsible=icon]:size-6 group-data-[collapsible=icon]:justify-center"
+        >
+          {/* Icon-only when collapsed */}
+          {/* biome-ignore lint/a11y/useAltText: Decorative logo, aria-label on parent link */}
+          {/* biome-ignore lint/performance/noImgElement: SVG logo doesn't benefit from next/image optimisation */}
+          <img
+            src="/images/site-logo.svg"
+            className="size-6 group-data-[collapsible=icon]:block hidden"
+          />
+          {/* Full logo when expanded */}
+          <ThemeLogo className="group-data-[collapsible=icon]:hidden" />
+        </Link>
+      </SidebarHeader>
+
+      {/* Main Navigation */}
+      <SidebarContent>
+        <SidebarGroup>
+          <SidebarGroupContent>
+            <SidebarMenu className="gap-3">
+              {NAV_LINKS.map((link) => {
+                const isActive = isRouteActive(pathname, link.route);
+
+                return (
+                  <SidebarMenuItem key={link.route}>
+                    <SidebarMenuButton
+                      asChild
+                      isActive={isActive}
+                      tooltip={link.label}
+                      className={cn(
+                        "rounded-lg",
+                        isActive
+                          ? `${NAV_LINK_ACTIVE_CLASSES} hover:bg-(image:--gradient-primary) hover:text-primary-foreground`
+                          : NAV_LINK_INACTIVE_CLASSES,
+                      )}
+                    >
+                      <Link href={link.route}>
+                        <Image
+                          src={link.imgURL}
+                          alt=""
+                          width={20}
+                          height={20}
+                          className={getNavIconClasses(isActive)}
+                        />
+                        <span>{link.label}</span>
+                      </Link>
+                    </SidebarMenuButton>
+                  </SidebarMenuItem>
+                );
+              })}
+            </SidebarMenu>
+          </SidebarGroupContent>
+        </SidebarGroup>
+      </SidebarContent>
+
+      {/* Footer: UserButton + Toggle */}
+      <SidebarFooter className="p-2">
+        <div
+          className={cn(
+            "flex items-center gap-2",
+            // Expanded: horizontal row with space between
+            "justify-between",
+            // Collapsed (icon mode): vertical stack
+            "group-data-[collapsible=icon]:flex-col",
+            "group-data-[collapsible=icon]:justify-start",
+          )}
+        >
+          <SignedIn>
+            <UserButton />
+          </SignedIn>
+          <SidebarToggleButton />
+        </div>
+      </SidebarFooter>
+
+      {/* Edge-click rail to toggle */}
+      <SidebarRail />
+    </Sidebar>
+  );
+}

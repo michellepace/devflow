@@ -9,8 +9,8 @@ test.describe("Navigation - Desktop", () => {
     await page.goto("/");
 
     for (const link of NAV_LINKS) {
-      // Desktop sidebar links are always visible
-      const navLink = page.getByRole("link", { name: link.label });
+      // exact: true avoids matching logo links (e.g. "DevFlow sidebar logo")
+      const navLink = page.getByRole("link", { name: link.label, exact: true });
       await navLink.click();
       await expect(page).toHaveURL(link.route);
     }
@@ -29,8 +29,8 @@ test.describe("Navigation - Mobile", () => {
       // Open mobile menu
       await page.getByRole("button", { name: /open navigation/i }).click();
 
-      // Verify link is visible in menu
-      const navLink = page.getByRole("link", { name: link.label });
+      // Verify link is visible in menu (exact: true avoids matching logo links)
+      const navLink = page.getByRole("link", { name: link.label, exact: true });
       await expect(navLink).toBeVisible();
 
       // Click link and verify navigation
@@ -47,11 +47,15 @@ test.describe("Navigation - Mobile", () => {
 
     // Open menu
     await page.getByRole("button", { name: /open navigation/i }).click();
-    await expect(page.getByRole("link", { name: "Home" })).toBeVisible();
+    await expect(
+      page.getByRole("link", { name: "Home", exact: true }),
+    ).toBeVisible();
 
     // Close via Sheet's built-in X button (sr-only "Close", top-right inside sheet)
     await page.getByRole("button", { name: "Close", exact: true }).click();
-    await expect(page.getByRole("link", { name: "Home" })).not.toBeVisible();
+    await expect(
+      page.getByRole("link", { name: "Home", exact: true }),
+    ).not.toBeVisible();
   });
 
   test("mobile menu closes when user taps overlay", async ({ page }) => {
@@ -59,13 +63,17 @@ test.describe("Navigation - Mobile", () => {
 
     // Open menu
     await page.getByRole("button", { name: /open navigation/i }).click();
-    await expect(page.getByRole("link", { name: "Home" })).toBeVisible();
+    await expect(
+      page.getByRole("link", { name: "Home", exact: true }),
+    ).toBeVisible();
 
     // Close by clicking the overlay (aria-label="Dismiss menu")
     // Use force:true as the sheet content can intercept pointer events on some browsers
     await page
       .getByRole("button", { name: "Dismiss menu" })
       .click({ force: true });
-    await expect(page.getByRole("link", { name: "Home" })).not.toBeVisible();
+    await expect(
+      page.getByRole("link", { name: "Home", exact: true }),
+    ).not.toBeVisible();
   });
 });
