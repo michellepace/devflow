@@ -4,9 +4,9 @@ import { SignedIn, UserButton } from "@clerk/nextjs";
 import Image from "next/image";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { ThemeLogo } from "@/components/navigation/full-logo";
+import { LeftSidebarToggle } from "@/components/navigation/left-sidebar-toggle";
 import { NAV_LINKS } from "@/components/navigation/nav-links.constants";
-import { SidebarToggleButton } from "@/components/navigation/sidebar-toggle-button";
+import { ThemedFullLogo } from "@/components/navigation/themed-full-logo";
 import {
   Sidebar,
   SidebarContent,
@@ -21,18 +21,18 @@ import {
 } from "@/components/ui/sidebar";
 import {
   cn,
-  getNavIconClasses,
+  getNavIconInvertClasses,
   isRouteActive,
   NAV_LINK_ACTIVE_CLASSES,
   NAV_LINK_INACTIVE_CLASSES,
 } from "@/lib/utils";
 
-export function AppSidebar() {
+export function LeftSidebar() {
   const pathname = usePathname();
 
   return (
-    <Sidebar id="app-sidebar" collapsible="icon">
-      {/* Header: Logo - h-14 matches ContentTopBar height */}
+    <Sidebar id="left-sidebar" collapsible="icon">
+      {/* Logo section - h-14 matches top bar height */}
       <SidebarHeader className="h-14 flex-row items-center px-3">
         <Link
           href="/"
@@ -47,7 +47,7 @@ export function AppSidebar() {
             className="size-6 group-data-[collapsible=icon]:block hidden"
           />
           {/* Full logo when expanded */}
-          <ThemeLogo className="group-data-[collapsible=icon]:hidden" />
+          <ThemedFullLogo className="group-data-[collapsible=icon]:hidden" />
         </Link>
       </SidebarHeader>
 
@@ -74,11 +74,11 @@ export function AppSidebar() {
                     >
                       <Link href={link.route}>
                         <Image
-                          src={link.imgURL}
+                          src={link.iconUrl}
                           alt=""
                           width={20}
                           height={20}
-                          className={getNavIconClasses(isActive)}
+                          className={getNavIconInvertClasses(isActive)}
                         />
                         <span>{link.label}</span>
                       </Link>
@@ -106,7 +106,7 @@ export function AppSidebar() {
           <SignedIn>
             <UserButton />
           </SignedIn>
-          <SidebarToggleButton />
+          <LeftSidebarToggle />
         </div>
       </SidebarFooter>
 

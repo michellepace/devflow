@@ -6,19 +6,24 @@ import { usePathname } from "next/navigation";
 import type { NavLink as NavLinkType } from "@/components/navigation/nav-links.constants";
 import {
   cn,
-  getNavIconClasses,
+  getNavIconInvertClasses,
   isRouteActive,
   NAV_LINK_ACTIVE_CLASSES,
   NAV_LINK_INACTIVE_CLASSES,
 } from "@/lib/utils";
 
-type NavLinkProps = NavLinkType & {
+type MobileNavLinkProps = NavLinkType & {
   /** Passed by SheetClose asChild to close the sheet on click */
   onClick?: () => void;
 };
 
 /** Navigation link for mobile Sheet menu. */
-export function NavLink({ imgURL, route, label, onClick }: NavLinkProps) {
+export function MobileNavLink({
+  iconUrl,
+  route,
+  label,
+  onClick,
+}: MobileNavLinkProps) {
   const pathname = usePathname();
   const isActive = isRouteActive(pathname, route);
 
@@ -34,11 +39,11 @@ export function NavLink({ imgURL, route, label, onClick }: NavLinkProps) {
       )}
     >
       <Image
-        src={imgURL}
+        src={iconUrl}
         alt=""
         width={20}
         height={20}
-        className={getNavIconClasses(isActive)}
+        className={getNavIconInvertClasses(isActive)}
       />
       <span>{label}</span>
     </Link>

@@ -3,7 +3,7 @@ import type { NextConfig } from "next";
 const nextConfig: NextConfig = {
   reactCompiler: true,
 
-  // Position dev indicator (route type, cache status) away from left sidebar
+  // Position Next.js dev indicator (route type, cache status) away from left sidebar
   devIndicators: {
     position: "bottom-right",
   },

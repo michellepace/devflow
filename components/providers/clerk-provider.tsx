@@ -15,7 +15,7 @@ export function ClerkProvider({
         theme: shadcn,
         cssLayerName: "clerk",
         variables: {
-          fontFamily: "var(--font-sans-serif)",
+          fontFamily: "var(--font-inter)",
         },
         elements: {
           formButtonPrimary:

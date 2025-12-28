@@ -2,7 +2,7 @@ import * as React from "react";
 
 const MOBILE_BREAKPOINT = 640; // tailwind sm breakpoint
 
-export function useIsMobile() {
+export function useMobile() {
   // Start with false to match server-rendered HTML and prevent hydration mismatch
   const [isMobile, setIsMobile] = React.useState(false);
 
