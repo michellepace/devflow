@@ -31,8 +31,8 @@ export function LeftSidebar() {
   const pathname = usePathname();
 
   return (
-    <Sidebar id="app-sidebar" collapsible="icon">
-      {/* Header: Logo - h-14 matches TopBar height */}
+    <Sidebar id="left-sidebar" collapsible="icon">
+      {/* Logo section - h-14 matches top bar height */}
       <SidebarHeader className="h-14 flex-row items-center px-3">
         <Link
           href="/"

@@ -18,9 +18,9 @@ export function LeftSidebarToggle() {
         "shrink-0 rounded-full text-sidebar-foreground",
         !isCollapsed && "bg-muted",
       )}
-      aria-label={isCollapsed ? "Expand sidebar" : "Collapse sidebar"}
+      aria-label={isCollapsed ? "Expand left sidebar" : "Collapse left sidebar"}
       aria-expanded={!isCollapsed}
-      aria-controls="app-sidebar"
+      aria-controls="left-sidebar"
     >
       {isCollapsed ? (
         <ChevronsRight className="size-5" />
