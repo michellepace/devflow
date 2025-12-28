@@ -75,7 +75,7 @@ export function MobileNav() {
             {NAV_LINKS.map((link) => (
               <SheetClose key={link.route} asChild>
                 <MobileNavLink
-                  imgURL={link.imgURL}
+                  iconUrl={link.iconUrl}
                   route={link.route}
                   label={link.label}
                 />

@@ -6,7 +6,7 @@ import { usePathname } from "next/navigation";
 import type { NavLink as NavLinkType } from "@/components/navigation/nav-links.constants";
 import {
   cn,
-  getNavIconClasses,
+  getNavIconInvertClasses,
   isRouteActive,
   NAV_LINK_ACTIVE_CLASSES,
   NAV_LINK_INACTIVE_CLASSES,
@@ -19,7 +19,7 @@ type MobileNavLinkProps = NavLinkType & {
 
 /** Navigation link for mobile Sheet menu. */
 export function MobileNavLink({
-  imgURL,
+  iconUrl,
   route,
   label,
   onClick,
@@ -39,11 +39,11 @@ export function MobileNavLink({
       )}
     >
       <Image
-        src={imgURL}
+        src={iconUrl}
         alt=""
         width={20}
         height={20}
-        className={getNavIconClasses(isActive)}
+        className={getNavIconInvertClasses(isActive)}
       />
       <span>{label}</span>
     </Link>

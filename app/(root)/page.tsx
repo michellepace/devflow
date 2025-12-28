@@ -1,8 +1,8 @@
-const Home = () => (
+const HomePage = () => (
   <>
     <h1>Hello Root page with heading H1</h1>
 
-    {/* Header boundary marker */}
+    {/* Demo: top overflow test */}
     <div className="mt-8 bg-primary/30 p-4">{"words ".repeat(50)}</div>
 
     {/* Flexbox demo: grow vs flex-none */}
@@ -23,22 +23,22 @@ const Home = () => (
       </div>
     </div>
 
-    {/* Footer boundary marker */}
+    {/* Demo: bottom overflow test */}
     <div className="bg-primary/30 p-4">{"words ".repeat(50)}</div>
 
     {/* Question boxes for testing sticky sidebar scroll */}
     <div className="mt-8 space-y-6">
-      {[1, 2, 3, 4].map((num) => (
+      {[1, 2, 3, 4].map((questionIndex) => (
         <article
-          key={`question-${num}`}
+          key={`question-${questionIndex}`}
           className="rounded-lg border border-border bg-card p-6 shadow-sm"
         >
           <div className="mb-3 flex items-center gap-2">
             <span className="rounded-full bg-primary/10 px-3 py-1 text-xs font-medium text-primary">
-              Question #{num}
+              Question #{questionIndex}
             </span>
             <span className="text-xs text-muted-foreground">
-              Asked {num} hours ago
+              Asked {questionIndex} hours ago
             </span>
           </div>
 
@@ -69,15 +69,21 @@ const Home = () => (
           {/* Stats */}
           <div className="flex items-center gap-6 text-sm text-muted-foreground">
             <span className="flex items-center gap-1">
-              <span className="font-semibold text-foreground">{num * 7}</span>{" "}
+              <span className="font-semibold text-foreground">
+                {questionIndex * 7}
+              </span>{" "}
               votes
             </span>
             <span className="flex items-center gap-1">
-              <span className="font-semibold text-foreground">{num * 3}</span>{" "}
+              <span className="font-semibold text-foreground">
+                {questionIndex * 3}
+              </span>{" "}
               answers
             </span>
             <span className="flex items-center gap-1">
-              <span className="font-semibold text-foreground">{num * 47}</span>{" "}
+              <span className="font-semibold text-foreground">
+                {questionIndex * 47}
+              </span>{" "}
               views
             </span>
           </div>
@@ -92,4 +98,4 @@ const Home = () => (
   </>
 );
 
-export default Home;
+export default HomePage;

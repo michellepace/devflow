@@ -21,7 +21,7 @@ import {
 } from "@/components/ui/sidebar";
 import {
   cn,
-  getNavIconClasses,
+  getNavIconInvertClasses,
   isRouteActive,
   NAV_LINK_ACTIVE_CLASSES,
   NAV_LINK_INACTIVE_CLASSES,
@@ -74,11 +74,11 @@ export function LeftSidebar() {
                     >
                       <Link href={link.route}>
                         <Image
-                          src={link.imgURL}
+                          src={link.iconUrl}
                           alt=""
                           width={20}
                           height={20}
-                          className={getNavIconClasses(isActive)}
+                          className={getNavIconInvertClasses(isActive)}
                         />
                         <span>{link.label}</span>
                       </Link>

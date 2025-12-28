@@ -26,6 +26,6 @@ export const MOBILE_TOP_BAR_OFFSET = "pt-14"; // Compensates for fixed mobile to
 /**
  * Get icon classes for navigation items (handles inversion for inactive state).
  */
-export function getNavIconClasses(isActive: boolean): string {
+export function getNavIconInvertClasses(isActive: boolean): string {
   return cn(!isActive && "invert-colors", "shrink-0");
 }
