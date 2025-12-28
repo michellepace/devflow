@@ -12,13 +12,18 @@ import {
   NAV_LINK_INACTIVE_CLASSES,
 } from "@/lib/utils";
 
-type NavLinkProps = NavLinkType & {
+type MobileNavLinkProps = NavLinkType & {
   /** Passed by SheetClose asChild to close the sheet on click */
   onClick?: () => void;
 };
 
 /** Navigation link for mobile Sheet menu. */
-export function NavLink({ imgURL, route, label, onClick }: NavLinkProps) {
+export function MobileNavLink({
+  imgURL,
+  route,
+  label,
+  onClick,
+}: MobileNavLinkProps) {
   const pathname = usePathname();
   const isActive = isRouteActive(pathname, route);
 

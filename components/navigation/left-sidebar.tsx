@@ -4,9 +4,9 @@ import { SignedIn, UserButton } from "@clerk/nextjs";
 import Image from "next/image";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { ThemeLogo } from "@/components/navigation/full-logo";
+import { LeftSidebarToggle } from "@/components/navigation/left-sidebar-toggle";
 import { NAV_LINKS } from "@/components/navigation/nav-links.constants";
-import { SidebarToggleButton } from "@/components/navigation/sidebar-toggle-button";
+import { ThemedFullLogo } from "@/components/navigation/themed-full-logo";
 import {
   Sidebar,
   SidebarContent,
@@ -27,12 +27,12 @@ import {
   NAV_LINK_INACTIVE_CLASSES,
 } from "@/lib/utils";
 
-export function AppSidebar() {
+export function LeftSidebar() {
   const pathname = usePathname();
 
   return (
     <Sidebar id="app-sidebar" collapsible="icon">
-      {/* Header: Logo - h-14 matches ContentTopBar height */}
+      {/* Header: Logo - h-14 matches TopBar height */}
       <SidebarHeader className="h-14 flex-row items-center px-3">
         <Link
           href="/"
@@ -47,7 +47,7 @@ export function AppSidebar() {
             className="size-6 group-data-[collapsible=icon]:block hidden"
           />
           {/* Full logo when expanded */}
-          <ThemeLogo className="group-data-[collapsible=icon]:hidden" />
+          <ThemedFullLogo className="group-data-[collapsible=icon]:hidden" />
         </Link>
       </SidebarHeader>
 
@@ -106,7 +106,7 @@ export function AppSidebar() {
           <SignedIn>
             <UserButton />
           </SignedIn>
-          <SidebarToggleButton />
+          <LeftSidebarToggle />
         </div>
       </SidebarFooter>
 

@@ -3,7 +3,7 @@ import { ThemeToggle } from "@/components/navigation/theme-toggle";
 import { Button } from "@/components/ui/button";
 import { CONTENT_HORIZONTAL_PADDING, cn, HEADER_HEIGHT } from "@/lib/utils";
 
-export function ContentTopBar() {
+export function DesktopTopBar() {
   return (
     <header
       className={cn(
@@ -12,12 +12,10 @@ export function ContentTopBar() {
         CONTENT_HORIZONTAL_PADDING,
       )}
     >
-      {/* Left: Search - grows and centres */}
       <div className="flex flex-1 justify-center">
         <p className="text-muted-foreground">Global Search</p>
       </div>
 
-      {/* Right: Theme + Auth - fixed width */}
       <div className="flex flex-none items-center gap-2">
         <ThemeToggle />
         <SignedOut>

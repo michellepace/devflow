@@ -5,7 +5,7 @@ import { Button } from "@/components/ui/button";
 import { useSidebar } from "@/components/ui/sidebar";
 import { cn } from "@/lib/utils";
 
-export function SidebarToggleButton() {
+export function LeftSidebarToggle() {
   const { state, toggleSidebar } = useSidebar();
   const isCollapsed = state === "collapsed";
 

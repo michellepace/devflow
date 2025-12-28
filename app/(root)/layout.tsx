@@ -1,7 +1,7 @@
 import { cookies } from "next/headers";
-import { AppSidebar } from "@/components/app-sidebar";
-import { ContentTopBar } from "@/components/navigation/content-top-bar";
-import { MobileHeader } from "@/components/navigation/mobile-header";
+import { DesktopTopBar } from "@/components/navigation/desktop-top-bar";
+import { LeftSidebar } from "@/components/navigation/left-sidebar";
+import { MobileTopBar } from "@/components/navigation/mobile-top-bar";
 import { SidebarProvider } from "@/components/ui/sidebar";
 import {
   CONTENT_HORIZONTAL_PADDING,
@@ -15,16 +15,16 @@ const RootLayout = async ({ children }: { children: React.ReactNode }) => {
 
   return (
     <SidebarProvider defaultOpen={defaultOpen}>
-      {/* Mobile-only fixed header */}
-      <MobileHeader />
+      {/* Mobile-only top bar */}
+      <MobileTopBar />
 
       {/* Full-height sidebar */}
-      <AppSidebar />
+      <LeftSidebar />
 
-      {/* Content area */}
+      {/* Main content area */}
       <div className="flex min-h-screen flex-1 flex-col">
         {/* Desktop-only top bar */}
-        <ContentTopBar />
+        <DesktopTopBar />
         <main
           className={cn(
             "flex-1 pb-10 sm:pt-10",

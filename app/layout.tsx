@@ -1,8 +1,8 @@
 import type { Metadata } from "next";
 import { Suspense } from "react";
 import { inter, jetbrainsMono, spaceGrotesk } from "@/app/fonts";
-import { ClerkProvider } from "@/components/clerk-provider";
-import { ThemeProvider } from "@/components/theme-provider";
+import { ClerkProvider } from "@/components/providers/clerk-provider";
+import { ThemeProvider } from "@/components/providers/theme-provider";
 import "@/app/globals.css";
 
 export const metadata: Metadata = {

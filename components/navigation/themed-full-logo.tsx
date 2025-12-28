@@ -4,7 +4,7 @@ import { cn } from "@/lib/utils";
 const LOGO_WIDTH = 137;
 const LOGO_HEIGHT = 23;
 
-type ThemeLogoProps = {
+type ThemedFullLogoProps = {
   className?: string;
 };
 
@@ -12,7 +12,7 @@ type ThemeLogoProps = {
  * Theme-aware logo that switches between light/dark variants via CSS variable.
  * Uses --logo-full-themed defined in globals.css.
  */
-export function ThemeLogo({ className }: ThemeLogoProps) {
+export function ThemedFullLogo({ className }: ThemedFullLogoProps) {
   return (
     <span
       style={{ aspectRatio: `${LOGO_WIDTH}/${LOGO_HEIGHT}` }}

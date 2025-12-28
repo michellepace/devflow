@@ -10,9 +10,9 @@ import {
 import { Menu, X } from "lucide-react";
 import Link from "next/link";
 import { useState } from "react";
-import { ThemeLogo } from "@/components/navigation/full-logo";
-import { NavLink } from "@/components/navigation/nav-link";
+import { MobileNavLink } from "@/components/navigation/mobile-nav-link";
 import { NAV_LINKS } from "@/components/navigation/nav-links.constants";
+import { ThemedFullLogo } from "@/components/navigation/themed-full-logo";
 import { Button } from "@/components/ui/button";
 import {
   Sheet,
@@ -66,7 +66,7 @@ export function MobileNav() {
             <SheetTitle className="sr-only">Mobile navigation menu</SheetTitle>
             <SheetClose asChild>
               <Link href="/" className="flex items-center">
-                <ThemeLogo />
+                <ThemedFullLogo />
               </Link>
             </SheetClose>
           </SheetHeader>
@@ -74,7 +74,7 @@ export function MobileNav() {
           <nav className="flex flex-1 flex-col gap-3 pt-5">
             {NAV_LINKS.map((link) => (
               <SheetClose key={link.route} asChild>
-                <NavLink
+                <MobileNavLink
                   imgURL={link.imgURL}
                   route={link.route}
                   label={link.label}
