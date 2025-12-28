@@ -44,6 +44,8 @@ npx shadcn@latest view button card        # Preview code before installing
 npx shadcn@latest add <component>         # Add component to project
 npx shadcn@latest add button --overwrite  # Overwrite existing component
 npx shadcn@latest add @v0/<block>         # Add from v0.dev registry
+npx shadcn@latest diff                    # Check for upstream registry updates
+npx shadcn@latest --help                  # CLI help
 ```
 
 ## Coding Practices
