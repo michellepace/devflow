@@ -72,7 +72,7 @@
   --radius: 0.625rem;
 
   /* shadcn/ui: Core */
-  --background: oklch(0.994 0 0); /* #FDFDFD */
+  --background: oklch(0.99 0 0); /* #FDFDFD */
   --foreground: oklch(0.129 0.042 264.695);
   --card: oklch(0.9722 0.0034 247.86); /* #F4F6F8 */
   --card-foreground: oklch(0.129 0.042 264.695);
@@ -105,7 +105,7 @@
   --sidebar-primary-foreground: oklch(0.984 0.003 247.858);
   --sidebar-accent: oklch(0.968 0.007 247.896);
   --sidebar-accent-foreground: oklch(0.208 0.042 265.755);
-  --sidebar-border: oklch(0.929 0.013 255.508);
+  --sidebar-border: oklch(0.9722 0.0034 247.86); /* #F4F6F8 */
   --sidebar-ring: oklch(0.704 0.04 256.788);
 
   /* Custom: Gradients */
@@ -164,7 +164,7 @@
   --sidebar-primary-foreground: oklch(0.984 0.003 247.858);
   --sidebar-accent: oklch(0.279 0.041 260.031);
   --sidebar-accent-foreground: oklch(0.984 0.003 247.858);
-  --sidebar-border: oklch(1 0 0 / 10%);
+  --sidebar-border: transparent;
   --sidebar-ring: oklch(0.551 0.027 264.364);
 
   /* Custom: Gradients */
@@ -246,5 +246,13 @@
   /* Consistent horizontal padding for main content and top bar alignment */
   .layout-padding-x {
     @apply px-6 md:px-8 lg:px-12;
+  }
+
+  /* Subtle directional shadow for navigation edges (light mode only) */
+  .shadow-light {
+    box-shadow: -10px 10px 20px 0px oklch(0.877 0.006 17.26 / 10%);
+  }
+  .dark .shadow-light {
+    box-shadow: none;
   }
 }

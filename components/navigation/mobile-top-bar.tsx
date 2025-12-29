@@ -7,7 +7,7 @@ export function MobileTopBar() {
   return (
     <header
       className={cn(
-        "sticky top-0 z-40 flex w-full items-center justify-between bg-sidebar px-4 shadow-sm sm:hidden",
+        "sticky top-0 z-40 flex w-full items-center justify-between bg-sidebar px-4 shadow-light sm:hidden",
         TOP_BAR_HEIGHT,
       )}
     >
