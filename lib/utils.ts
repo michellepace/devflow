@@ -19,7 +19,6 @@ export const NAV_LINK_ACTIVE_CLASSES =
 export const NAV_LINK_INACTIVE_CLASSES = "font-medium";
 
 // Layout constants - shared between top bars and main content
-export const LAYOUT_HORIZONTAL_PADDING = "px-6 md:px-8 lg:px-12";
 export const TOP_BAR_HEIGHT = "h-14";
 
 /**
