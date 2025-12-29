@@ -7,7 +7,7 @@ export function DesktopTopBar() {
   return (
     <header
       className={cn(
-        "sticky top-0 z-40 hidden items-center gap-4 border-b bg-background sm:flex layout-padding-x",
+        "sticky top-0 z-40 hidden items-center gap-4 border-b bg-sidebar sm:flex layout-padding-x",
         TOP_BAR_HEIGHT,
       )}
     >
