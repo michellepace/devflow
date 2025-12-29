@@ -25,6 +25,7 @@ import {
   isRouteActive,
   NAV_LINK_ACTIVE_CLASSES,
   NAV_LINK_INACTIVE_CLASSES,
+  TOP_BAR_HEIGHT,
 } from "@/lib/utils";
 
 export function LeftSidebar() {
@@ -32,8 +33,9 @@ export function LeftSidebar() {
 
   return (
     <Sidebar id="left-sidebar" collapsible="icon">
-      {/* Logo section - h-14 matches top bar height */}
-      <SidebarHeader className="h-14 flex-row items-center px-3">
+      <SidebarHeader
+        className={cn(TOP_BAR_HEIGHT, "flex-row items-center px-3")}
+      >
         <Link
           href="/"
           aria-label="DevFlow sidebar logo"
