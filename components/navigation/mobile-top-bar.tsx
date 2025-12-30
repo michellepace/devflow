@@ -1,14 +1,13 @@
 import Link from "next/link";
 import { MobileNav } from "@/components/navigation/mobile-nav";
 import { ThemeToggle } from "@/components/navigation/theme-toggle";
-import { cn, TOP_BAR_HEIGHT } from "@/lib/utils";
+import { cn } from "@/lib/utils";
 
 export function MobileTopBar() {
   return (
     <header
       className={cn(
-        "sticky top-0 z-40 flex w-full items-center justify-between bg-sidebar px-4 shadow-light sm:hidden",
-        TOP_BAR_HEIGHT,
+        "sticky top-0 z-40 flex h-[var(--top-bar-height)] w-full items-center justify-between bg-sidebar px-4 shadow-light sm:hidden",
       )}
     >
       <Link href="/" aria-label="DevFlow mobile logo">

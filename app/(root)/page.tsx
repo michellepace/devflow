@@ -1,6 +1,6 @@
 const HomePage = () => (
   <>
-    <h1>Hello Root page with heading H1</h1>
+    <h1 className="text-heading-2xl">Hello Root page with heading H1</h1>
 
     {/* Demo: top overflow test */}
     <div className="mt-8 bg-primary/30 p-4">{"words ".repeat(50)}</div>
@@ -42,7 +42,7 @@ const HomePage = () => (
             </span>
           </div>
 
-          <h2 className="mb-2 text-xl font-semibold">
+          <h2 className="text-heading-sm mb-2">
             How to implement a sticky sidebar in Next.js with Tailwind CSS?
           </h2>
 

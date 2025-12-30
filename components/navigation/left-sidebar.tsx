@@ -25,16 +25,20 @@ import {
   isRouteActive,
   NAV_LINK_ACTIVE_CLASSES,
   NAV_LINK_INACTIVE_CLASSES,
-  TOP_BAR_HEIGHT,
 } from "@/lib/utils";
 
 export function LeftSidebar() {
   const pathname = usePathname();
 
   return (
-    <Sidebar id="left-sidebar" collapsible="icon">
+    <Sidebar
+      id="left-sidebar"
+      collapsible="icon"
+      width="13rem"
+      className="shadow-light"
+    >
       <SidebarHeader
-        className={cn(TOP_BAR_HEIGHT, "flex-row items-center px-3")}
+        className={cn("h-[var(--top-bar-height)] flex-row items-center px-3")}
       >
         <Link
           href="/"

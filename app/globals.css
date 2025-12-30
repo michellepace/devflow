@@ -68,6 +68,9 @@
 
 /* Raw CSS variables (no Tailwind utilities generated). Access via var(--background), etc. */
 :root {
+  /* Layout */
+  --top-bar-height: 4rem; /* 64px — desktop & mobile top navigation */
+
   /* Base */
   --radius: 0.625rem;
 
@@ -201,24 +204,6 @@
   html {
     font-family: var(--font-sans-serif);
   }
-  h1 {
-    @apply text-5xl font-bold font-display;
-  }
-  h2 {
-    @apply text-4xl font-semibold font-display;
-  }
-  h3 {
-    @apply text-3xl font-semibold font-display;
-  }
-  h4 {
-    @apply text-2xl font-medium font-display;
-  }
-  h5 {
-    @apply text-xl font-medium font-display;
-  }
-  h6 {
-    @apply text-lg font-medium font-display;
-  }
 
   :is(code, kbd, samp, pre) {
     /* Code font family */
@@ -233,6 +218,29 @@
   pre {
     /* Code blocks (multi-line, typically <pre><code>...</code></pre>) */
     @apply overflow-x-auto rounded-lg bg-muted p-4 text-sm;
+  }
+}
+
+@layer components {
+  /* Heading utilities — apply visual heading styles independent of h1-h6 level.
+     Usage: <h2 class="text-heading-sm"> renders an h2 with small heading styling. */
+  .text-heading-2xl {
+    @apply text-5xl font-bold font-display; /* 48px */
+  }
+  .text-heading-xl {
+    @apply text-4xl font-semibold font-display; /* 36px */
+  }
+  .text-heading-lg {
+    @apply text-3xl font-semibold font-display; /* 30px */
+  }
+  .text-heading-md {
+    @apply text-2xl font-medium font-display; /* 24px */
+  }
+  .text-heading-sm {
+    @apply text-xl font-medium font-display; /* 20px */
+  }
+  .text-heading-xs {
+    @apply text-lg font-medium font-display; /* 18px */
   }
 }
 
