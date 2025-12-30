@@ -37,9 +37,7 @@ export function LeftSidebar() {
       width="13rem"
       className="shadow-light"
     >
-      <SidebarHeader
-        className={cn("h-(--top-bar-height) flex-row items-center px-3")}
-      >
+      <SidebarHeader className="h-(--top-bar-height) flex-row items-center px-3">
         <Link
           href="/"
           aria-label="DevFlow sidebar logo"
