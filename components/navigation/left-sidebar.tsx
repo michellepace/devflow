@@ -38,7 +38,7 @@ export function LeftSidebar() {
       className="shadow-light"
     >
       <SidebarHeader
-        className={cn("h-[var(--top-bar-height)] flex-row items-center px-3")}
+        className={cn("h-(--top-bar-height) flex-row items-center px-3")}
       >
         <Link
           href="/"

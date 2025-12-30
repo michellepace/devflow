@@ -10,11 +10,10 @@ import { Skeleton } from "@/components/ui/skeleton";
 const GROUP_PADDING = "pt-6 pb-2 pl-6 pr-3";
 
 export function RightSidebar() {
-  // Uses var() syntax — variable not registered in @theme
   return (
     <aside
       aria-label="Top questions and popular tags"
-      className="sticky top-[var(--top-bar-height)] hidden h-[calc(100svh-var(--top-bar-height))] self-start xl:block"
+      className="sticky top-(--top-bar-height) hidden h-[calc(100svh-var(--top-bar-height))] self-start xl:block"
     >
       <Sidebar
         id="right-sidebar"
