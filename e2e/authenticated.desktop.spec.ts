@@ -37,16 +37,18 @@ test.describe("Authenticated User Flow - Desktop", () => {
     const twoFactorHeading = page.getByRole("heading", {
       name: /verification|two-step/i,
     });
+    // UserButton only appears when authenticated (not visible on sign-in pages)
     const userMenu = page.getByRole("button", { name: "Open user menu" });
     await expect(
       emailOtpHeading.or(twoFactorHeading).or(userMenu),
     ).toBeVisible();
 
-    // Handle email OTP or 2FA - both use the same OTP input pattern
-    if (
+    // Check URL for "factor-two" as backup (Clerk heading text may vary)
+    const needsOtp =
       (await emailOtpHeading.isVisible()) ||
-      (await twoFactorHeading.isVisible())
-    ) {
+      (await twoFactorHeading.isVisible()) ||
+      page.url().includes("factor-two");
+    if (needsOtp) {
       await page.getByRole("textbox").first().click();
       await page.keyboard.type(TEST_OTP);
     }
