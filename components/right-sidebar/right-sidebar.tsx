@@ -1,15 +1,23 @@
+import { QuestionLink } from "@/components/right-sidebar/question-link";
+import { TagLink } from "@/components/right-sidebar/tag-link";
 import {
   Sidebar,
   SidebarContent,
   SidebarGroup,
   SidebarGroupContent,
 } from "@/components/ui/sidebar";
-import { Skeleton } from "@/components/ui/skeleton";
+import { getTopQuestions } from "@/lib/data/questions";
+import { getPopularTags } from "@/lib/data/tags";
 
 /** Asymmetric padding: more on left, less on right (scrollbar side), reduced bottom */
 const GROUP_PADDING = "pt-6 pb-2 pl-6 pr-3";
 
-export function RightSidebar() {
+export async function RightSidebar() {
+  const [topQuestions, popularTags] = await Promise.all([
+    getTopQuestions(5),
+    getPopularTags(5),
+  ]);
+
   return (
     <aside
       aria-label="Top questions and popular tags"
@@ -28,14 +36,13 @@ export function RightSidebar() {
               Top Questions
             </h2>
             <SidebarGroupContent>
-              <div className="space-y-6">
-                {Array.from({ length: 6 }, (_, i) => (
-                  // biome-ignore lint/suspicious/noArrayIndexKey: static skeleton placeholders
-                  <div key={i} className="space-y-3">
-                    <Skeleton className="h-4 w-full" />
-                    <Skeleton className="h-4 w-3/4" />
-                    <Skeleton className="h-4 w-5/6" />
-                  </div>
+              <div className="space-y-1">
+                {topQuestions.map((question) => (
+                  <QuestionLink
+                    key={question._id}
+                    id={question._id}
+                    title={question.title}
+                  />
                 ))}
               </div>
             </SidebarGroupContent>
@@ -46,13 +53,14 @@ export function RightSidebar() {
               Popular Tags
             </h2>
             <SidebarGroupContent>
-              <div className="space-y-3">
-                <Skeleton className="h-4 w-full" />
-                <Skeleton className="h-4 w-3/4" />
-                <Skeleton className="h-4 w-5/6" />
-                <Skeleton className="h-4 w-full" />
-                <Skeleton className="h-4 w-3/4" />
-                <Skeleton className="h-4 w-5/6" />
+              <div className="space-y-2">
+                {popularTags.map((tag) => (
+                  <TagLink
+                    key={tag.name}
+                    name={tag.name}
+                    questionCount={tag.questions}
+                  />
+                ))}
               </div>
             </SidebarGroupContent>
           </SidebarGroup>
