@@ -10,7 +10,7 @@ import {
 import { Menu, X } from "lucide-react";
 import Link from "next/link";
 import { useState } from "react";
-import { MobileNavLink } from "@/components/navigation/mobile-nav-link";
+import { MobileNavLink } from "@/components/navigation/mobile-navlink";
 import { NAV_LINKS } from "@/components/navigation/nav-links.constants";
 import { ThemedFullLogo } from "@/components/navigation/themed-full-logo";
 import { Button } from "@/components/ui/button";
