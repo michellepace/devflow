@@ -25,13 +25,16 @@ test.describe("Authenticated User Flow - Mobile", () => {
     // Open hamburger menu
     await page.getByRole("button", { name: /open navigation/i }).click();
 
-    // Click Sign in button in mobile menu
+    // Sign in button is inside the mobile menu drawer
     await page.getByRole("button", { name: "Sign in" }).click();
 
-    // Complete sign in flow
+    // Fill Clerk's sign-in form (redirected to Clerk's sign-in page)
     await page.getByRole("textbox", { name: "Email address" }).fill(TEST_EMAIL);
     await page.getByRole("textbox", { name: "Password" }).fill(TEST_PASSWORD);
     await page.getByRole("button", { name: "Continue", exact: true }).click();
+
+    // UserButton only appears when authenticated (not visible on sign-in pages)
+    const userMenu = page.getByRole("button", { name: "Open user menu" });
 
     // Handle OTP/2FA if required
     // - "Check your email" = new device verification (email OTP)
@@ -42,34 +45,26 @@ test.describe("Authenticated User Flow - Mobile", () => {
     const twoFactorHeading = page.getByRole("heading", {
       name: /verification|two-step/i,
     });
-    const hamburgerButton = page.getByRole("button", {
-      name: /open navigation/i,
-    });
     await expect(
-      emailOtpHeading.or(twoFactorHeading).or(hamburgerButton),
+      emailOtpHeading.or(twoFactorHeading).or(userMenu),
     ).toBeVisible();
 
-    // Handle email OTP or 2FA - both use the same OTP input pattern
-    if (
+    // Check URL for "factor-two" as backup (Clerk heading text may vary)
+    const needsOtp =
       (await emailOtpHeading.isVisible()) ||
-      (await twoFactorHeading.isVisible())
-    ) {
+      (await twoFactorHeading.isVisible()) ||
+      page.url().includes("factor-two");
+    if (needsOtp) {
       await page.getByRole("textbox").first().click();
       await page.keyboard.type(TEST_OTP);
     }
 
-    // Wait for redirect to home after auth
-    await expect(page).toHaveURL("/");
-
     // === MANAGE ACCOUNT VIA MOBILE MENU ===
-    // Open hamburger menu
+    // Open hamburger menu and verify authenticated (userMenu only shows when signed in)
     await page.getByRole("button", { name: /open navigation/i }).click();
-
-    // UserButton should be visible at bottom of mobile menu
-    const userMenu = page.getByRole("button", { name: "Open user menu" });
     await expect(userMenu).toBeVisible();
 
-    // Click UserButton and select "Manage account"
+    // UserButton opens Clerk's user menu dropdown
     await userMenu.click();
     await page.getByRole("menuitem", { name: "Manage account" }).click();
 
@@ -88,10 +83,10 @@ test.describe("Authenticated User Flow - Mobile", () => {
     await expect(profileHeading).not.toBeVisible();
 
     // === SIGN OUT VIA MOBILE MENU ===
-    // Reopen hamburger menu
+    // Menu closed after modal interaction, reopen it
     await page.getByRole("button", { name: /open navigation/i }).click();
 
-    // Click UserButton and sign out
+    // UserButton is visible again in the reopened menu
     await userMenu.click();
     await page.getByRole("menuitem", { name: "Sign out" }).click();
 

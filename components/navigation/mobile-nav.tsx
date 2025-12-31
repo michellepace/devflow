@@ -66,7 +66,7 @@ export function MobileNav() {
             <SheetTitle className="sr-only">Mobile navigation menu</SheetTitle>
             <SheetClose asChild>
               <Link href="/" className="flex items-center">
-                <ThemedFullLogo />
+                <ThemedFullLogo className="h-7" />
               </Link>
             </SheetClose>
           </SheetHeader>

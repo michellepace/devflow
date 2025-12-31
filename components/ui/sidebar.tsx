@@ -26,7 +26,7 @@ import { cn } from "@/lib/utils";
 
 const SIDEBAR_COOKIE_NAME = "sidebar_state";
 const SIDEBAR_COOKIE_MAX_AGE = 60 * 60 * 24 * 7;
-const SIDEBAR_WIDTH = "14rem";
+const SIDEBAR_WIDTH = "16rem";
 const SIDEBAR_WIDTH_MOBILE = "18rem";
 const SIDEBAR_WIDTH_ICON = "3rem";
 const SIDEBAR_KEYBOARD_SHORTCUT = "b";
@@ -157,6 +157,7 @@ function Sidebar({
   side = "left",
   variant = "sidebar",
   collapsible = "offcanvas",
+  width,
   className,
   children,
   ...props
@@ -164,6 +165,7 @@ function Sidebar({
   side?: "left" | "right";
   variant?: "sidebar" | "floating" | "inset";
   collapsible?: "offcanvas" | "icon" | "none";
+  width?: string;
 }) {
   const { isMobile, state, openMobile, setOpenMobile } = useSidebar();
 
@@ -175,6 +177,11 @@ function Sidebar({
           "bg-sidebar text-sidebar-foreground flex h-full w-(--sidebar-width) flex-col",
           className,
         )}
+        style={
+          width
+            ? ({ "--sidebar-width": width } as React.CSSProperties)
+            : undefined
+        }
         {...props}
       >
         {children}
@@ -215,6 +222,11 @@ function Sidebar({
       data-variant={variant}
       data-side={side}
       data-slot="sidebar"
+      style={
+        width
+          ? ({ "--sidebar-width": width } as React.CSSProperties)
+          : undefined
+      }
     >
       {/* This is what handles the sidebar gap on desktop */}
       <div
@@ -377,6 +389,15 @@ function SidebarContent({ className, ...props }: React.ComponentProps<"div">) {
       data-sidebar="content"
       className={cn(
         "flex min-h-0 flex-1 flex-col gap-2 overflow-auto group-data-[collapsible=icon]:overflow-hidden",
+        // Ultra-thin scrollbar: Chrome, Safari, Edge (WebKit/Blink)
+        "[&::-webkit-scrollbar]:w-1",
+        "[&::-webkit-scrollbar-track]:bg-transparent",
+        "[&::-webkit-scrollbar-thumb]:rounded-full",
+        "[&::-webkit-scrollbar-thumb]:bg-foreground/20",
+        "hover:[&::-webkit-scrollbar-thumb]:bg-foreground/40",
+        // Firefox fallback (standard CSS, only when WebKit unsupported)
+        "[@supports(not_selector(::-webkit-scrollbar))]:[scrollbar-width:thin]",
+        "[@supports(not_selector(::-webkit-scrollbar))]:[scrollbar-color:hsl(var(--foreground)/0.2)_transparent]",
         className,
       )}
       {...props}

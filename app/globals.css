@@ -1,4 +1,8 @@
-@layer theme, base, clerk, components, utilities; /* Must be at top */
+@layer theme,
+  base,
+  clerk,
+  components,
+  utilities; /* Declare layer order before imports (adds "clerk" layer) */
 @import "tailwindcss";
 @import "tw-animate-css";
 @import "@clerk/themes/shadcn.css";
@@ -6,61 +10,72 @@
 /* Applies dark: styles when element is .dark or inside .dark */
 @custom-variant dark (&:where(.dark, .dark *));
 
+/* Registers theme tokens → generates utilities (bg-*, text-*, border-*, etc.).
+   "inline" embeds values directly, required when referencing other vars to avoid CSS scope issues. */
 @theme inline {
-  /* Register theme tokens with Tailwind so it generates utilities (bg-*, text-*, etc.) */
-  /* E.g. --color-background → bg-background, text-background, border-background, etc. */
-  /* "inline" (v4) means values are embedded here, not in a separate CSS layer */
+  /* Fonts (no mode variants) */
   --font-display: var(--font-space-grotesk), Arial, sans-serif;
   --font-sans-serif: var(--font-inter), ui-sans-serif, system-ui, sans-serif;
   --font-mono: var(--font-jetbrains-mono), ui-monospace, Menlo, monospace;
 
+  /* Radius (derived from --radius) */
   --radius-sm: calc(var(--radius) - 4px);
   --radius-md: calc(var(--radius) - 2px);
   --radius-lg: var(--radius);
   --radius-xl: calc(var(--radius) + 4px);
 
+  /* shadcn/ui: Core */
   --color-background: var(--background);
   --color-foreground: var(--foreground);
-  --color-sidebar-ring: var(--sidebar-ring);
-  --color-sidebar-border: var(--sidebar-border);
-  --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
-  --color-sidebar-accent: var(--sidebar-accent);
-  --color-sidebar-primary-foreground: var(--sidebar-primary-foreground);
-  --color-sidebar-primary: var(--sidebar-primary);
-  --color-sidebar-foreground: var(--sidebar-foreground);
-  --color-sidebar: var(--sidebar);
-  --color-chart-5: var(--chart-5);
-  --color-chart-4: var(--chart-4);
-  --color-chart-3: var(--chart-3);
-  --color-chart-2: var(--chart-2);
-  --color-chart-1: var(--chart-1);
-  --color-ring: var(--ring);
-  --color-input: var(--input);
-  --color-border: var(--border);
-  --color-destructive: var(--destructive);
-  --color-accent-foreground: var(--accent-foreground);
-  --color-accent: var(--accent);
-  --color-muted-foreground: var(--muted-foreground);
-  --color-muted: var(--muted);
-  --color-secondary-foreground: var(--secondary-foreground);
-  --color-secondary: var(--secondary);
-  --color-primary-foreground: var(--primary-foreground);
-  --color-primary: var(--primary);
-  --color-popover-foreground: var(--popover-foreground);
-  --color-popover: var(--popover);
-  --color-card-foreground: var(--card-foreground);
   --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-destructive: var(--destructive);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
 
-  /* NOT SHADCN VARIABLES */
+  /* shadcn/ui: Charts */
+  --color-chart-1: var(--chart-1);
+  --color-chart-2: var(--chart-2);
+  --color-chart-3: var(--chart-3);
+  --color-chart-4: var(--chart-4);
+  --color-chart-5: var(--chart-5);
+
+  /* shadcn/ui: Sidebar */
+  --color-sidebar: var(--sidebar);
+  --color-sidebar-foreground: var(--sidebar-foreground);
+  --color-sidebar-primary: var(--sidebar-primary);
+  --color-sidebar-primary-foreground: var(--sidebar-primary-foreground);
+  --color-sidebar-accent: var(--sidebar-accent);
+  --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
+  --color-sidebar-border: var(--sidebar-border);
+  --color-sidebar-ring: var(--sidebar-ring);
+
+  /* Custom */
   --color-mobile-nav: var(--mobile-nav);
   --color-overlay: var(--overlay);
 }
 
+/* Raw CSS variables (no Tailwind utilities generated). Access via var(--background), etc. */
 :root {
-  /* Creates CSS variables available to all elements (no utility generation) */
+  /* Layout */
+  --top-bar-height: 4rem; /* 64px — desktop & mobile top navigation */
+
+  /* Base */
   --radius: 0.625rem;
 
-  --background: oklch(0.994 0 0); /* #FDFDFD */
+  /* shadcn/ui: Core */
+  --background: oklch(0.99 0 0); /* #FDFDFD */
   --foreground: oklch(0.129 0.042 264.695);
   --card: oklch(0.9722 0.0034 247.86); /* #F4F6F8 */
   --card-foreground: oklch(0.129 0.042 264.695);
@@ -78,35 +93,47 @@
   --border: oklch(0.929 0.013 255.508);
   --input: oklch(0.929 0.013 255.508);
   --ring: oklch(0.704 0.04 256.788);
+
+  /* shadcn/ui: Charts */
   --chart-1: oklch(0.646 0.222 41.116);
   --chart-2: oklch(0.6 0.118 184.704);
   --chart-3: oklch(0.398 0.07 227.392);
   --chart-4: oklch(0.828 0.189 84.429);
   --chart-5: oklch(0.769 0.188 70.08);
+
+  /* shadcn/ui: Sidebar */
   --sidebar: oklch(1 0 0); /* Figma #ffffff */
   --sidebar-foreground: oklch(0.2102 0.0185 270.39); /* #151821 */
   --sidebar-primary: oklch(0.208 0.042 265.755);
   --sidebar-primary-foreground: oklch(0.984 0.003 247.858);
   --sidebar-accent: oklch(0.968 0.007 247.896);
   --sidebar-accent-foreground: oklch(0.208 0.042 265.755);
-  --sidebar-border: oklch(0.929 0.013 255.508);
+  --sidebar-border: oklch(0.9722 0.0034 247.86); /* #F4F6F8 */
   --sidebar-ring: oklch(0.704 0.04 256.788);
 
-  /* NOT SHADCN VARIABLES */
+  /* Custom: Gradients */
   --primary-gradient-to: oklch(0.7434 0.115 58.23); /* #E2995F */
   --gradient-primary: linear-gradient(
     93.22deg,
     var(--primary) -13.95%,
     var(--primary-gradient-to) 99.54%
   );
+
+  /* Custom: Navigation */
   --mobile-nav: oklch(1 0 0); /* #FFFFFF */
   --overlay: oklch(0 0 0); /* black, both modes */
+
+  /* Custom: Assets (theme-aware URLs) */
   --logo-full-themed: url("/images/logo-light.svg");
   --auth-bg: url("/images/auth-bg-light.webp");
 }
 
+/* Dark mode overrides — these values take precedence over :root when .dark is active */
 .dark {
-  /* Overrides CSS variables when .dark class is present */
+  /* Base */
+  --radius: 0.625rem; /* same as root */
+
+  /* shadcn/ui: Core */
   --background: oklch(0 0 0); /* #000000 */
   --foreground: oklch(0.984 0.003 247.858);
   --card: oklch(0.1783 0.0128 270.6); /* #0F1117 */
@@ -125,23 +152,37 @@
   --border: oklch(1 0 0 / 10%);
   --input: oklch(1 0 0 / 15%);
   --ring: oklch(0.551 0.027 264.364);
+
+  /* shadcn/ui: Charts */
   --chart-1: oklch(0.488 0.243 264.376);
   --chart-2: oklch(0.696 0.17 162.48);
   --chart-3: oklch(0.769 0.188 70.08);
   --chart-4: oklch(0.627 0.265 303.9);
   --chart-5: oklch(0.645 0.246 16.439);
+
+  /* shadcn/ui: Sidebar */
   --sidebar: oklch(0.1783 0.0128 270.6); /* Figma #0F1117 */
   --sidebar-foreground: oklch(1 0 0); /* #FFFFFF */
   --sidebar-primary: oklch(0.488 0.243 264.376);
   --sidebar-primary-foreground: oklch(0.984 0.003 247.858);
   --sidebar-accent: oklch(0.279 0.041 260.031);
   --sidebar-accent-foreground: oklch(0.984 0.003 247.858);
-  --sidebar-border: oklch(1 0 0 / 10%);
+  --sidebar-border: transparent;
   --sidebar-ring: oklch(0.551 0.027 264.364);
 
-  /* NOT SHADCN VARIABLES */
+  /* Custom: Gradients */
+  --primary-gradient-to: oklch(0.7434 0.115 58.23); /* same as root */
+  --gradient-primary: linear-gradient(
+    93.22deg,
+    var(--primary) -13.95%,
+    var(--primary-gradient-to) 99.54%
+  ); /* same as root */
+
+  /* Custom: Navigation */
   --mobile-nav: oklch(0.1288 0.0406 264.7); /* #07080b */
-  --overlay: oklch(0 0 0); /* black, both modes */
+  --overlay: oklch(0 0 0); /* same as root */
+
+  /* Custom: Assets (theme-aware URLs) */
   --logo-full-themed: url("/images/logo-dark.svg");
   --auth-bg: url("/images/auth-bg-dark.webp");
 }
@@ -163,24 +204,6 @@
   html {
     font-family: var(--font-sans-serif);
   }
-  h1 {
-    @apply text-5xl font-bold font-display;
-  }
-  h2 {
-    @apply text-4xl font-semibold font-display;
-  }
-  h3 {
-    @apply text-3xl font-semibold font-display;
-  }
-  h4 {
-    @apply text-2xl font-medium font-display;
-  }
-  h5 {
-    @apply text-xl font-medium font-display;
-  }
-  h6 {
-    @apply text-lg font-medium font-display;
-  }
 
   :is(code, kbd, samp, pre) {
     /* Code font family */
@@ -198,6 +221,29 @@
   }
 }
 
+@layer components {
+  /* Heading utilities — apply visual heading styles independent of h1-h6 level.
+     Usage: <h2 class="text-heading-sm"> renders an h2 with small heading styling. */
+  .text-heading-2xl {
+    @apply text-5xl font-bold font-display; /* 48px */
+  }
+  .text-heading-xl {
+    @apply text-4xl font-semibold font-display; /* 36px */
+  }
+  .text-heading-lg {
+    @apply text-3xl font-semibold font-display; /* 30px */
+  }
+  .text-heading-md {
+    @apply text-2xl font-medium font-display; /* 24px */
+  }
+  .text-heading-sm {
+    @apply text-xl font-medium font-display; /* 20px */
+  }
+  .text-heading-xs {
+    @apply text-lg font-medium font-display; /* 18px */
+  }
+}
+
 @layer utilities {
   /* Custom SVG icons use hardcoded white fill. Since <Image> loads them as external
      files, CSS currentColor won't work. Invert to black in light mode instead. */
@@ -208,5 +254,13 @@
   /* Consistent horizontal padding for main content and top bar alignment */
   .layout-padding-x {
     @apply px-6 md:px-8 lg:px-12;
+  }
+
+  /* Subtle directional shadow for navigation edges (light mode only) */
+  .shadow-light {
+    box-shadow: -10px 10px 20px 0px oklch(0.877 0.006 17.26 / 10%);
+  }
+  .dark .shadow-light {
+    box-shadow: none;
   }
 }

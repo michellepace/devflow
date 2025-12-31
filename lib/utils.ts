@@ -18,9 +18,6 @@ export const NAV_LINK_ACTIVE_CLASSES =
   "bg-(image:--gradient-primary) font-bold text-primary-foreground";
 export const NAV_LINK_INACTIVE_CLASSES = "font-medium";
 
-// Layout constants - shared between top bars and main content
-export const TOP_BAR_HEIGHT = "h-14";
-
 /**
  * Get icon classes for navigation items (handles inversion for inactive state).
  */
