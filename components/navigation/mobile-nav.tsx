@@ -58,7 +58,7 @@ export function MobileNav() {
         <SheetContent
           side="left"
           className={cn(
-            "flex flex-col gap-6 bg-mobile-nav p-6 shadow-2xl",
+            "flex flex-col gap-6 bg-sidebar p-6 shadow-2xl",
             MOBILE_NAV_MAX_WIDTH,
           )}
         >

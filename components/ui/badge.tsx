@@ -18,7 +18,7 @@ const badgeVariants = cva(
         outline:
           "text-foreground [a&]:hover:bg-accent [a&]:hover:text-accent-foreground",
         toptag:
-          "border-transparent bg-secondary text-secondary-foreground uppercase rounded-md",
+          "border-transparent bg-(--tag-bg) text-(--tag-text) uppercase rounded-md px-4 py-2",
       },
     },
     defaultVariants: {

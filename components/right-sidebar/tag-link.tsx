@@ -14,9 +14,7 @@ export function TagLink({ name, questionCount }: TagLinkProps) {
     >
       <Badge variant="toptag">{name}</Badge>
       {questionCount !== undefined && (
-        <span className="text-sm font-semibold text-foreground">
-          {questionCount}
-        </span>
+        <span className="text-sm text-foreground">{questionCount}</span>
       )}
     </Link>
   );
