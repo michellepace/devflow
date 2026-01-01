@@ -1,8 +1,8 @@
 import { cookies } from "next/headers";
-import { DesktopTopBar } from "@/components/navigation/desktop-top-bar";
+import { DesktopTopBar } from "@/components/navigation/desktop-topbar";
 import { LeftSidebar } from "@/components/navigation/left-sidebar";
-import { MobileTopBar } from "@/components/navigation/mobile-top-bar";
-import { RightSidebar } from "@/components/navigation/right-sidebar";
+import { MobileTopBar } from "@/components/navigation/mobile-topbar";
+import { RightSidebar } from "@/components/right-sidebar/right-sidebar";
 import { SidebarProvider } from "@/components/ui/sidebar";
 
 const RootLayout = async ({ children }: { children: React.ReactNode }) => {

@@ -10,7 +10,7 @@ import {
 import { Menu, X } from "lucide-react";
 import Link from "next/link";
 import { useState } from "react";
-import { MobileNavLink } from "@/components/navigation/mobile-nav-link";
+import { MobileNavLink } from "@/components/navigation/mobile-navlink";
 import { NAV_LINKS } from "@/components/navigation/nav-links.constants";
 import { ThemedFullLogo } from "@/components/navigation/themed-full-logo";
 import { Button } from "@/components/ui/button";
@@ -58,7 +58,7 @@ export function MobileNav() {
         <SheetContent
           side="left"
           className={cn(
-            "flex flex-col gap-6 bg-mobile-nav p-6 shadow-2xl",
+            "flex flex-col gap-6 bg-sidebar p-6 shadow-2xl",
             MOBILE_NAV_MAX_WIDTH,
           )}
         >
