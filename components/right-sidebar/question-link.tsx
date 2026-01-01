@@ -10,12 +10,12 @@ export function QuestionLink({ id, title }: QuestionLinkProps) {
   return (
     <Link
       href={`/question/${id}`}
-      className="-mx-2 flex items-center gap-2 rounded-md p-2 transition-colors hover:bg-accent/50"
+      className="group -mx-2 flex items-center gap-2 rounded-md p-2"
     >
-      <span className="flex-1 text-sm leading-snug text-foreground">
+      <span className="flex-1 text-sm leading-snug text-foreground decoration-muted-foreground/50 underline-offset-2 group-hover:underline">
         {title}
       </span>
-      <ChevronRight className="size-4 shrink-0 text-muted-foreground" />
+      <ChevronRight className="size-4 shrink-0 text-muted-foreground transition-transform duration-150 group-hover:translate-x-0.5" />
     </Link>
   );
 }
