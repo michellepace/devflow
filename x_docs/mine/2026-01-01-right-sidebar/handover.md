@@ -38,7 +38,8 @@ Target design: `pic1-target.jpg` (dark mode Figma mockup in repo root)
 - ✅ `npm run test` passes
 - ✅ Dev server runs on port 3000
 
-Note: no new tests (unit or e2e) were implemented.
+- ✅ E2E test: `e2e/right-sidebar.desktop.spec.ts`
+- ✅ Unit tests: `lib/data/questions.test.ts`, `lib/data/tags.test.ts`
 
 ---
 
