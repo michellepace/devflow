@@ -14,7 +14,7 @@ const MOCK_QUESTIONS: Question[] = [
     title:
       "What are the benefits and trade-offs of using Server-Side Rendering (SSR) in Next.js?",
   },
-  { _id: "3", title: "How to center a div?" },
+  { _id: "3", title: "How to centre a div?" },
   {
     _id: "4",
     title:
