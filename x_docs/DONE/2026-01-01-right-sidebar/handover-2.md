@@ -104,9 +104,18 @@ No E2E tests — visual verification is manual against `tags.jpg`. The resolutio
 
 ## Success Criteria
 
-- [ ] Devicon CSS loaded via CDN
-- [ ] Icons render for: nextjs, react, javascript, tailwindcss
-- [ ] Alias resolution works: js → javascript, ts → typescript
-- [ ] Unknown tags show Lucide `<Tag />` icon as fallback
-- [ ] Unit tests pass for `getDeviconClassName()` (known icons, aliases, fallback, unknown)
-- [ ] Visual alignment matches `tags.jpg`
+- [x] Devicon CSS loaded via CDN
+- [x] Icons render for: nextjs, react, javascript, tailwindcss
+- [x] Alias resolution works: js → javascript, ts → typescript
+- [x] Unknown tags show Lucide `<Tag />` icon as fallback
+- [x] Unit tests pass for `getDeviconClassName()` (known icons, aliases, fallback, unknown)
+- [x] Visual alignment matches `tags.jpg`
+
+## Enhancements
+
+Beyond the original specification:
+
+- [x] **Configurable `colored` parameter** — `getDeviconClassName(name, colored)` accepts a second boolean parameter (default: `true`) to toggle between brand colours and monotone icons that inherit `currentColor`
+- [x] **`colored` prop on TagLink** — Allows per-usage control: `<TagLink name="react" colored />` for brand colours, omit for monotone
+- [x] **Context-specific defaults** — TagLink defaults to monotone (`colored = false`); right sidebar explicitly uses `colored` for brand colours
+- [x] **Extended test coverage** — 20 unit tests including colored option tests (default, explicit true, explicit false) and additional alias test (`pugjs` → `pug`)
