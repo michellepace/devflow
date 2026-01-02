@@ -12,10 +12,11 @@ Users can create arbitrary tags when asking questions — the system doesn't kno
 
 Target design: [tags.jpg](tags.jpg)
 
-Shows tags with devicon icons displayed inline before the tag name, both in:
+Shows tags with devicon icons displayed inline before the tag name in:
 
-- Question cards (home page)
-- Right sidebar "Popular Tags" section
+- Right sidebar "Popular Tags" section (with `showIcon colored`)
+
+Question cards on the home page use text-only badges (defaults) for a cleaner, less cluttered appearance.
 
 ## References
 
@@ -59,8 +60,8 @@ The registry includes an `altnames` array for common variations, enabling automa
 | File | Purpose |
 |------|---------|
 | `components/tag-link.tsx` | Shared TagLink component — wraps Badge in Link |
-| `app/(root)/page.tsx` | Uses `<TagLink name={tag} />` |
-| `components/right-sidebar/right-sidebar.tsx` | Uses `<TagLink name={tag.name} questionCount={tag.questions} />` |
+| `app/(root)/page.tsx` | Uses `<TagLink name={tag} />` (defaults: no icon, monotone) |
+| `components/right-sidebar/right-sidebar.tsx` | Uses `<TagLink name={tag.name} questionCount={tag.questions} showIcon colored />` |
 | `lib/data/tags.ts` | `Tag` type + `getPopularTags(limit)` |
 | `app/globals.css` | CSS custom properties `--tag-bg`, `--tag-text` |
 
@@ -78,14 +79,14 @@ Use **JSON Registry Lookup** — commit `devicon.json` locally and use it to aut
 
 | File | Purpose |
 |------|---------|
-| `lib/devicon.ts` | `getDeviconClassName(name): string \| null` — normalises tag name, looks up registry, selects correct style, returns class string or null |
-| `components/tag-link.tsx` | Uses the utility directly; renders `<i className={iconClass} />` inline when icon exists |
+| `lib/devicon.ts` | `getDeviconClassName(name, colored): string \| null` — normalises tag name, looks up registry, selects correct style, returns class string or null |
+| `components/tag-link.tsx` | Props: `name`, `questionCount?`, `showIcon?`, `colored?`. Renders `<i className={iconClass} />` inline when `showIcon` is true and icon exists; falls back to Lucide `<Tag />` for unknown tags |
 
 A separate `<TagIcon />` component was considered but rejected — the rendering logic is trivial (one `<i>` element) and TagLink is currently the only consumer. Can be extracted later if icons appear elsewhere.
 
 ## Fallback Strategy
 
-For tags without a matching devicon, use Lucide React's `<Tag />` icon. This maintains visual rhythm across all badges while clearly indicating "this is a tag" without pretending to be a technology-specific icon.
+When `showIcon` is enabled, tags without a matching devicon fall back to Lucide React's `<Tag />` icon. This maintains visual rhythm across all badges while clearly indicating "this is a tag" without pretending to be a technology-specific icon.
 
 ## Registry Management
 
@@ -117,5 +118,6 @@ Beyond the original specification:
 
 - [x] **Configurable `colored` parameter** — `getDeviconClassName(name, colored)` accepts a second boolean parameter (default: `true`) to toggle between brand colours and monotone icons that inherit `currentColor`
 - [x] **`colored` prop on TagLink** — Allows per-usage control: `<TagLink name="react" colored />` for brand colours, omit for monotone
-- [x] **Context-specific defaults** — TagLink defaults to monotone (`colored = false`); right sidebar explicitly uses `colored` for brand colours
+- [x] **`showIcon` prop on TagLink** — Allows per-usage control: `<TagLink name="react" showIcon />` for icons, omit for text-only badges
+- [x] **Simplest defaults** — TagLink defaults to no icon (`showIcon = false`) and monotone (`colored = false`) for clean, uncluttered tags; opt-in to `showIcon colored` where visual richness is desired
 - [x] **Extended test coverage** — 20 unit tests including colored option tests (default, explicit true, explicit false) and additional alias test (`pugjs` → `pug`)

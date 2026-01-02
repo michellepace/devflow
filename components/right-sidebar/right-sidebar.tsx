@@ -59,6 +59,7 @@ export async function RightSidebar() {
                     key={tag.name}
                     name={tag.name}
                     questionCount={tag.questions}
+                    showIcon
                     colored
                   />
                 ))}
