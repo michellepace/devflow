@@ -91,7 +91,7 @@ Replace the dated `hover:bg-accent/50` overlay with Linear-style microinteractio
 
 ---
 
-## Later: Devicon Integration
+## Now: Devicon Integration
 
 ### Goal
 
