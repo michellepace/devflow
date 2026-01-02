@@ -1,5 +1,5 @@
 import { QuestionLink } from "@/components/right-sidebar/question-link";
-import { TagLink } from "@/components/right-sidebar/tag-link";
+import { TagLink } from "@/components/tag-link";
 import {
   Sidebar,
   SidebarContent,
@@ -59,6 +59,8 @@ export async function RightSidebar() {
                     key={tag.name}
                     name={tag.name}
                     questionCount={tag.questions}
+                    showIcon
+                    colored
                   />
                 ))}
               </div>

@@ -6,9 +6,14 @@ export type Tag = {
 const MOCK_TAGS: Tag[] = [
   { name: "nextjs", questions: 320 },
   { name: "reactjs", questions: 244 },
-  { name: "javascript", questions: 83 },
-  { name: "react", questions: 30 },
+  { name: "typescript", questions: 203 },
+  { name: "css", questions: 156 },
+  { name: "tailwind", questions: 94 },
   { name: "postgres", questions: 89 },
+  { name: "javascript", questions: 83 },
+  { name: "nodejs", questions: 67 },
+  { name: "html", questions: 45 },
+  { name: "react", questions: 30 },
 ];
 
 /**

@@ -1,32 +1,9 @@
+import { TagLink } from "@/components/tag-link";
+
 const HomePage = () => (
   <>
-    <h1 className="text-heading-2xl">Hello Root page with heading H1</h1>
+    <h1 className="text-heading-2xl">All Questions</h1>
 
-    {/* Demo: top overflow test */}
-    <div className="mt-8 bg-primary/30 p-4">{"words ".repeat(50)}</div>
-
-    {/* Flexbox demo: grow vs flex-none */}
-    <div className="my-8 flex gap-4 border-2 border-dashed border-primary p-4">
-      {/* Fixed width - won't grow */}
-      <div className="flex h-24 w-24 flex-none items-center justify-center rounded-lg border-2 border-dashed border-primary bg-sky-500/20 text-sm font-medium">
-        flex-none
-      </div>
-
-      {/* Grows to fill available space */}
-      <div className="flex h-24 grow items-center justify-center rounded-lg border-2 border-dashed border-primary bg-indigo-500/30 text-sm font-medium">
-        grow
-      </div>
-
-      {/* Fixed width - won't grow */}
-      <div className="flex h-24 w-24 flex-none items-center justify-center rounded-lg border-2 border-dashed border-primary bg-sky-500/20 text-sm font-medium">
-        flex-none
-      </div>
-    </div>
-
-    {/* Demo: bottom overflow test */}
-    <div className="bg-primary/30 p-4">{"words ".repeat(50)}</div>
-
-    {/* Question boxes for testing sticky sidebar scroll */}
     <div className="mt-8 space-y-6">
       {[1, 2, 3, 4].map((questionIndex) => (
         <article
@@ -56,13 +33,8 @@ const HomePage = () => (
 
           {/* Tags */}
           <div className="mb-4 flex flex-wrap gap-2">
-            {["next.js", "tailwindcss", "react", "css"].map((tag) => (
-              <span
-                key={tag}
-                className="rounded-md bg-secondary px-2.5 py-1 text-xs font-medium text-secondary-foreground"
-              >
-                {tag}
-              </span>
+            {["tailwind", "nextjs"].map((tag) => (
+              <TagLink key={tag} name={tag} />
             ))}
           </div>
 

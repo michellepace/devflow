@@ -27,6 +27,12 @@ export default function RootLayout({
           className={`${inter.variable} ${spaceGrotesk.variable} ${jetbrainsMono.variable} h-full`}
           suppressHydrationWarning
         >
+          <head>
+            <link
+              rel="stylesheet"
+              href="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/devicon.min.css"
+            />
+          </head>
           <body className="flex min-h-full flex-col antialiased">
             <ThemeProvider
               attribute="class"
