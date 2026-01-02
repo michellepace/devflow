@@ -16,4 +16,11 @@ describe("getPopularTags", () => {
     expect(tags[0]).toHaveProperty("name");
     expect(tags[0]).toHaveProperty("questions");
   });
+
+  it("returns tags sorted by question count (descending)", async () => {
+    const tags = await getPopularTags(5);
+    for (let i = 0; i < tags.length - 1; i++) {
+      expect(tags[i].questions).toBeGreaterThanOrEqual(tags[i + 1].questions);
+    }
+  });
 });
