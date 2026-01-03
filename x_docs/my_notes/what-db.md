@@ -1,163 +1,5 @@
 # DevFlow Database Strategy Report 📊
 
-> A comprehensive guide for an intelligent adult beginner on mock data patterns and database choices for your Stack Overflow-like Q&A platform.
-
----
-
-## Table of Contents
-
-1. [Current State Analysis](#current-state-analysis)
-2. [Mock Data Recommendations](#mock-data-recommendations)
-3. [Database Options Compared](#database-options-compared)
-4. [Deep Dive: MongoDB](#deep-dive-mongodb-)
-5. [Deep Dive: Neon PostgreSQL](#deep-dive-neon-postgresql-)
-6. [Deep Dive: Convex](#deep-dive-convex-)
-7. [Final Recommendation](#final-recommendation-)
-
----
-
-## Current State Analysis
-
-### What You Have Now 🔍
-
-Your codebase has two patterns for mock data:
-
-| File | Pattern | Status |
-|------|---------|--------|
-| `lib/data/questions.ts` | ✅ Async function `getTopQuestions()` | Good - abstracted |
-| `lib/data/tags.ts` | ✅ Async function `getPopularTags()` | Good - abstracted |
-| `components/right-sidebar/right-sidebar.tsx` | ✅ Uses the async functions | Good - ready for DB |
-| `app/(root)/page.tsx` | ❌ Hard-coded `[1, 2, 3, 4].map()` | Bad - needs fixing |
-
-### The Problem
-
-Your **right sidebar** is already using the correct pattern:
-
-```typescript
-// ✅ Right sidebar - GOOD pattern
-const [topQuestions, popularTags] = await Promise.all([
-  getTopQuestions(5),
-  getPopularTags(5),
-]);
-```
-
-But your **homepage** completely ignores the mock data:
-
-```typescript
-// ❌ Homepage - BAD pattern (hard-coded)
-{[1, 2, 3, 4].map((questionIndex) => (
-  <article>
-    <h2>How to implement a sticky sidebar...</h2>  // Same question 4 times!
-  </article>
-))}
-```
-
-### Your Tag Relation Concern
-
-You asked about the relationship between questions and tags. Currently:
-
-- `Question` type has only `{ _id, title }` - no tags!
-- `Tag` type has `{ name, questions: number }` - just a count
-
-**This is a valid concern.** Real questions need associated tags. We'll address this in the recommendations.
-
----
-
-## Mock Data Recommendations
-
-### 1️⃣ Create a Data Access Layer (DAL)
-
-Create a `lib/data/index.ts` that exports all your data functions. This becomes the **single source of truth** that you'll swap out later:
-
-```typescript
-// lib/data/index.ts
-export { getTopQuestions, type Question } from './questions';
-export { getPopularTags, type Tag } from './tags';
-export { getAllQuestions } from './questions';  // New function for homepage
-```
-
-### 2️⃣ Expand Your Types to Match Real Data
-
-```typescript
-// lib/data/types.ts
-export type Tag = {
-  _id: string;
-  name: string;
-  description?: string;
-  questionsCount: number;
-};
-
-export type Question = {
-  _id: string;
-  title: string;
-  content: string;
-  tags: string[];        // Array of tag names
-  votes: number;
-  answersCount: number;
-  views: number;
-  author: {
-    _id: string;
-    name: string;
-    avatar?: string;
-  };
-  createdAt: Date;
-};
-```
-
-### 3️⃣ Create Richer Mock Data
-
-```typescript
-// lib/data/questions.ts
-const MOCK_QUESTIONS: Question[] = [
-  {
-    _id: "1",
-    title: "How to Ensure Unique User Profile with ON CONFLICT in PostgreSQL?",
-    content: "I'm trying to understand how to handle upserts...",
-    tags: ["postgres", "nextjs"],
-    votes: 42,
-    answersCount: 3,
-    views: 1247,
-    author: { _id: "u1", name: "Alice Dev", avatar: "/avatars/alice.jpg" },
-    createdAt: new Date("2025-12-28"),
-  },
-  // ... more questions
-];
-```
-
-### 4️⃣ Update Homepage to Use Data Functions
-
-```typescript
-// app/(root)/page.tsx
-import { getAllQuestions } from "@/lib/data";
-
-const HomePage = async () => {
-  const questions = await getAllQuestions();
-
-  return (
-    <>
-      <h1>All Questions</h1>
-      {questions.map((question) => (
-        <QuestionCard key={question._id} question={question} />
-      ))}
-    </>
-  );
-};
-```
-
-### Does Database Choice Impact This? 🤔
-
-**Short answer: No, not significantly.**
-
-The beauty of the Data Access Layer pattern is that your components don't care where data comes from. When you switch to a real database, you only change the implementation inside `lib/data/`:
-
-| Database | Change Required |
-|----------|-----------------|
-| MongoDB | Replace mock array with `db.collection('questions').find()` |
-| Neon | Replace mock array with Prisma/Drizzle query |
-| Convex | Replace mock array with `ctx.db.query("questions")` |
-
-Your components remain unchanged. This is called the **Repository Pattern**.
-
 ---
 
 ## Database Options Compared
@@ -173,15 +15,6 @@ Your components remain unchanged. This is called the **Repository Pattern**.
 | **Vercel Integration** | Marketplace | Marketplace + Branching | Marketplace |
 | **Learning Curve** | Moderate | Low (if you know SQL) | Moderate (new paradigm) |
 | **AI-Friendly** | Good | Good | Excellent |
-
-### Pricing Comparison 💰
-
-| Tier | MongoDB Atlas | Neon | Convex |
-|------|---------------|------|--------|
-| **Free** | 512 MB storage | 0.5 GB storage, 100 CU-hrs | 1M function calls, 0.5 GB |
-| **Starter** | $8-30/mo (Flex) | $5/mo minimum | Pay-as-you-go |
-| **Production** | ~$57/mo (M10) | ~$20-50/mo | $25/developer/mo |
-| **Scale-to-Zero** | ❌ No | ✅ Yes | ✅ Yes |
 
 ### Best Fit by Use Case 🎯
 
@@ -478,14 +311,7 @@ When someone posts an answer, **all users viewing that question see it instantly
 
 ---
 
-## Final Recommendation 🎯
-
-### For Your Mock Data Now
-
-1. **Expand your types** to include tags on questions
-2. **Create richer mock data** with realistic relationships
-3. **Update the homepage** to use data functions (not hard-coded)
-4. **Keep the Data Access Layer pattern** - it makes migration easy
+## Recommendation 🎯
 
 ### For Database Choice
 
@@ -508,18 +334,3 @@ Based on your situation (learning project, Vercel deployment, using Clerk, build
 5. **You already use Clerk** - Convex has documented Clerk integration
 
 **However**, if you prefer SQL and want the massive PostgreSQL ecosystem, **Neon is excellent** too. The PR branching feature is genuinely useful.
-
----
-
-## Next Steps 📝
-
-1. ✅ Implement the Data Access Layer pattern (mock data abstraction)
-2. ✅ Expand types to include question-tag relationships
-3. ✅ Update homepage to use data functions
-4. 🔜 Choose your database (I suggest trying Convex first)
-5. 🔜 Replace mock data implementations with real database queries
-
----
-
-*Report generated for DevFlow Q&A Platform*
-*Sources: Official documentation from MongoDB, Neon, Convex, and Vercel*
