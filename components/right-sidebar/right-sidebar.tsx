@@ -28,7 +28,7 @@ export async function RightSidebar() {
         side="right"
         collapsible="none"
         width="var(--right-sidebar-width)"
-        className="border-l shadow-light"
+        className="border-l bg-background"
       >
         <SidebarContent className="mr-4 pb-6">
           <SidebarGroup className={GROUP_PADDING}>

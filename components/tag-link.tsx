@@ -23,7 +23,7 @@ export function TagLink({
       href={`/tags/${name}`}
       className="group flex items-center justify-between gap-2 rounded-md p-1 transition-transform duration-150 hover:-translate-y-0.5 hover:scale-[1.005]"
     >
-      <Badge className="flex items-center gap-1.5 rounded-md border-transparent bg-(--tag-bg) px-4 py-1.5 uppercase text-(--tag-text)">
+      <Badge className="flex items-center gap-1.5 rounded-md border-border bg-(--tag-bg) px-4 py-1.5 uppercase text-(--tag-text) dark:border-transparent">
         {showIcon &&
           (iconClass ? (
             <i className={iconClass} aria-hidden="true" />
