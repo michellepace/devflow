@@ -4,7 +4,7 @@ import { ThemeToggle } from "@/components/navigation/theme-toggle";
 
 export function MobileTopBar() {
   return (
-    <header className="sticky top-0 z-40 flex h-(--top-bar-height) w-full items-center justify-between bg-sidebar px-4 shadow-light sm:hidden">
+    <header className="sticky top-0 z-40 flex h-(--top-bar-height) w-full items-center justify-between bg-background px-4 sm:hidden">
       <Link href="/" aria-label="DevFlow mobile logo">
         {/* biome-ignore lint/a11y/useAltText: Decorative logo, aria-label on parent link */}
         {/* biome-ignore lint/performance/noImgElement: SVG logo doesn't benefit from next/image optimisation */}

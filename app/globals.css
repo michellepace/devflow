@@ -69,6 +69,7 @@
 :root {
   /* Layout */
   --top-bar-height: 4rem; /* 64px — desktop & mobile top navigation */
+  --right-sidebar-width: 22rem; /* 352px — right sidebar width at xl+ */
 
   /* Base */
   --radius: 0.625rem;
@@ -254,11 +255,6 @@
      files, CSS currentColor won't work. Invert to black in light mode instead. */
   .invert-colors {
     @apply invert dark:invert-0;
-  }
-
-  /* Consistent horizontal padding for main content and top bar alignment */
-  .layout-padding-x {
-    @apply px-6 md:px-8 lg:px-12;
   }
 
   /* Subtle directional shadow for navigation edges (light mode only) */
