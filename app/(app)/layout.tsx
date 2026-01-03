@@ -21,8 +21,8 @@ const RootLayout = async ({ children }: { children: React.ReactNode }) => {
 
         {/* Content + Right Sidebar row */}
         <div className="flex flex-1">
-          <main className="flex-1 pb-10 pt-10 layout-padding-x">
-            {children}
+          <main className="flex-1 px-6 pb-10 pt-12 md:px-8 lg:px-12">
+            <div className="mx-auto w-full max-w-5xl">{children}</div>
           </main>
           <RightSidebar />
         </div>

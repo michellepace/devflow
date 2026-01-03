@@ -27,7 +27,7 @@ export async function RightSidebar() {
         id="right-sidebar"
         side="right"
         collapsible="none"
-        width="22rem"
+        width="var(--right-sidebar-width)"
         className="border-l shadow-light"
       >
         <SidebarContent className="mr-4 pb-6">
