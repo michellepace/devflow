@@ -6,6 +6,7 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { LeftSidebarToggle } from "@/components/navigation/left-sidebar-toggle";
 import { NAV_LINKS } from "@/components/navigation/nav-links.constants";
+import { ThemeToggle } from "@/components/navigation/theme-toggle";
 import { ThemedFullLogo } from "@/components/navigation/themed-full-logo";
 import {
   Sidebar,
@@ -95,14 +96,16 @@ export function LeftSidebar() {
         </SidebarGroup>
       </SidebarContent>
 
-      {/* Footer: UserButton + Toggle */}
-      <SidebarFooter className="p-2">
+      {/* Footer: ThemeToggle + UserButton + Toggle */}
+      <SidebarFooter className="flex flex-col items-start gap-3 p-2 group-data-[collapsible=icon]:items-center group-data-[collapsible=icon]:px-0">
+        <ThemeToggle />
         <div
           className={cn(
-            "flex items-center gap-2",
+            "flex w-full items-center gap-2",
             // Expanded: horizontal row with space between
             "justify-between",
-            // Collapsed (icon mode): vertical stack
+            // Collapsed (icon mode): vertical stack, centered
+            "group-data-[collapsible=icon]:w-auto",
             "group-data-[collapsible=icon]:flex-col",
             "group-data-[collapsible=icon]:justify-start",
           )}
