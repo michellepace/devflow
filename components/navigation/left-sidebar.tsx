@@ -97,11 +97,11 @@ export function LeftSidebar() {
       </SidebarContent>
 
       {/* Footer: ThemeToggle + UserButton + Toggle */}
-      <SidebarFooter className="flex flex-col items-start gap-3 p-2 group-data-[collapsible=icon]:items-center group-data-[collapsible=icon]:px-0">
-        <ThemeToggle />
+      <SidebarFooter className="flex flex-col items-start gap-3 p-2 pb-4 group-data-[collapsible=icon]:items-center group-data-[collapsible=icon]:px-0">
+        <ThemeToggle size="lg" />
         <div
           className={cn(
-            "flex w-full items-center gap-2",
+            "flex w-full items-center gap-3",
             // Expanded: horizontal row with space between
             "justify-between",
             // Collapsed (icon mode): vertical stack, centered
