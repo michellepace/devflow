@@ -1,6 +1,5 @@
 import Link from "next/link";
 import { MobileNav } from "@/components/navigation/mobile-nav";
-import { ThemeToggle } from "@/components/navigation/theme-toggle";
 
 export function MobileTopBar() {
   return (
@@ -11,10 +10,7 @@ export function MobileTopBar() {
         <img src="/images/site-logo.svg" className="size-7" />
       </Link>
 
-      <div className="flex items-center gap-2">
-        <ThemeToggle />
-        <MobileNav />
-      </div>
+      <MobileNav />
     </header>
   );
 }

@@ -12,6 +12,7 @@ import Link from "next/link";
 import { useState } from "react";
 import { MobileNavLink } from "@/components/navigation/mobile-navlink";
 import { NAV_LINKS } from "@/components/navigation/nav-links.constants";
+import { ThemeToggle } from "@/components/navigation/theme-toggle";
 import { ThemedFullLogo } from "@/components/navigation/themed-full-logo";
 import { Button } from "@/components/ui/button";
 import {
@@ -83,37 +84,45 @@ export function MobileNav() {
             ))}
           </nav>
 
-          <SheetFooter className="gap-3 p-0 pb-4">
+          <SheetFooter className="p-0 pb-4">
             <SignedIn>
-              <UserButton
-                appearance={{
-                  elements: { userButtonAvatarBox: "size-10" },
-                }}
-              />
+              <div className="flex items-center justify-between">
+                <UserButton
+                  appearance={{
+                    elements: { userButtonAvatarBox: "size-10" },
+                  }}
+                />
+                <ThemeToggle size="lg" />
+              </div>
             </SignedIn>
             <SignedOut>
-              <SignInButton>
-                <Button
-                  variant="soft"
-                  size="lg"
-                  className="w-full text-base"
-                  onClick={() => setOpen(false)}
-                >
-                  <span className="bg-(image:--gradient-primary) bg-clip-text text-transparent">
-                    Sign in
-                  </span>
-                </Button>
-              </SignInButton>
-              <SignUpButton>
-                <Button
-                  variant="muted"
-                  size="lg"
-                  className="w-full text-base"
-                  onClick={() => setOpen(false)}
-                >
-                  Sign up
-                </Button>
-              </SignUpButton>
+              <div className="flex justify-end">
+                <ThemeToggle size="lg" />
+              </div>
+              <div className="mt-3 flex flex-col gap-3">
+                <SignInButton>
+                  <Button
+                    variant="soft"
+                    size="lg"
+                    className="w-full text-base"
+                    onClick={() => setOpen(false)}
+                  >
+                    <span className="bg-(image:--gradient-primary) bg-clip-text text-transparent">
+                      Sign in
+                    </span>
+                  </Button>
+                </SignInButton>
+                <SignUpButton>
+                  <Button
+                    variant="muted"
+                    size="lg"
+                    className="w-full text-base"
+                    onClick={() => setOpen(false)}
+                  >
+                    Sign up
+                  </Button>
+                </SignUpButton>
+              </div>
             </SignedOut>
           </SheetFooter>
         </SheetContent>
