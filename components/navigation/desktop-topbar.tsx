@@ -8,9 +8,7 @@ export function DesktopTopBar() {
       {/* Left section: matches main content structure (padding + max-w-5xl centering) */}
       <div className="flex flex-1 items-center px-6 md:px-8 lg:px-12">
         <div className="mx-auto w-full max-w-5xl">
-          <div className="hidden sm:block">
-            <GlobalSearch />
-          </div>
+          <GlobalSearch />
         </div>
       </div>
 
