@@ -71,7 +71,7 @@
       "WebFetch(domain:vercel.com)",
       "WebFetch(domain:vitest.dev)"
     ],
-    "deny": ["Read(**/.env)", "Read(**/.envrc)", "Read(x_docs/OLD/**)"],
+    "deny": ["Read(**/.env)", "Read(**/.envrc)", "Read(x_docs/DONE/**)"],
     "ask": []
   },
   "enabledPlugins": {
