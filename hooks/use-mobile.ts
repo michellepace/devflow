@@ -1,6 +1,6 @@
 import * as React from "react";
 
-const MOBILE_BREAKPOINT = 640; // tailwind sm breakpoint
+const MOBILE_BREAKPOINT = 768; // tailwind md breakpoint
 
 export function useMobile() {
   // Start with false to match server-rendered HTML and prevent hydration mismatch

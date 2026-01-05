@@ -39,7 +39,7 @@ export function MobileNav() {
         <button
           type="button"
           tabIndex={-1}
-          className="animate-in fade-in-0 fixed inset-0 z-40 cursor-default bg-overlay/50 duration-500 sm:hidden"
+          className="animate-in fade-in-0 fixed inset-0 z-40 cursor-default bg-overlay/50 duration-500 md:hidden"
           onClick={() => setOpen(false)}
           data-slot="sheet-overlay"
           aria-label="Dismiss menu"
@@ -50,7 +50,7 @@ export function MobileNav() {
           <Button
             variant="ghost"
             size="icon-lg"
-            className="text-sidebar-foreground sm:hidden"
+            className="text-sidebar-foreground md:hidden"
             aria-label={open ? "Close navigation menu" : "Open navigation menu"}
           >
             {open ? <X className="size-5" /> : <Menu className="size-5" />}
