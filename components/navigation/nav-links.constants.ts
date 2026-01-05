@@ -14,7 +14,7 @@ export const NAV_LINKS = [
   { iconUrl: "/icons/tag.svg", route: "/tags", label: "Tags" },
   {
     iconUrl: "/icons/question.svg",
-    route: "/ask-question",
-    label: "Ask a question",
+    route: "/questions/ask",
+    label: "Ask Question",
   },
 ] as const satisfies readonly NavLink[];

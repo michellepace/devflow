@@ -9,7 +9,7 @@ type QuestionLinkProps = {
 export function QuestionLink({ id, title }: QuestionLinkProps) {
   return (
     <Link
-      href={`/question/${id}`}
+      href={`/questions/${id}`}
       className="group -mx-2 flex items-center gap-2 rounded-md p-2"
     >
       <span className="flex-1 text-sm leading-snug text-foreground decoration-muted-foreground/50 underline-offset-2 group-hover:underline">

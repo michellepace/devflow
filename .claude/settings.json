@@ -71,7 +71,7 @@
       "WebFetch(domain:vercel.com)",
       "WebFetch(domain:vitest.dev)"
     ],
-    "deny": ["Read(**/.env)", "Read(**/.envrc)", "Read(x_docs/OLD/**)"],
+    "deny": ["Read(**/.env)", "Read(**/.envrc)", "Read(x_docs/DONE/**)"],
     "ask": []
   },
   "enabledPlugins": {
@@ -80,7 +80,9 @@
     "frontend-design@my-claude-plugins": false,
     "tailwindcss@my-claude-plugins": false,
     "shadcn-ui@my-claude-plugins": true,
-    "feature-dev@claude-plugins-official": true
+    "feature-dev@claude-plugins-official": true,
+    "code-review@claude-plugins-official": true,
+    "pr-review-toolkit@claude-plugins-official": true
   },
   "extraKnownMarketplaces": {
     "playwright-skill": {

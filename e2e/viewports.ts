@@ -10,13 +10,13 @@ const MOBILE_HEIGHT = 700;
 const DESKTOP_HEIGHT = 900;
 
 export const VIEWPORTS = {
-  /** Below sm breakpoint — mobile hamburger menu visible */
+  /** Below md breakpoint — mobile hamburger menu visible */
   MOBILE: { width: 400, height: MOBILE_HEIGHT },
 
-  /** sm breakpoint (640px) — sidebar appears, collapsed (rail mode) */
-  SM: { width: 640, height: DESKTOP_HEIGHT },
+  /** sm breakpoint (640px) — still mobile view (tablet-sized mobile) */
+  SM: { width: 640, height: MOBILE_HEIGHT },
 
-  /** md breakpoint (768px) — sidebar still collapsed */
+  /** md breakpoint (768px) — sidebar appears, collapsed (rail mode) */
   MD: { width: 768, height: DESKTOP_HEIGHT },
 
   /** lg breakpoint (1024px) — sidebar expands to full width */

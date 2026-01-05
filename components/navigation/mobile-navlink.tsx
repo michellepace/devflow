@@ -32,7 +32,7 @@ export function MobileNavLink({
       href={route}
       onClick={onClick}
       className={cn(
-        "flex items-center gap-3 rounded-lg px-3 py-3",
+        "flex items-center gap-3 rounded-lg px-2 py-3",
         isActive
           ? NAV_LINK_ACTIVE_CLASSES
           : `${NAV_LINK_INACTIVE_CLASSES} text-sidebar-foreground hover:bg-muted`,
