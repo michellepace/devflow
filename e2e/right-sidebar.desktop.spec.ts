@@ -15,7 +15,7 @@ test.describe("Right Sidebar - Desktop", () => {
     await expect(sidebar).toBeVisible();
 
     // Count exactly 5 question links and 5 tag links
-    const questionLinks = sidebar.locator('a[href^="/question/"]');
+    const questionLinks = sidebar.locator('a[href^="/questions/"]');
     const tagLinks = sidebar.locator('a[href^="/tags/"]');
     await expect(questionLinks).toHaveCount(5);
     await expect(tagLinks).toHaveCount(5);
@@ -36,7 +36,7 @@ test.describe("Right Sidebar - Desktop", () => {
 
     // Click first question link and verify URL pattern
     await questionLinks.first().click();
-    await expect(page).toHaveURL(/\/question\/\d+/);
+    await expect(page).toHaveURL(/\/questions\/\d+/);
 
     // Navigate back to homepage
     await page.goto("/");

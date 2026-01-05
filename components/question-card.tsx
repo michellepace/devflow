@@ -22,7 +22,7 @@ export function QuestionCard({ question }: QuestionCardProps) {
         </span>
       </div>
 
-      <Link href={`/question/${question._id}`} className="group">
+      <Link href={`/questions/${question._id}`} className="group">
         <h2 className="text-heading-sm mb-2 group-hover:text-primary">
           {question.title}
         </h2>
