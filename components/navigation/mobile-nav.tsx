@@ -26,7 +26,7 @@ import {
 } from "@/components/ui/sheet";
 import { cn } from "@/lib/utils";
 
-const MOBILE_NAV_MAX_WIDTH = "max-w-[320px]";
+const MOBILE_NAV_MAX_WIDTH = "max-w-[280px]";
 
 export function MobileNav() {
   const [open, setOpen] = useState(false);
@@ -53,13 +53,13 @@ export function MobileNav() {
             className="text-sidebar-foreground md:hidden"
             aria-label={open ? "Close navigation menu" : "Open navigation menu"}
           >
-            {open ? <X className="size-5" /> : <Menu className="size-5" />}
+            {open ? <X className="size-7" /> : <Menu className="size-7" />}
           </Button>
         </SheetTrigger>
         <SheetContent
           side="left"
           className={cn(
-            "flex flex-col gap-6 bg-sidebar p-6 shadow-2xl",
+            "flex flex-col gap-6 bg-sidebar px-4 py-6 shadow-2xl",
             MOBILE_NAV_MAX_WIDTH,
           )}
         >
@@ -67,7 +67,7 @@ export function MobileNav() {
             <SheetTitle className="sr-only">Mobile navigation menu</SheetTitle>
             <SheetClose asChild>
               <Link href="/" className="flex items-center">
-                <ThemedFullLogo className="h-7" />
+                <ThemedFullLogo className="h-8" />
               </Link>
             </SheetClose>
           </SheetHeader>

@@ -68,7 +68,7 @@
 /* Raw CSS variables (no Tailwind utilities generated). Access via var(--background), etc. */
 :root {
   /* Layout */
-  --top-bar-height: 4rem; /* 64px — desktop & mobile top navigation */
+  --top-bar-height: 5rem; /* 64px — desktop & mobile top navigation */
   --right-sidebar-width: 22rem; /* 352px — right sidebar width at xl+ */
 
   /* Base */

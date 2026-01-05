@@ -7,7 +7,7 @@ export function MobileTopBar() {
       <Link href="/" aria-label="DevFlow mobile logo">
         {/* biome-ignore lint/a11y/useAltText: Decorative logo, aria-label on parent link */}
         {/* biome-ignore lint/performance/noImgElement: SVG logo doesn't benefit from next/image optimisation */}
-        <img src="/images/site-logo.svg" className="size-7" />
+        <img src="/images/site-logo.svg" className="size-8" />
       </Link>
 
       <MobileNav />
