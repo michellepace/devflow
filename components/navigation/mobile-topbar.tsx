@@ -1,5 +1,6 @@
 import Link from "next/link";
 import { MobileNav } from "@/components/navigation/mobile-nav";
+import { MobileSearch } from "@/components/search/mobile-search";
 
 export function MobileTopBar() {
   return (
@@ -10,7 +11,10 @@ export function MobileTopBar() {
         <img src="/images/site-logo.svg" className="size-8" />
       </Link>
 
-      <MobileNav />
+      <div className="flex items-center">
+        <MobileSearch />
+        <MobileNav />
+      </div>
     </header>
   );
 }
