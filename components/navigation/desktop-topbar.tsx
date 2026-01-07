@@ -1,14 +1,14 @@
 import { SignedOut, SignInButton, SignUpButton } from "@clerk/nextjs";
-import { Searchbox } from "@/components/search/searchbox";
+import { DesktopSearch } from "@/components/search/desktop-search";
 import { Button } from "@/components/ui/button";
 
 export function DesktopTopBar() {
   return (
     <header className="sticky top-0 z-40 hidden h-(--top-bar-height) items-center bg-background md:flex">
-      {/* Left section: matches main content structure (padding + max-w-5xl centering) */}
+      {/* Left section: search bar narrower than content (max-w-2xl vs content's max-w-5xl) */}
       <div className="flex flex-1 items-center md:px-8 lg:px-10 xl:px-14">
-        <div className="mx-auto w-full max-w-5xl">
-          <Searchbox />
+        <div className="mx-auto w-full max-w-2xl">
+          <DesktopSearch />
         </div>
       </div>
 

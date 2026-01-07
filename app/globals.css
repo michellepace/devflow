@@ -61,7 +61,7 @@
   --color-sidebar-border: var(--sidebar-border);
   --color-sidebar-ring: var(--sidebar-ring);
 
-  /* Custom */
+  /* Custom: Overlay */
   --color-overlay: var(--overlay);
 }
 
@@ -75,23 +75,23 @@
   --radius: 0.625rem;
 
   /* shadcn/ui: Core */
-  --background: oklch(0.99 0 0); /* #FDFDFD */
+  --background: oklch(0.99 0 0);
   --foreground: oklch(0.129 0.042 264.695);
-  --card: oklch(0.9722 0.0034 247.86); /* #F4F6F8 */
-  --card-foreground: oklch(0.129 0.042 264.695);
-  --popover: oklch(1 0 0);
-  --popover-foreground: oklch(0.129 0.042 264.695);
+  --card: oklch(0.9722 0.0034 247.86);
+  --card-foreground: var(--foreground);
+  --popover: var(--card);
+  --popover-foreground: var(--foreground);
   --primary: oklch(0.7089 0.1967 46.81);
   --primary-foreground: oklch(1 0 0);
-  --secondary: oklch(0.9147 0.0205 264.47); /* #DCE3F1 - Figma */
+  --secondary: oklch(0.9147 0.0205 264.47);
   --secondary-foreground: oklch(0.208 0.042 265.755);
   --muted: oklch(0.968 0.007 247.896);
   --muted-foreground: oklch(0.554 0.046 257.417);
-  --accent: oklch(0.968 0.007 247.896);
-  --accent-foreground: oklch(0.208 0.042 265.755);
+  --accent: var(--muted);
+  --accent-foreground: var(--secondary-foreground);
   --destructive: oklch(0.577 0.245 27.325);
   --border: oklch(0.929 0.013 255.508);
-  --input: oklch(0.929 0.013 255.508);
+  --input: var(--border);
   --ring: oklch(0.704 0.04 256.788);
 
   /* shadcn/ui: Charts */
@@ -102,17 +102,17 @@
   --chart-5: oklch(0.769 0.188 70.08);
 
   /* shadcn/ui: Sidebar */
-  --sidebar: oklch(1 0 0); /* Figma #ffffff */
-  --sidebar-foreground: oklch(0.2102 0.0185 270.39); /* #151821 */
-  --sidebar-primary: oklch(0.208 0.042 265.755);
+  --sidebar: oklch(1 0 0);
+  --sidebar-foreground: oklch(0.2102 0.0185 270.39);
+  --sidebar-primary: var(--secondary-foreground);
   --sidebar-primary-foreground: oklch(0.984 0.003 247.858);
-  --sidebar-accent: oklch(0.968 0.007 247.896);
-  --sidebar-accent-foreground: oklch(0.208 0.042 265.755);
-  --sidebar-border: oklch(0.9722 0.0034 247.86); /* #F4F6F8 */
-  --sidebar-ring: oklch(0.704 0.04 256.788);
+  --sidebar-accent: var(--muted);
+  --sidebar-accent-foreground: var(--secondary-foreground);
+  --sidebar-border: var(--card);
+  --sidebar-ring: var(--ring);
 
   /* Custom: Gradients */
-  --primary-gradient-to: oklch(0.7434 0.115 58.23); /* #E2995F */
+  --primary-gradient-to: oklch(0.7434 0.115 58.23);
   --gradient-primary: linear-gradient(
     93.22deg,
     var(--primary) -13.95%,
@@ -120,37 +120,34 @@
   );
 
   /* Custom: Overlay */
-  --overlay: oklch(0 0 0); /* black, both modes */
+  --overlay: oklch(0 0 0);
 
   /* Custom: Assets (theme-aware URLs) */
   --logo-full-themed: url("/images/logo-light.svg");
   --auth-bg: url("/images/auth-bg-light.webp");
 
   /* Custom: Tag badges */
-  --tag-bg: oklch(0.9722 0.0034 247.86); /* #F4F6F8 */
-  --tag-text: oklch(0.6504 0.0475 272.34); /* #858EAD */
+  --tag-bg: var(--card);
+  --tag-text: oklch(0.6504 0.0475 272.34);
 }
 
 /* Dark mode overrides — these values take precedence over :root when .dark is active */
 .dark {
-  /* Base */
-  --radius: 0.625rem; /* same as root */
-
   /* shadcn/ui: Core */
-  --background: oklch(0 0 0); /* #000000 */
+  --background: oklch(0 0 0);
   --foreground: oklch(0.984 0.003 247.858);
-  --card: oklch(0.1783 0.0128 270.6); /* #0F1117 */
-  --card-foreground: oklch(0.984 0.003 247.858);
-  --popover: oklch(0.208 0.042 265.755);
-  --popover-foreground: oklch(0.984 0.003 247.858);
+  --card: oklch(0.1783 0.0128 270.6);
+  --card-foreground: var(--foreground);
+  --popover: oklch(0.2741 0.023 270.44);
+  --popover-foreground: var(--foreground);
   --primary: oklch(0.7089 0.1967 46.81);
   --primary-foreground: oklch(1 0 0);
-  --secondary: oklch(0.2728 0.0257 265.4); /* #212734 - Figma */
-  --secondary-foreground: oklch(0.984 0.003 247.858);
+  --secondary: oklch(0.2728 0.0257 265.4);
+  --secondary-foreground: var(--foreground);
   --muted: oklch(0.279 0.041 260.031);
   --muted-foreground: oklch(0.704 0.04 256.788);
-  --accent: oklch(0.279 0.041 260.031);
-  --accent-foreground: oklch(0.984 0.003 247.858);
+  --accent: var(--muted);
+  --accent-foreground: var(--foreground);
   --destructive: oklch(0.704 0.191 22.216);
   --border: oklch(1 0 0 / 10%);
   --input: oklch(1 0 0 / 15%);
@@ -164,33 +161,33 @@
   --chart-5: oklch(0.645 0.246 16.439);
 
   /* shadcn/ui: Sidebar */
-  --sidebar: oklch(0.1783 0.0128 270.6); /* Figma #0F1117 */
-  --sidebar-foreground: oklch(1 0 0); /* #FFFFFF */
+  --sidebar: var(--card);
+  --sidebar-foreground: oklch(1 0 0);
   --sidebar-primary: oklch(0.488 0.243 264.376);
-  --sidebar-primary-foreground: oklch(0.984 0.003 247.858);
-  --sidebar-accent: oklch(0.279 0.041 260.031);
-  --sidebar-accent-foreground: oklch(0.984 0.003 247.858);
+  --sidebar-primary-foreground: var(--foreground);
+  --sidebar-accent: var(--muted);
+  --sidebar-accent-foreground: var(--foreground);
   --sidebar-border: transparent;
-  --sidebar-ring: oklch(0.551 0.027 264.364);
+  --sidebar-ring: var(--ring);
 
   /* Custom: Gradients */
-  --primary-gradient-to: oklch(0.7434 0.115 58.23); /* same as root */
+  --primary-gradient-to: oklch(0.7434 0.115 58.23);
   --gradient-primary: linear-gradient(
     93.22deg,
     var(--primary) -13.95%,
     var(--primary-gradient-to) 99.54%
-  ); /* same as root */
+  );
 
   /* Custom: Overlay */
-  --overlay: oklch(0 0 0); /* same as root */
+  --overlay: oklch(0 0 0);
 
   /* Custom: Assets (theme-aware URLs) */
   --logo-full-themed: url("/images/logo-dark.svg");
   --auth-bg: url("/images/auth-bg-dark.webp");
 
   /* Custom: Tag badges */
-  --tag-bg: oklch(0.2102 0.0185 270.39); /* #151821 */
-  --tag-text: oklch(0.6547 0.0897 269.9); /* #7B8EC8 */
+  --tag-bg: oklch(0.2102 0.0185 270.39);
+  --tag-text: oklch(0.6547 0.0897 269.9);
 }
 
 @layer base {
@@ -257,11 +254,8 @@
     @apply invert dark:invert-0;
   }
 
-  /* Subtle directional shadow for navigation edges (light mode only) */
+  /* Subtle directional shadow for navigation edges */
   .shadow-light {
     box-shadow: -10px 10px 20px 0px oklch(0.877 0.006 17.26 / 10%);
-  }
-  .dark .shadow-light {
-    box-shadow: none;
   }
 }
