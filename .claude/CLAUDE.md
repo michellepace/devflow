@@ -59,6 +59,9 @@ npx shadcn@latest --help                  # CLI help
 - Tailwind v4 uses `@import "tailwindcss"` syntax (not `@tailwind` directives)
 - Next.js 16 Dynamic route `params` is a Promise - must await: `{ params }: { params: Promise<{ id: string }> }`
 - Next.js 16 Middleware renamed to Proxy - `middleware.ts` → `proxy.ts` (but still uses `clerkMiddleware()` function)
+- `cacheComponents` enabled - uncached async data must be in `<Suspense>` or marked `"use cache"`
+- `cacheComponents` enabled - route segment configs deprecated (`dynamic`, `revalidate`, `fetchCache`)
+- `cacheComponents` enabled - Edge Runtime not supported
 
 ## Authentication (Clerk)
 
