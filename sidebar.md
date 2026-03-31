@@ -2,7 +2,7 @@
 
 ## Figma Visual Reference
 
-PLEASE ANALYSE VISUALLY: `x_docs/figma/nav-over-breakpoints.jpg`
+PLEASE ANALYSE VISUALLY: `.xdocs/figma/nav-over-breakpoints.jpg`
 
 Sidebar visual details:
 

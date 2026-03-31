@@ -14,7 +14,7 @@
       "!.next",
       "!dist",
       "!build",
-      "!x_docs/reference"
+      "!.xdocs/reference"
     ]
   },
   "css": {

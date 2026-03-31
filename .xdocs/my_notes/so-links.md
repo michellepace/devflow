@@ -2,7 +2,7 @@
 
 TASK: Investigate current state of the search component (`components/search`) being ready for "data" and advise if I should "wire it up" with my mock data. I have not yet integrated with the database, which will be Convex.
 
-Reference: high level details on convex choice `x_docs/my_notes/what-db.md`
+Reference: high level details on convex choice `.xdocs/my_notes/what-db.md`
 
 I have just implement the UI for "search" on both desktop and and mobile. these changes are currently staged.
 
@@ -29,7 +29,7 @@ Examples - by words:
 Examples - remaining (non-compound):
 
 - answers:5 | <https://stackoverflow.com/search?q=answers%3A5>
-- score:3 | <https://stackoverflow.com/search?q=score%3A3> (Mockdata does not contain score yet, see `x_docs/my_notes/votes_score.md`)
+- score:3 | <https://stackoverflow.com/search?q=score%3A3> (Mockdata does not contain score yet, see `.xdocs/my_notes/votes_score.md`)
 - is:question | <https://stackoverflow.com/search?q=is%3Aquestion> (Mockdata does not yet contain answer posts, only questions)
 - isaccepted:yes | <https://stackoverflow.com/search?q=is%3Aaccepted> (mockdata does not have answers yet, no accepted status)
 
