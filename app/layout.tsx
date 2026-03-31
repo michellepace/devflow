@@ -1,3 +1,5 @@
+import { Analytics } from "@vercel/analytics/next";
+import { SpeedInsights } from "@vercel/speed-insights/next";
 import type { Metadata } from "next";
 import { Suspense } from "react";
 import { inter, jetbrainsMono, spaceGrotesk } from "@/app/fonts";
@@ -41,6 +43,8 @@ export default function RootLayout({
               disableTransitionOnChange
             >
               {children}
+              <Analytics />
+              <SpeedInsights />
             </ThemeProvider>
           </body>
         </html>
