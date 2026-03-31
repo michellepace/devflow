@@ -1,12 +1,6 @@
 "use client";
 
-import {
-  SignedIn,
-  SignedOut,
-  SignInButton,
-  SignUpButton,
-  UserButton,
-} from "@clerk/nextjs";
+import { Show, SignInButton, SignUpButton, UserButton } from "@clerk/nextjs";
 import { Menu, X } from "lucide-react";
 import Link from "next/link";
 import { useState } from "react";
@@ -89,7 +83,7 @@ export function MobileNav() {
           </nav>
 
           <SheetFooter className="p-0 pb-4">
-            <SignedIn>
+            <Show when="signed-in">
               <div className="flex items-center justify-between">
                 <UserButton
                   appearance={{
@@ -98,8 +92,8 @@ export function MobileNav() {
                 />
                 <ThemeToggle size="lg" />
               </div>
-            </SignedIn>
-            <SignedOut>
+            </Show>
+            <Show when="signed-out">
               <div className="flex justify-end">
                 <ThemeToggle size="lg" />
               </div>
@@ -127,7 +121,7 @@ export function MobileNav() {
                   </Button>
                 </SignUpButton>
               </div>
-            </SignedOut>
+            </Show>
           </SheetFooter>
         </SheetContent>
       </Sheet>

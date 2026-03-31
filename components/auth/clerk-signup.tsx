@@ -4,7 +4,7 @@ export function ClerkSignUp() {
   return (
     <SignUp
       appearance={{
-        layout: {
+        options: {
           logoImageUrl: "/images/site-logo.svg",
         },
       }}

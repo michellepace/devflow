@@ -6,15 +6,13 @@ The project uses British English - strictly.
 
 ## Tech Stack
 
-- **Next.js 16** with App Router (not Pages Router)
-- **React 19.2.0** (latest with new features like Actions, `use` hook)
-- **React Compiler** enabled for automatic optimisations
-- **TypeScript 5** with strict mode
-- **Tailwind CSS v4** with PostCSS
-- **CI/CD** Vitest, Playwright, GitHub Actions, Vercel
-- **Biome** for linting/formatting (replaces ESLint + Prettier)
-- **Lefthook** for Git hooks (pre-commit: lint, typecheck, unit tests; pre-push: E2E tests)
-- **Clerk** for authentication (installed via shadcn/ui CLI with `@clerk/themes`)
+- **Framework**: Next.js 16 (React 19, App Router, React Compiler, TypeScript 6)
+- **Styling**: Tailwind CSS 4
+- **Auth**: Clerk 7 (`@clerk/nextjs`, `@clerk/ui` shadcn theme)
+- **Testing**: Vitest 4 + Testing Library (unit), Playwright 1.58 (E2E)
+- **Quality**: Biome 2.4 (lint + format, replaces ESLint/Prettier)
+- **Git Hooks**: Lefthook 2.1 (pre-commit: lint, typecheck, unit; pre-push: E2E)
+- **Deployment**: Vercel (Preview on PR, Production on merge)
 
 ## Key Commands
 

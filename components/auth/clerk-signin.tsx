@@ -13,7 +13,7 @@ export function ClerkSignIn() {
   return (
     <SignIn
       appearance={{
-        layout: { logoImageUrl: logoUrl },
+        options: { logoImageUrl: logoUrl },
         elements: {
           header: "items-start",
           logoBox: "justify-start",
