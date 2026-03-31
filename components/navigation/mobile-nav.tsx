@@ -19,6 +19,7 @@ import {
   Sheet,
   SheetClose,
   SheetContent,
+  SheetDescription,
   SheetFooter,
   SheetHeader,
   SheetTitle,
@@ -65,6 +66,9 @@ export function MobileNav() {
         >
           <SheetHeader className="flex-row items-center p-0">
             <SheetTitle className="sr-only">Mobile navigation menu</SheetTitle>
+            <SheetDescription className="sr-only">
+              Browse site sections and account options
+            </SheetDescription>
             <SheetClose asChild>
               <Link href="/" className="flex items-center">
                 <ThemedFullLogo className="h-8" />
