@@ -1,27 +1,9 @@
 {
   "permissions": {
     "allow": [
-      "mcp__ide__getDiagnostics",
+      "Bash(cat:*)",
       "Bash(claude mcp get:*)",
       "Bash(claude mcp list)",
-      "mcp__playwright__browser_click",
-      "mcp__playwright__browser_close",
-      "mcp__playwright__browser_console_messages",
-      "mcp__playwright__browser_evaluate",
-      "mcp__playwright__browser_fill_form",
-      "mcp__playwright__browser_hover",
-      "mcp__playwright__browser_navigate",
-      "mcp__playwright__browser_navigate_back",
-      "mcp__playwright__browser_network_requests",
-      "mcp__playwright__browser_press_key",
-      "mcp__playwright__browser_resize",
-      "mcp__playwright__browser_run_code",
-      "mcp__playwright__browser_snapshot",
-      "mcp__playwright__browser_tabs",
-      "mcp__playwright__browser_take_screenshot",
-      "mcp__playwright__browser_type",
-      "mcp__playwright__browser_wait_for",
-      "Bash(cat:*)",
       "Bash(echo:*)",
       "Bash(find:*)",
       "Bash(lsof:*)",
@@ -60,41 +42,39 @@
       "Bash(vercel open)",
       "Bash(vercel project ls:*)",
       "Bash(vercel whoami)",
-      "WebFetch(domain:biomejs.dev)",
-      "WebFetch(domain:docs.github.com)",
-      "WebFetch(domain:github.com)",
-      "WebFetch(domain:lefthook.dev)",
-      "WebFetch(domain:nextjs.org)",
-      "WebFetch(domain:playwright.dev)",
-      "WebFetch(domain:tailwindcss.com)",
-      "WebFetch(domain:ui.shadcn.com)",
-      "WebFetch(domain:vercel.com)",
-      "WebFetch(domain:vitest.dev)"
+      "mcp__ide__getDiagnostics",
+      "mcp__playwright__browser_click",
+      "mcp__playwright__browser_close",
+      "mcp__playwright__browser_console_messages",
+      "mcp__playwright__browser_evaluate",
+      "mcp__playwright__browser_fill_form",
+      "mcp__playwright__browser_hover",
+      "mcp__playwright__browser_navigate",
+      "mcp__playwright__browser_navigate_back",
+      "mcp__playwright__browser_network_requests",
+      "mcp__playwright__browser_press_key",
+      "mcp__playwright__browser_resize",
+      "mcp__playwright__browser_run_code",
+      "mcp__playwright__browser_snapshot",
+      "mcp__playwright__browser_tabs",
+      "mcp__playwright__browser_take_screenshot",
+      "mcp__playwright__browser_type",
+      "mcp__playwright__browser_wait_for"
     ],
-    "deny": ["Read(**/.env)", "Read(**/.envrc)", "Read(x_docs/DONE/**)"],
+    "deny": ["Read(**/.env)", "Read(**/.envrc)", "Read(.xdocs/DONE/**)"],
     "ask": []
   },
   "enabledPlugins": {
-    "playwright-skill@playwright-skill": false,
-    "skill-creator@my-claude-plugins": false,
-    "frontend-design@my-claude-plugins": false,
-    "tailwindcss@my-claude-plugins": false,
-    "shadcn-ui@my-claude-plugins": true,
+    "shadcn-ui@my-claude-marketplace": true,
     "feature-dev@claude-plugins-official": true,
     "code-review@claude-plugins-official": true,
-    "pr-review-toolkit@claude-plugins-official": true
+    "code-simplifier@claude-plugins-official": true
   },
   "extraKnownMarketplaces": {
-    "playwright-skill": {
+    "my-claude-marketplace": {
       "source": {
         "source": "github",
-        "repo": "lackeyjb/playwright-skill"
-      }
-    },
-    "my-claude-plugins": {
-      "source": {
-        "source": "github",
-        "repo": "michellepace/my-claude-plugins"
+        "repo": "michellepace/my-claude-marketplace"
       }
     },
     "claude-plugins-official": {

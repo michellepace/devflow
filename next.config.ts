@@ -1,6 +1,17 @@
 import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
+  // Redirect /questions to / (DevFlow serves questions list at root)
+  async redirects() {
+    return [
+      {
+        source: "/questions",
+        destination: "/",
+        permanent: true,
+      },
+    ];
+  },
+
   reactCompiler: true,
 
   // Position Next.js dev indicator (route type, cache status) away from left sidebar

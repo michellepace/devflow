@@ -1,3 +1,5 @@
+import { Analytics } from "@vercel/analytics/next";
+import { SpeedInsights } from "@vercel/speed-insights/next";
 import type { Metadata } from "next";
 import { Suspense } from "react";
 import { inter, jetbrainsMono, spaceGrotesk } from "@/app/fonts";
@@ -20,20 +22,20 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <Suspense fallback={null}>
-      <ClerkProvider>
-        <html
-          lang="en"
-          className={`${inter.variable} ${spaceGrotesk.variable} ${jetbrainsMono.variable} h-full`}
-          suppressHydrationWarning
-        >
-          <head>
-            <link
-              rel="stylesheet"
-              href="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/devicon.min.css"
-            />
-          </head>
-          <body className="flex min-h-full flex-col antialiased">
+    <html
+      lang="en"
+      className={`${inter.variable} ${spaceGrotesk.variable} ${jetbrainsMono.variable} h-full`}
+      suppressHydrationWarning
+    >
+      <head>
+        <link
+          rel="stylesheet"
+          href="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/devicon.min.css"
+        />
+      </head>
+      <body className="flex min-h-full flex-col antialiased">
+        <Suspense fallback={null}>
+          <ClerkProvider>
             <ThemeProvider
               attribute="class"
               defaultTheme="dark"
@@ -41,10 +43,12 @@ export default function RootLayout({
               disableTransitionOnChange
             >
               {children}
+              <Analytics />
+              <SpeedInsights />
             </ThemeProvider>
-          </body>
-        </html>
-      </ClerkProvider>
-    </Suspense>
+          </ClerkProvider>
+        </Suspense>
+      </body>
+    </html>
   );
 }

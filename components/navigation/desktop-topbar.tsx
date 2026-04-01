@@ -1,4 +1,4 @@
-import { SignedOut, SignInButton, SignUpButton } from "@clerk/nextjs";
+import { Show, SignInButton, SignUpButton } from "@clerk/nextjs";
 import { DesktopSearch } from "@/components/search/desktop-search";
 import { Button } from "@/components/ui/button";
 
@@ -14,14 +14,14 @@ export function DesktopTopBar() {
 
       {/* Right section: matches right sidebar width on xl */}
       <div className="flex flex-none items-center justify-end gap-2 px-6 xl:w-(--right-sidebar-width)">
-        <SignedOut>
+        <Show when="signed-out">
           <SignInButton>
             <Button variant="ghost">Sign in</Button>
           </SignInButton>
           <SignUpButton>
             <Button>Sign up</Button>
           </SignUpButton>
-        </SignedOut>
+        </Show>
       </div>
     </header>
   );

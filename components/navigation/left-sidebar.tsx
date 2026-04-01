@@ -1,6 +1,6 @@
 "use client";
 
-import { SignedIn, UserButton } from "@clerk/nextjs";
+import { Show, UserButton } from "@clerk/nextjs";
 import Image from "next/image";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
@@ -110,9 +110,9 @@ export function LeftSidebar() {
             "group-data-[collapsible=icon]:justify-start",
           )}
         >
-          <SignedIn>
+          <Show when="signed-in">
             <UserButton />
-          </SignedIn>
+          </Show>
           <LeftSidebarToggle />
         </div>
       </SidebarFooter>

@@ -1,6 +1,6 @@
 # Target: Ho Nav (and layout) Should Work At Different Breakpoints
 
-The image [nav-over-breakpoints.jpg](x_docs/figma/nav-over-breakpoints.jpg) contains 5 screenshots of the target UI for navigation. The content of this document describes what the image shows visually. This content is concerned with layout more than UI details like text, link names etc. The five screenshots in the image are taken on the ask-questions page of the implemented course project follow along. It is my goal to pragmatically align to this following elegant and best practices.
+The image [nav-over-breakpoints.jpg](.xdocs/figma/nav-over-breakpoints.jpg) contains 5 screenshots of the target UI for navigation. The content of this document describes what the image shows visually. This content is concerned with layout more than UI details like text, link names etc. The five screenshots in the image are taken on the ask-questions page of the implemented course project follow along. It is my goal to pragmatically align to this following elegant and best practices.
 
 ---
 
