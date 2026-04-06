@@ -4,9 +4,7 @@ import { defineConfig } from "vitest/config";
 
 export default defineConfig({
   plugins: [react(), babel({ presets: [reactCompilerPreset()] })],
-  resolve: {
-    tsconfigPaths: true,
-  },
+  resolve: { tsconfigPaths: true },
   test: {
     allowOnly: !process.env.CI, // Block .only() in CI (explicit, matches Playwright forbidOnly)
     environment: "jsdom",
