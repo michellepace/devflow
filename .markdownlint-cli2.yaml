@@ -3,6 +3,7 @@
 
 ignores:
   - "node_modules/**"
+  - ".xdocs/DONE/**"
 
 # Disable only the rules that interfere with practical markdown writing
 config:

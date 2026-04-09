@@ -1,47 +1,48 @@
 {
+  "$schema": "https://json.schemastore.org/claude-code-settings.json",
   "permissions": {
     "allow": [
-      "Bash(cat:*)",
-      "Bash(claude mcp get:*)",
+      "Bash(cat *)",
+      "Bash(claude mcp get *)",
       "Bash(claude mcp list)",
-      "Bash(echo:*)",
-      "Bash(find:*)",
-      "Bash(lsof:*)",
-      "Bash(ls:*)",
-      "Bash(sed:*)",
-      "Bash(tree:*)",
-      "Bash(wc:*)",
-      "Bash(xargs:*)",
-      "Bash(git diff:*)",
-      "Bash(git log:*)",
-      "Bash(gh pr checks:*)",
-      "Bash(gh pr list:*)",
-      "Bash(gh pr view:*)",
-      "Bash(gh run list:*)",
-      "Bash(gh run view:*)",
+      "Bash(echo *)",
+      "Bash(find *)",
+      "Bash(gh pr checks *)",
+      "Bash(gh pr list *)",
+      "Bash(gh pr view *)",
+      "Bash(gh run list *)",
+      "Bash(gh run view *)",
+      "Bash(git diff *)",
+      "Bash(git log *)",
+      "Bash(ls *)",
+      "Bash(lsof *)",
+      "Bash(npm ci)",
+      "Bash(npm ls *)",
+      "Bash(npm outdated *)",
       "Bash(npm run build)",
-      "Bash(npm run dev)",
-      "Bash(npm run start)",
       "Bash(npm run check)",
+      "Bash(npm run dev)",
       "Bash(npm run lint)",
-      "Bash(npm run lint:md:*)",
+      "Bash(npm run lint:md *)",
+      "Bash(npm run start)",
       "Bash(npm run test)",
-      "Bash(npm run test:e2e:*)",
-      "Bash(npm run test:unit:*)",
+      "Bash(npm run test:e2e *)",
+      "Bash(npm run test:unit *)",
       "Bash(npm run typecheck)",
-      "Bash(npx @biomejs/biome:*)",
-      "Bash(npx lefthook:*)",
-      "Bash(npx playwright:*)",
-      "Bash(npx vercel:*)",
+      "Bash(npx @biomejs/biome *)",
+      "Bash(npx lefthook *)",
+      "Bash(npx playwright *)",
+      "Bash(tree *)",
       "Bash(vercel --help)",
       "Bash(vercel env --help)",
-      "Bash(vercel env ls:*)",
+      "Bash(vercel env ls *)",
       "Bash(vercel git --help)",
       "Bash(vercel integration --help)",
-      "Bash(vercel list:*)",
+      "Bash(vercel list *)",
       "Bash(vercel open)",
-      "Bash(vercel project ls:*)",
+      "Bash(vercel project ls *)",
       "Bash(vercel whoami)",
+      "Bash(wc *)",
       "mcp__ide__getDiagnostics",
       "mcp__playwright__browser_click",
       "mcp__playwright__browser_close",
@@ -64,24 +65,15 @@
     "deny": ["Read(**/.env)", "Read(**/.envrc)", "Read(.xdocs/DONE/**)"],
     "ask": []
   },
-  "enabledPlugins": {
-    "shadcn-ui@my-claude-marketplace": true,
-    "feature-dev@claude-plugins-official": true,
-    "code-review@claude-plugins-official": true,
-    "code-simplifier@claude-plugins-official": true
-  },
   "extraKnownMarketplaces": {
     "my-claude-marketplace": {
       "source": {
         "source": "github",
         "repo": "michellepace/my-claude-marketplace"
       }
-    },
-    "claude-plugins-official": {
-      "source": {
-        "source": "github",
-        "repo": "anthropics/claude-plugins-official"
-      }
     }
+  },
+  "enabledPlugins": {
+    "git-utils@my-claude-marketplace": true
   }
 }
