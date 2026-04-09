@@ -40,7 +40,7 @@ jobs:
     name: Run E2E Tests on Preview
     # Only run for repository_dispatch events (safety check)
     if: github.event_name == 'repository_dispatch'
-    timeout-minutes: 10
+    timeout-minutes: 15
     runs-on: ubuntu-latest
 
     steps:
