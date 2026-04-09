@@ -54,7 +54,8 @@ test.describe("Authenticated User Flow - Desktop", () => {
     }
 
     // Verify authenticated state - UserButton visible in left sidebar
-    await expect(userMenu).toBeVisible();
+    // Extended timeout: Clerk's dev-browser-sync handshake redirect is slow on CI WebKit
+    await expect(userMenu).toBeVisible({ timeout: 15_000 });
 
     // === MANAGE ACCOUNT ===
     await userMenu.click();
