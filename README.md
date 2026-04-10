@@ -10,7 +10,7 @@ Next.js 16 with the below:
 
 | Category | Tool | What it does |
 | :------- | :--- | :----------- |
-| Language | [TypeScript 5](https://www.typescriptlang.org) | Static type checking with strict mode enabled |
+| Language | [TypeScript 6](https://www.typescriptlang.org) | Static type checking with strict mode enabled |
 | Styling | [Tailwind CSS v4](https://tailwindcss.com) | Utility-first CSS framework for rapid styling |
 | | [next-themes](https://github.com/pacocoursey/next-themes) | Light/dark mode theming provider |
 | Linting | [Biome](https://biomejs.dev) | Fast linter and formatter (replaces ESLint + Prettier) |
