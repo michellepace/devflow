@@ -7,12 +7,12 @@ The project uses British English - strictly.
 ## Tech Stack
 
 - **Framework**: Next.js 16.2 (React 19, App Router, React Compiler, TypeScript 6)
-- **Styling**: Tailwind CSS 4.2 — centralised theme in `app/globals.css`
+- **Styling**: Tailwind CSS 4.3 (centralised theme `app/globals.css`)
 - **Auth**: Clerk 7 (`@clerk/nextjs`, `@clerk/ui` shadcn theme)
-- **Testing**: Vitest 4.1 + Testing Library (unit), Playwright 1.59 (E2E)
-- **Quality**: Biome 2.4 (lint + format, replaces ESLint/Prettier)
-- **Git Hooks**: Lefthook 2.1 (pre-commit: lint, typecheck, unit; pre-push: E2E)
-- **Deployment**: Vercel (Preview on PR, Production on merge)
+- **Testing**: Vitest 4.1 + Testing Library (unit), Playwright 1.60 (E2E)
+- **Quality**: Biome 2.4
+- **Git Hooks**: Lefthook 2.1
+- **Deployment**: Vercel
 
 ## Key Commands
 
@@ -24,7 +24,8 @@ npm run test:unit   # Vitest
 npm run test:e2e    # Playwright
 npm run test        # All tests (Vitest + Playwright)
 
-npm run analyse     # Bundle analyser UI (why is X bundled? bloat? splits?)
+# Browser Automation (use playwright-cli skill)
+playwright-cli open http://localhost:3000
 
 fuser -k 3000/tcp 2>/dev/null; rm -f .next/dev/lock  # Kill dev server
 
