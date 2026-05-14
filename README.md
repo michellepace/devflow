@@ -4,13 +4,27 @@ A community-driven platform for asking and answering programming questions. Get 
 
 ---
 
+## 🤖 Claude Code Setup
+
+Claude Code uses the Playwright CLI (not the Playwright MCP) to drive a browser when exploring the app. Install once globally and pull the latest skill files:
+
+```bash
+# Claude Code uses for browser exploration (Global chosen)
+npm install -g @playwright/cli@latest
+
+# Ensure latest Playwright CLI skill
+playwright-cli install --skills
+```
+
+---
+
 ## What's Installed?
 
 Next.js 16 with the below:
 
 | Category | Tool | What it does |
 | :------- | :--- | :----------- |
-| Language | [TypeScript 5](https://www.typescriptlang.org) | Static type checking with strict mode enabled |
+| Language | [TypeScript 6](https://www.typescriptlang.org) | Static type checking with strict mode enabled |
 | Styling | [Tailwind CSS v4](https://tailwindcss.com) | Utility-first CSS framework for rapid styling |
 | | [next-themes](https://github.com/pacocoursey/next-themes) | Light/dark mode theming provider |
 | Linting | [Biome](https://biomejs.dev) | Fast linter and formatter (replaces ESLint + Prettier) |
@@ -36,7 +50,7 @@ For exact list see [package.json](package.json)
 | ▢ [.vscode/settings.json](.vscode/settings.json) | VS Code editor and formatting settings | Enables auto-formatting and configures Biome and Tailwind extensions |
 | 🌺 [.claude/commands/](.claude/commands) | Claude Code repeatable prompts | Write commits, evaluate CodeRabbit comments etc. |
 | 🌺 [.claude/settings.json](.claude/settings.json) | Claude Code permissions | Allow/Deny permissions for files, commands, websearch etc |
-| 🌺 [.mcp.json](.mcp.json) | Claude Code MCP config | e.g. Playwright MCP so Claude Code can "see" app and adjust |
+| 🌺 [.mcp.json](.mcp.json) | Claude Code MCP config | shadcn MCP for component install, Ref MCP for docs search |
 | 🌺 [CLAUDE.md](CLAUDE.md) | Claude Code project context | Documents tech stack for Claude Code (customise!) |
 | 🅽 [next.config.ts](next.config.ts) | Next.js framework configuration | Enables React Compiler and customises Next.js build settings |
 | 🅽 [package.json](package.json) | Project dependencies and npm scripts | Defines project dependencies, scripts, and npm package metadata |
