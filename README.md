@@ -4,6 +4,20 @@ A community-driven platform for asking and answering programming questions. Get 
 
 ---
 
+## 🤖 Claude Code Setup
+
+Claude Code uses the Playwright CLI (not the Playwright MCP) to drive a browser when exploring the app. Install once globally and pull the latest skill files:
+
+```bash
+# Claude Code uses for browser exploration (Global chosen)
+npm install -g @playwright/cli@latest
+
+# Ensure latest Playwright CLI skill
+playwright-cli install --skills
+```
+
+---
+
 ## What's Installed?
 
 Next.js 16 with the below:
@@ -36,7 +50,7 @@ For exact list see [package.json](package.json)
 | ▢ [.vscode/settings.json](.vscode/settings.json) | VS Code editor and formatting settings | Enables auto-formatting and configures Biome and Tailwind extensions |
 | 🌺 [.claude/commands/](.claude/commands) | Claude Code repeatable prompts | Write commits, evaluate CodeRabbit comments etc. |
 | 🌺 [.claude/settings.json](.claude/settings.json) | Claude Code permissions | Allow/Deny permissions for files, commands, websearch etc |
-| 🌺 [.mcp.json](.mcp.json) | Claude Code MCP config | e.g. Playwright MCP so Claude Code can "see" app and adjust |
+| 🌺 [.mcp.json](.mcp.json) | Claude Code MCP config | shadcn MCP for component install, Ref MCP for docs search |
 | 🌺 [CLAUDE.md](CLAUDE.md) | Claude Code project context | Documents tech stack for Claude Code (customise!) |
 | 🅽 [next.config.ts](next.config.ts) | Next.js framework configuration | Enables React Compiler and customises Next.js build settings |
 | 🅽 [package.json](package.json) | Project dependencies and npm scripts | Defines project dependencies, scripts, and npm package metadata |
