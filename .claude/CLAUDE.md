@@ -36,14 +36,14 @@ vercel whoami       # Verify CLI is authenticated
 ## shadcn/ui CLI
 
 ```bash
-npx shadcn@latest list @shadcn            # List all available components
-npx shadcn@latest search @shadcn -q "nav" # Search components by query
-npx shadcn@latest view button card        # Preview code before installing
-npx shadcn@latest add <component>         # Add component to project
-npx shadcn@latest add button --overwrite  # Overwrite existing component
-npx shadcn@latest add @v0/<block>         # Add from v0.dev registry
-npx shadcn@latest diff                    # Check for upstream registry updates
-npx shadcn@latest --help                  # CLI help
+npx shadcn list @shadcn            # List all available components
+npx shadcn search @shadcn -q "nav" # Search components by query
+npx shadcn view button card        # Preview code before installing
+npx shadcn add <component>         # Add component to project
+npx shadcn add button --overwrite  # Overwrite existing component
+npx shadcn add @v0/<block>         # Add from v0.dev registry
+npx shadcn diff                    # Check for upstream registry updates
+npx shadcn --help                  # CLI help
 ```
 
 ## Coding Practices
